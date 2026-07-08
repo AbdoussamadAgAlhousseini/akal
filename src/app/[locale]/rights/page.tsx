@@ -39,7 +39,7 @@ export default async function RightsPage({
         <h2 className="mb-1.5 mt-[52px] font-serif text-[26px] font-semibold text-indigo">
           {t('jurisprudence')}
         </h2>
-        <div className="mt-3.5 grid gap-[22px] [grid-template-columns:repeat(auto-fill,minmax(360px,1fr))]">
+        <div className="mt-3.5 grid gap-[22px] [grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr))]">
           {jurisprudence.map((j) => (
             <div
               key={j.title}

@@ -10,7 +10,7 @@ export default function SectionBlocks({
   locale: string;
 }) {
   return (
-    <div className="grid gap-[22px] [grid-template-columns:repeat(auto-fill,minmax(360px,1fr))]">
+    <div className="grid gap-[22px] [grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr))]">
       {blocks.map((block, i) => (
         <div
           key={i}

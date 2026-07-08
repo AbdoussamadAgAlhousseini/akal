@@ -68,7 +68,7 @@ export default function OrgDirectory({
       </select>
 
       {visible.length ? (
-        <div className="grid gap-[22px] [grid-template-columns:repeat(auto-fill,minmax(300px,1fr))]">
+        <div className="grid gap-[22px] [grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))]">
           {visible.map((org) => (
             <div
               key={org.name}
