@@ -3,8 +3,10 @@ import {notFound} from 'next/navigation';
 import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
+import {SITE_NAME, SITE_URL} from '@/lib/seo';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import StructuredData from '@/components/seo/StructuredData';
 import '../globals.css';
 
 type Props = {
@@ -30,10 +32,31 @@ export async function generateMetadata({
 }: Omit<Props, 'children'>): Promise<Metadata> {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'Metadata'});
+  const title = t('title');
+  const description = t('description');
   return {
-    title: t('title'),
-    description: t('description'),
-    icons: {icon: FAVICON}
+    metadataBase: new URL(SITE_URL),
+    title,
+    description,
+    icons: {icon: FAVICON},
+    alternates: {
+      canonical: `${SITE_URL}/${locale}`,
+      languages: {
+        en: `${SITE_URL}/en`,
+        fr: `${SITE_URL}/fr`,
+        es: `${SITE_URL}/es`,
+        'x-default': `${SITE_URL}/en`
+      }
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/${locale}`,
+      siteName: SITE_NAME,
+      locale,
+      type: 'website'
+    },
+    twitter: {card: 'summary_large_image', title, description}
   };
 }
 
@@ -51,6 +74,7 @@ export default async function LocaleLayout({children, params}: Props) {
   return (
     <html lang={locale}>
       <body>
+        <StructuredData locale={locale} />
         <NextIntlClientProvider>
           <Header />
           {children}

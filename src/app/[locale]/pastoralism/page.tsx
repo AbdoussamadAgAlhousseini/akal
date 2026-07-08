@@ -1,9 +1,26 @@
+import type {Metadata} from 'next';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
+import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/common/Container';
 import PageHead from '@/components/common/PageHead';
 import Slider from '@/components/common/Slider';
 import SectionBlocks from '@/components/common/SectionBlocks';
 import {getPastoralismBlocks, getSlides} from '@/lib/content';
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}): Promise<Metadata> {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'Pastoralism'});
+  return buildMetadata({
+    locale,
+    href: '/pastoralism',
+    title: `${t('title')} — AKAL`,
+    description: t('lead')
+  });
+}
 
 export default async function PastoralismPage({
   params

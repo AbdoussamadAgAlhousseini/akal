@@ -1,9 +1,26 @@
+import type {Metadata} from 'next';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
+import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/common/Container';
 import PageHead from '@/components/common/PageHead';
 import NewsList from '@/components/news/NewsList';
 import OpportunityList from '@/components/news/OpportunityList';
 import {getNews, getOpportunities} from '@/lib/content';
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}): Promise<Metadata> {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'News'});
+  return buildMetadata({
+    locale,
+    href: '/news',
+    title: `${t('title')} — AKAL`,
+    description: t('lead')
+  });
+}
 
 export default async function NewsPage({
   params

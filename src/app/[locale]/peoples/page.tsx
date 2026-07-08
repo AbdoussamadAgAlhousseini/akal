@@ -1,9 +1,26 @@
+import type {Metadata} from 'next';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import Container from '@/components/common/Container';
 import PageHead from '@/components/common/PageHead';
 import PeoplesExplorer from '@/components/peoples/PeoplesExplorer';
 import {getPeoples, getTaxonomies} from '@/lib/content';
 import {localize} from '@/lib/localize';
+import {buildMetadata} from '@/lib/seo';
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}): Promise<Metadata> {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'Peoples'});
+  return buildMetadata({
+    locale,
+    href: '/peoples',
+    title: `${t('title')} — AKAL`,
+    description: t('lead')
+  });
+}
 
 export default async function PeoplesPage({
   params

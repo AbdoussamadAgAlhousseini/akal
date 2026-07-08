@@ -5,6 +5,8 @@ import Container from '@/components/common/Container';
 import PeopleFiche from '@/components/peoples/PeopleFiche';
 import {routing} from '@/i18n/routing';
 import {getPeople, getPeopleSlugs, getTaxonomies} from '@/lib/content';
+import {localize} from '@/lib/localize';
+import {buildMetadata} from '@/lib/seo';
 
 type Props = {
   params: Promise<{locale: string; slug: string}>;
@@ -20,9 +22,15 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({params}: Props): Promise<Metadata> {
-  const {slug} = await params;
+  const {locale, slug} = await params;
   const person = getPeople(slug);
-  return {title: person ? `AKAL — ${person.name}` : 'AKAL'};
+  if (!person) return {title: 'AKAL'};
+  return buildMetadata({
+    locale,
+    href: {pathname: '/peoples/[slug]', params: {slug}},
+    title: `${person.name} — AKAL`,
+    description: localize(person.summary, locale)
+  });
 }
 
 export default async function PeopleFichePage({params}: Props) {

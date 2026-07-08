@@ -1,10 +1,27 @@
+import type {Metadata} from 'next';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
+import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/common/Container';
 import PageHead from '@/components/common/PageHead';
 import OrgDirectory from '@/components/organizations/OrgDirectory';
 import JoinForm from '@/components/organizations/JoinForm';
 import {getOrganizations, getTaxonomies} from '@/lib/content';
 import {localize} from '@/lib/localize';
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}): Promise<Metadata> {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'Organizations'});
+  return buildMetadata({
+    locale,
+    href: '/organizations',
+    title: `${t('title')} — AKAL`,
+    description: t('lead')
+  });
+}
 
 export default async function OrganizationsPage({
   params
