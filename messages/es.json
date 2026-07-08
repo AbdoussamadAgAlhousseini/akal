@@ -1,0 +1,139 @@
+{
+  "Metadata": {
+    "title": "AKAL — Pueblos indígenas del mundo",
+    "description": "AKAL — plataforma mundial de referencia sobre pueblos indígenas y pastoralismo: fichas estilo ONU, mapa mundial, observatorio de derechos y oportunidades. EN · FR · ES."
+  },
+  "Layout": {
+    "tagline": "Pueblos indígenas del mundo",
+    "topbar": "Plataforma mundial de referencia sobre pueblos indígenas y pastoralismo",
+    "contribute": "Contribuir",
+    "search": "Buscar",
+    "searchPlaceholder": "Buscar pueblos, organizaciones, convocatorias…",
+    "searchEmpty": "Sin resultados."
+  },
+  "Nav": {
+    "home": "Inicio",
+    "peoples": "Pueblos",
+    "map": "Mapa mundial",
+    "pastoralism": "Pastoreo",
+    "rights": "Derechos",
+    "news": "Noticias",
+    "organizations": "Organizaciones",
+    "resources": "Recursos",
+    "about": "Acerca de"
+  },
+  "Home": {
+    "eyebrow": "Documentar · Conectar · Defender",
+    "title": "La enciclopedia viva de los pueblos indígenas del mundo",
+    "sub": "Fichas estilo ONU, un mapa mundial interactivo y el primer espacio global dedicado al pastoreo indígena — construidos con las comunidades, bajo los principios de soberanía de datos indígenas.",
+    "cta1": "Explorar los pueblos",
+    "cta2": "Abrir el mapa",
+    "statPersons": "Personas indígenas en el mundo",
+    "statPeoples": "Pueblos distintos",
+    "statDocumented": "Pueblos documentados",
+    "statOrgs": "Organizaciones registradas",
+    "featuredLabel": "Pueblo destacado — julio 2026",
+    "readSheet": "Leer la ficha",
+    "latestHeading": "Últimas noticias",
+    "latestSub": "Selección curada de mecanismos de la ONU, órganos regionales y organizaciones indígenas.",
+    "partnersHeading": "Socios y redes",
+    "sliderNote": "Ilustraciones. Las fotografías comunitarias se añadirán con el consentimiento libre, previo e informado (CLPI)."
+  },
+  "Peoples": {
+    "title": "Pueblos del mundo",
+    "lead": "Fichas estilo ONU: identidad, demografía, territorio, medios de vida, reconocimiento jurídico, amenazas y resiliencia. Las cifras de población son rangos de fuentes múltiples; prevalece la autoidentificación.",
+    "allRegions": "Todas las regiones",
+    "back": "← Volver a todos los pueblos",
+    "readSheet": "Leer la ficha"
+  },
+  "Map": {
+    "title": "Mapa mundial interactivo",
+    "lead": "Zonas de presencia aproximadas por pueblo. Haga clic en un círculo para abrir la ficha.",
+    "legendPastoral": "Pueblos pastores",
+    "legendOther": "Otros pueblos indígenas",
+    "note": "Por razones de seguridad y soberanía de datos, las ubicaciones son deliberadamente aproximadas. Los sitios sagrados y las comunidades vulnerables nunca se cartografían con precisión."
+  },
+  "Pastoralism": {
+    "title": "Pastoreo indígena",
+    "lead": "La única sección mundial que vincula los derechos indígenas y los medios de vida pastoriles — la movilidad como derecho, la tenencia consuetudinaria y la transición verde.",
+    "iyrp": "2026 es el Año Internacional de los Pastizales y los Pastores (IYRP), proclamado por la Asamblea General de la ONU."
+  },
+  "Rights": {
+    "title": "Observatorio de derechos",
+    "lead": "La arquitectura jurídica internacional que protege a los pueblos indígenas, instrumento por instrumento.",
+    "jurisprudence": "Jurisprudencia histórica",
+    "colInstrument": "Instrumento / Mecanismo",
+    "colScope": "Alcance",
+    "colNature": "Naturaleza",
+    "binding": "Vinculante",
+    "declarative": "Declarativo"
+  },
+  "News": {
+    "title": "Noticias y análisis",
+    "lead": "Selección curada con fuentes, y artículos de fondo.",
+    "agendaHeading": "Agenda y oportunidades",
+    "agendaSub": "Convocatorias, becas y foros para pueblos y jóvenes indígenas — actualizados continuamente."
+  },
+  "Organizations": {
+    "title": "Organizaciones indígenas del mundo",
+    "lead": "Un directorio mundial de organizaciones indígenas y pastoriles, filtrable por categoría y país.",
+    "joinHeading": "Solicitar la adhesión de su organización",
+    "joinText": "Las organizaciones indígenas, de mujeres, de jóvenes y pastoriles pueden solicitar figurar en el directorio. Cada solicitud se examina antes de su publicación.",
+    "fieldOrg": "Nombre de la organización",
+    "fieldEmail": "Correo de contacto",
+    "fieldCountry": "País",
+    "fieldCategory": "Categoría",
+    "fieldMessage": "Mensaje (mandato, enlaces…)",
+    "send": "Enviar solicitud",
+    "ok": "✓ Solicitud recibida. Le responderemos tras su examen.",
+    "err": "Indique un nombre de organización y un correo válido."
+  },
+  "Resources": {
+    "title": "Biblioteca de recursos",
+    "lead": "Informes, publicaciones y documentos clave — con etiquetas de conocimientos tradicionales (TK Labels) y niveles de acceso."
+  },
+  "About": {
+    "title": "Acerca de la plataforma",
+    "lead": "Visión, gobernanza, ética y cómo contribuir."
+  },
+  "Fiche": {
+    "doc": "Ficha · Perfil de pueblo",
+    "population": "Población (rango)",
+    "language": "Idioma",
+    "countries": "Países",
+    "status": "Reconocimiento",
+    "region": "Región",
+    "wip": "Esta ficha está siendo documentada con las comunidades. El contenido es un borrador de trabajo.",
+    "translation": "Esta ficha aún no está disponible en este idioma — se muestra la versión en inglés. Ayúdenos a traducirla.",
+    "tk": "Aviso de conocimientos tradicionales — algunos saberes de este pueblo están reservados a la comunidad y deliberadamente no se publican aquí, conforme a los principios CARE y al consentimiento comunitario.",
+    "keyFacts": "Datos clave",
+    "instruments": "Instrumentos jurídicos",
+    "sources": "Fuentes y método",
+    "sourcesText": "IWGIA · UN DESA · GT CADHP · fuentes comunitarias (en validación)",
+    "print": "🖶 Imprimir / PDF",
+    "secIdentity": "Identidad y lengua",
+    "secLivelihoods": "Modo de vida y economía pastoril",
+    "secRights": "Reconocimiento y derechos",
+    "secThreats": "Amenazas y resiliencia"
+  },
+  "Search": {
+    "people": "Pueblo",
+    "organization": "Organización",
+    "news": "Noticia",
+    "call": "Convocatoria"
+  },
+  "Footer": {
+    "mission": "Una plataforma independiente que documenta los pueblos indígenas del mundo con y para las comunidades.",
+    "explore": "Explorar",
+    "platform": "Plataforma",
+    "ethics": "Ética y soberanía de datos",
+    "governance": "Gobernanza",
+    "join": "Unirse al directorio",
+    "newsletterHeading": "Boletín",
+    "newsletterText": "Resumen mensual: pueblos, derechos y oportunidades.",
+    "newsletterPlaceholder": "Su correo electrónico",
+    "newsletterButton": "Suscribirse",
+    "newsletterOk": "✓ ¡Gracias! Está en la lista.",
+    "legal": "AKAL · Prototipo v0.2 · Construido según los principios CARE y el consentimiento libre, previo e informado · EN / FR / ES"
+  }
+}

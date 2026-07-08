@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AKAL — Indigenous Peoples of the World</title>
+<meta name="description" content="AKAL — global reference platform on Indigenous Peoples and pastoralism: UN-style fact sheets, world map, rights observatory and opportunities. EN · FR · ES.">
+<meta name="theme-color" content="#1F2A5E">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%231F2A5E'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23E9C46A' font-family='Georgia'>ⴰ</text></svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --indigo:#1F2A5E; --indigo-deep:#141C42; --sable:#FAF7F1; --sable-2:#F1EBDD;
+  --laterite:#B45E23; --laterite-soft:#E8D9C8; --encre:#1D1B17; --gris:#6B675E;
+  --ligne:#DDD5C4; --blanc:#FFF; --ok:#2F6B4F;
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--sable);color:var(--encre);line-height:1.65;font-size:16px}
+button{font-family:var(--sans)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Header */
+.topbar{background:var(--indigo-deep);color:#C9CEE6;font-size:12.5px;padding:6px 24px;display:flex;justify-content:space-between;letter-spacing:.02em}
+.topbar .tif{letter-spacing:.35em;opacity:.75}
+header{background:var(--indigo);color:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 2px 12px rgba(20,28,66,.25)}
+.brandrow{display:flex;align-items:center;justify-content:space-between;padding:13px 24px;max-width:1200px;margin:0 auto;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:13px;cursor:pointer}
+.brand .mark{width:44px;height:44px;border:1.5px solid rgba(255,255,255,.5);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#E9C46A;font-family:var(--serif)}
+.brand h1{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.1}
+.brand small{display:block;font-family:var(--sans);font-size:11px;font-weight:400;opacity:.75;letter-spacing:.13em;text-transform:uppercase;margin-top:3px}
+.hdr-actions{display:flex;align-items:center;gap:10px}
+.searchbtn{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:4px;padding:6px 13px;font-size:12.5px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.searchbtn:hover{border-color:#fff}
+.searchbtn kbd{background:rgba(255,255,255,.15);border-radius:3px;padding:1px 6px;font-size:11px}
+.langsel{display:flex;border:1px solid rgba(255,255,255,.35);border-radius:4px;overflow:hidden}
+.langsel button{background:transparent;border:none;color:#fff;padding:6px 11px;font-size:12.5px;cursor:pointer}
+.langsel button.on{background:#fff;color:var(--indigo);font-weight:700}
+.cta{background:var(--laterite);color:#fff;border:none;padding:9px 17px;border-radius:4px;font-size:13.5px;font-weight:600;cursor:pointer}
+.cta:hover{background:#9E501B}
+nav{border-top:1px solid rgba(255,255,255,.15)}
+nav ul{max-width:1200px;margin:0 auto;display:flex;list-style:none;overflow-x:auto}
+nav a{display:block;padding:12px 15px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13.5px;white-space:nowrap;border-bottom:3px solid transparent;cursor:pointer}
+nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+nav a.on{color:#fff;border-bottom-color:var(--laterite);font-weight:600}
+
+/* Layout */
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+main section{display:none;padding-bottom:70px}
+main section.on{display:block}
+.eyebrow{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--laterite);font-weight:700;margin-bottom:10px}
+.pagetitle{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--indigo);margin-bottom:8px;line-height:1.2}
+.pagelead{font-size:17px;color:var(--gris);max-width:760px;margin-bottom:32px}
+.pagehead{padding:44px 0 0}
+.homehead{font-family:var(--serif);font-size:26px;color:var(--indigo);margin:52px 0 6px;font-weight:600}
+.homesub{color:var(--gris);font-size:15px;margin-bottom:24px}
+
+/* Hero */
+.hero{background:var(--indigo);color:#fff;padding:64px 0 0;position:relative;overflow:hidden}
+.hero .tifbg{position:absolute;right:-20px;top:6px;font-size:210px;color:rgba(255,255,255,.045);font-family:var(--serif);line-height:1;letter-spacing:.1em;user-select:none}
+.hero h2{font-family:var(--serif);font-size:clamp(29px,4.5vw,45px);font-weight:600;line-height:1.18;max-width:720px}
+.hero .sub{margin-top:16px;font-size:17px;color:#C9CEE6;max-width:640px}
+.hero .actions{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 24px;border-radius:4px;font-size:14.5px;font-weight:600;cursor:pointer;border:none}
+.btn.solid{background:var(--laterite);color:#fff}
+.btn.solid:hover{background:#9E501B}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.statband{margin-top:52px;background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.14)}
+.statband .in{max-width:1200px;margin:0 auto;padding:20px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.stat b{display:block;font-family:var(--serif);font-size:29px;color:#E9C46A;font-weight:600}
+.stat span{font-size:12px;color:#C9CEE6;letter-spacing:.05em;text-transform:uppercase}
+
+/* Slider */
+.slider-mount{margin:42px 0 0}
+.slider{position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--ligne);background:var(--indigo)}
+.strack{display:flex;transition:transform .6s ease}
+.slide{min-width:100%;position:relative;margin:0}
+.slide svg{display:block;width:100%;height:clamp(190px,32vw,370px)}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:38px 24px 15px;background:linear-gradient(transparent,rgba(20,28,66,.78));color:#fff;font-family:var(--serif);font-size:16.5px}
+.sdots{position:absolute;bottom:13px;right:17px;display:flex;gap:8px}
+.sdots button{width:10px;height:10px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0}
+.sdots button.on{background:#fff}
+.slidenote{font-size:12px;color:var(--gris);font-style:italic;margin-top:8px}
+
+/* Cards */
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}
+.card{background:var(--blanc);border:1px solid var(--ligne);border-radius:6px;overflow:hidden;transition:box-shadow .2s}
+.card:hover{box-shadow:0 8px 24px rgba(31,42,94,.10)}
+.card .top{background:var(--indigo);color:#fff;padding:17px 20px 13px}
+.card .top .endo{font-size:20px;color:#E9C46A;letter-spacing:.12em;font-family:var(--serif)}
+.card .top h3{font-family:var(--serif);font-size:20px;font-weight:600;margin-top:2px}
+.card .top .reg{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#B9C0DE;margin-top:4px}
+.card .body{padding:17px 20px 20px}
+.card .body p{font-size:14px;color:var(--gris);margin-bottom:13px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}
+.tag{font-size:11px;padding:3px 10px;border-radius:20px;letter-spacing:.03em;font-weight:600}
+.tag.state{background:#E3EBE6;color:var(--ok)}
+.tag.achpr{background:#EFE3D4;color:#8A5A17}
+.tag.self{background:#E4E7F2;color:var(--indigo)}
+.tag.pastoral{background:var(--laterite-soft);color:var(--laterite)}
+.linkmore{font-size:13.5px;color:var(--laterite);font-weight:600;cursor:pointer}
+.linkmore:hover{text-decoration:underline}
+.filterrow{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:24px}
+.filterrow button{background:var(--blanc);border:1px solid var(--ligne);padding:7px 15px;border-radius:20px;font-size:13px;cursor:pointer;color:var(--gris)}
+.filterrow button.on{background:var(--indigo);border-color:var(--indigo);color:#fff;font-weight:600}
+.ctrysel{padding:9px 14px;border:1px solid var(--ligne);border-radius:4px;background:#fff;font-size:13.5px;font-family:var(--sans);margin-bottom:24px;max-width:280px}
+.badge-cat{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--sable-2);color:var(--indigo);display:inline-block;margin-bottom:9px}
+
+/* Fiche */
+.crumb{font-size:13px;color:var(--gris);margin:0 0 6px}
+.crumb a{color:var(--laterite);cursor:pointer;font-weight:600;text-decoration:none}
+.ftoolbar{display:flex;gap:10px;margin:14px 0 0;flex-wrap:wrap}
+.ftoolbar button{background:#fff;border:1px solid var(--ligne);border-radius:4px;padding:8px 16px;font-size:13px;cursor:pointer;color:var(--indigo);font-weight:600}
+.ftoolbar button:hover{border-color:var(--indigo)}
+.fiche{background:var(--blanc);border:1px solid var(--ligne);border-radius:6px;margin-top:18px}
+.fiche-head{background:var(--indigo);color:#fff;padding:32px 36px;border-radius:6px 6px 0 0;position:relative;overflow:hidden}
+.fiche-head .tifbg{position:absolute;right:18px;top:-14px;font-size:120px;color:rgba(255,255,255,.06);font-family:var(--serif);letter-spacing:.1em;user-select:none}
+.fiche-head .doc{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#B9C0DE;margin-bottom:11px}
+.fiche-head .endo{font-family:var(--serif);font-size:32px;color:#E9C46A;letter-spacing:.14em}
+.fiche-head h3{font-family:var(--serif);font-size:31px;font-weight:600;margin-top:4px}
+.fiche-head .aka{font-size:14px;color:#C9CEE6;margin-top:6px;font-style:italic}
+.fiche-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-bottom:1px solid var(--ligne);background:var(--sable-2)}
+.fiche-meta>div{padding:15px 20px;border-right:1px solid var(--ligne)}
+.fiche-meta>div:last-child{border-right:none}
+.fiche-meta label{display:block;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--gris);margin-bottom:4px;font-weight:700}
+.fiche-meta b{font-size:14.5px;color:var(--indigo)}
+.fiche-body{padding:34px 36px;display:grid;grid-template-columns:1fr 290px;gap:42px}
+.fsec{margin-bottom:30px}
+.fsec h4{font-family:var(--serif);font-size:19px;color:var(--indigo);border-bottom:2px solid var(--laterite);display:inline-block;padding-bottom:4px;margin-bottom:13px;font-weight:600}
+.fsec p{font-size:15px}
+.sidebox{background:var(--sable);border:1px solid var(--ligne);border-radius:6px;padding:19px 21px;margin-bottom:18px}
+.sidebox h5{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--laterite);margin-bottom:11px;font-weight:700}
+.sidebox table{width:100%;font-size:13.5px;border-collapse:collapse}
+.sidebox td{padding:6px 0;border-bottom:1px solid var(--ligne);vertical-align:top}
+.sidebox td:first-child{color:var(--gris);padding-right:10px}
+.sidebox td:last-child{font-weight:600;color:var(--indigo);text-align:right}
+.sidebox p{font-size:13px;color:var(--gris)}
+.tklabel{display:flex;gap:12px;background:#F4EEE2;border:1px dashed var(--laterite);border-radius:6px;padding:14px 16px;font-size:13px;color:#6B4A22}
+.notice{background:#EDEFF7;border-left:4px solid var(--indigo);padding:13px 17px;font-size:13.5px;color:var(--indigo);margin-bottom:24px;border-radius:0 4px 4px 0}
+
+/* Featured */
+.featured{background:var(--blanc);border:1px solid var(--ligne);border-radius:6px;display:grid;grid-template-columns:330px 1fr;overflow:hidden;margin:42px 0 0}
+.featured .left{background:var(--indigo);color:#fff;padding:32px;display:flex;flex-direction:column;justify-content:center}
+.featured .left .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#B9C0DE;margin-bottom:10px}
+.featured .left .endo{font-family:var(--serif);font-size:36px;color:#E9C46A;letter-spacing:.14em}
+.featured .left h3{font-family:var(--serif);font-size:25px;margin-top:6px;font-weight:600}
+.featured .left .reg{font-size:13px;color:#C9CEE6;margin-top:8px}
+.featured .right{padding:32px 36px}
+.featured .right p{font-size:15px;color:var(--gris);margin:12px 0 20px}
+
+/* Map */
+#map{height:520px;border-radius:6px;border:1px solid var(--ligne);z-index:1}
+.maplegend{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--gris)}
+.maplegend i{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:7px;vertical-align:-1px}
+.mapnote{margin-top:14px;font-size:13px;color:var(--gris);font-style:italic;max-width:760px}
+
+/* Rights table */
+.rtable{width:100%;border-collapse:collapse;background:var(--blanc);border:1px solid var(--ligne);font-size:14px}
+.rtable th{background:var(--indigo);color:#fff;text-align:left;padding:12px 16px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.rtable td{padding:12px 16px;border-bottom:1px solid var(--ligne);vertical-align:top}
+.rtable td b{color:var(--indigo)}
+.pill{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;white-space:nowrap}
+.pill.bind{background:#E3EBE6;color:var(--ok)}
+.pill.soft{background:#E4E7F2;color:var(--indigo)}
+
+/* News / agenda */
+.newsitem{background:var(--blanc);border:1px solid var(--ligne);border-radius:6px;padding:20px 22px;margin-bottom:15px;display:flex;gap:18px}
+.newsitem .date{min-width:70px;text-align:center;background:var(--sable-2);border-radius:6px;padding:9px 6px;align-self:flex-start}
+.newsitem .date b{display:block;font-family:var(--serif);font-size:21px;color:var(--indigo)}
+.newsitem .date span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.newsitem h4{font-family:var(--serif);font-size:17.5px;color:var(--indigo);margin-bottom:5px;font-weight:600}
+.newsitem p{font-size:14px;color:var(--gris)}
+.newsitem .src{font-size:12px;color:var(--laterite);font-weight:600;margin-top:6px;display:block}
+.opp{border-left:4px solid var(--laterite)}
+.deadline{display:inline-block;background:#F6E7DA;color:var(--laterite);font-size:12px;font-weight:700;padding:3px 12px;border-radius:20px;margin-top:8px}
+
+/* Blocks */
+.secblock{background:var(--blanc);border:1px solid var(--ligne);border-radius:6px;padding:26px 28px}
+.secblock h4{font-family:var(--serif);font-size:20px;color:var(--indigo);margin-bottom:9px}
+.secblock p{font-size:14.5px;color:#3E3B34}
+.partnerstrip{display:flex;gap:13px;flex-wrap:wrap;margin-top:18px}
+.partnerstrip span{background:var(--blanc);border:1px solid var(--ligne);border-radius:4px;padding:11px 20px;font-size:13px;color:var(--gris);font-weight:600}
+
+/* Join form */
+.joinbox{background:var(--blanc);border:1px solid var(--ligne);border-left:4px solid var(--laterite);border-radius:6px;padding:28px 30px;margin-top:46px}
+.joinbox h3{font-family:var(--serif);font-size:22px;color:var(--indigo);margin-bottom:6px}
+.joinbox>p{font-size:14px;color:var(--gris);margin-bottom:18px}
+.jgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.jgrid .full{grid-column:1/-1}
+.jfield label{display:block;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gris);font-weight:700;margin-bottom:5px}
+.jfield input,.jfield select,.jfield textarea{width:100%;padding:10px 12px;border:1px solid var(--ligne);border-radius:4px;font-size:14px;font-family:var(--sans);background:#fff}
+.jfield textarea{min-height:88px;resize:vertical}
+.jok{display:none;background:#E3EBE6;color:var(--ok);padding:12px 16px;border-radius:4px;font-size:14px;font-weight:600;margin-top:15px}
+.jerr{display:none;background:#F6E0DA;color:#8A3A22;padding:12px 16px;border-radius:4px;font-size:13.5px;font-weight:600;margin-top:15px}
+
+/* Search modal */
+.smodal{display:none;position:fixed;inset:0;background:rgba(20,28,66,.55);z-index:3000}
+.smodal.on{display:flex;align-items:flex-start;justify-content:center;padding:11vh 20px 0}
+.sbox{background:#fff;border-radius:8px;width:100%;max-width:620px;box-shadow:0 24px 64px rgba(0,0,0,.3);overflow:hidden}
+.sbox input{width:100%;border:none;padding:17px 22px;font-size:17px;outline:none;border-bottom:1px solid var(--ligne);font-family:var(--sans)}
+.sres{max-height:50vh;overflow-y:auto}
+.sres .sitem{display:block;padding:12px 22px;color:var(--encre);border-bottom:1px solid var(--sable-2);cursor:pointer}
+.sres .sitem:hover{background:var(--sable)}
+.sres .sitem b{color:var(--indigo);font-family:var(--serif);font-size:15.5px;display:block}
+.sres .sitem span{font-size:12.5px;color:var(--gris)}
+.sres .kind{float:right;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--laterite);font-weight:700;margin-top:3px}
+.sempty{padding:26px;color:var(--gris);font-size:14px;text-align:center}
+
+/* Footer */
+footer{background:var(--indigo-deep);color:#B9C0DE}
+footer .in{max-width:1200px;margin:0 auto;padding:46px 24px 28px;display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:34px}
+footer h6{color:#fff;font-size:12px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:13px}
+footer .flink{color:#B9C0DE;display:block;font-size:13.5px;margin-bottom:8px;cursor:pointer}
+footer .flink:hover{color:#fff}
+footer .base{border-top:1px solid rgba(255,255,255,.12);text-align:center;padding:15px;font-size:12px;color:#7C84AB}
+.socials{display:flex;gap:12px;margin-top:16px}
+.socials a{width:36px;height:36px;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.socials a:hover{background:rgba(255,255,255,.12)}
+.socials svg{width:17px;height:17px;fill:#C9CEE6}
+.nlform{display:flex;gap:8px;margin-top:10px}
+.nlform input{flex:1;padding:10px 12px;border-radius:4px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:13.5px;min-width:0}
+.nlform input::placeholder{color:#8E96BE}
+.nlform button{background:var(--laterite);border:none;color:#fff;padding:10px 15px;border-radius:4px;font-weight:600;cursor:pointer;font-size:13.5px}
+.nlok{color:#8FD3AE;font-size:13px;margin-top:8px;display:none}
+
+/* Responsive */
+@media(max-width:900px){
+  .fiche-body{grid-template-columns:1fr}
+  .featured{grid-template-columns:1fr}
+  footer .in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  body{font-size:15px}
+  .wrap{padding:0 16px}
+  .topbar span:last-child{display:none}
+  .brandrow{padding:11px 16px}
+  .brand h1{font-size:17px}
+  .brand .mark{width:38px;height:38px;font-size:18px}
+  .searchbtn span.lbl,.searchbtn kbd{display:none}
+  .cta{padding:8px 12px;font-size:12.5px}
+  nav a{padding:11px 12px;font-size:12.5px}
+  .hero{padding:42px 0 0}
+  .hero .tifbg{font-size:110px;right:-30px}
+  .statband .in{grid-template-columns:1fr 1fr}
+  .stat b{font-size:23px}
+  .pagetitle{font-size:26px}
+  .pagehead{padding:32px 0 0}
+  .fiche-head{padding:22px 18px}
+  .fiche-head .endo{font-size:25px}
+  .fiche-head h3{font-size:23px}
+  .fiche-body{padding:22px 18px;gap:26px}
+  .fiche-meta{grid-template-columns:1fr 1fr}
+  .featured .left,.featured .right{padding:22px 18px}
+  .newsitem{flex-direction:column;gap:10px}
+  .newsitem .date{display:flex;gap:8px;align-items:baseline;padding:5px 12px}
+  .newsitem .date b{font-size:16px}
+  footer .in{grid-template-columns:1fr;gap:24px;padding:34px 16px 22px}
+  #map{height:380px}
+  .jgrid{grid-template-columns:1fr}
+  .joinbox{padding:20px 16px}
+  .slide figcaption{font-size:14px;padding:28px 15px 11px}
+}
+@media print{
+  .topbar,header,footer,.ftoolbar,.crumb,.linkmore,.smodal{display:none!important}
+  body{background:#fff}
+  main section{padding:0}
+  .fiche{border:none}
+  .fiche-head,.fiche-meta,.tag,.tklabel,.sidebox{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="smodal" id="smodal" role="dialog" aria-modal="true">
+  <div class="sbox">
+    <input id="sinput" type="search" autocomplete="off">
+    <div class="sres" id="sres"></div>
+  </div>
+</div>
+
+<div class="topbar"><span class="tif">ⴰⴾⴰⵍ</span><span id="tb-txt"></span></div>
+
+<header>
+  <div class="brandrow">
+    <div class="brand" onclick="show('home')">
+      <div class="mark">ⴰ</div>
+      <div><h1>AKAL<small id="tagline"></small></h1></div>
+    </div>
+    <div class="hdr-actions">
+      <button class="searchbtn" onclick="openSearch()" aria-label="Search"><span>⌕</span><span class="lbl" id="s-lbl"></span><kbd>/</kbd></button>
+      <div class="langsel" role="group" aria-label="Language">
+        <button id="l-en" onclick="setLang('en')">EN</button>
+        <button id="l-fr" onclick="setLang('fr')">FR</button>
+        <button id="l-es" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="cta" id="cta-contrib" onclick="show('about')"></button>
+    </div>
+  </div>
+  <nav><ul>
+    <li><a id="n-home" onclick="show('home')"></a></li>
+    <li><a id="n-peoples" onclick="show('peoples')"></a></li>
+    <li><a id="n-map" onclick="show('map')"></a></li>
+    <li><a id="n-pastoralism" onclick="show('pastoralism')"></a></li>
+    <li><a id="n-rights" onclick="show('rights')"></a></li>
+    <li><a id="n-news" onclick="show('news')"></a></li>
+    <li><a id="n-orgs" onclick="show('orgs')"></a></li>
+    <li><a id="n-resources" onclick="show('resources')"></a></li>
+    <li><a id="n-about" onclick="show('about')"></a></li>
+  </ul></nav>
+</header>
+
+<main>
+
+<section id="v-home">
+  <div class="hero">
+    <div class="tifbg">ⵜⵎⵛⵗ</div>
+    <div class="wrap">
+      <div class="eyebrow" style="color:#E9C46A" id="h-eyebrow"></div>
+      <h2 id="h-title"></h2>
+      <p class="sub" id="h-sub"></p>
+      <div class="actions">
+        <button class="btn solid" onclick="show('peoples')" id="h-cta1"></button>
+        <button class="btn ghost" onclick="show('map')" id="h-cta2"></button>
+      </div>
+    </div>
+    <div class="statband"><div class="in">
+      <div class="stat"><b>476 M</b><span id="st1"></span></div>
+      <div class="stat"><b>~5 000</b><span id="st2"></span></div>
+      <div class="stat"><b id="st-p">8</b><span id="st3"></span></div>
+      <div class="stat"><b id="st-o">13</b><span id="st4"></span></div>
+    </div></div>
+  </div>
+  <div class="wrap">
+    <div class="slider-mount" id="slider-home"></div>
+    <div class="featured" id="featured"></div>
+    <h3 class="homehead" id="hn-h"></h3>
+    <p class="homesub" id="hn-sub"></p>
+    <div id="home-news"></div>
+    <h3 class="homehead" id="hp-h"></h3>
+    <div class="partnerstrip">
+      <span>Association Tin Hinan</span><span>IWGIA</span><span>Cultural Survival</span><span>IPACC</span><span>GYBN</span>
+    </div>
+  </div>
+</section>
+
+<section id="v-peoples">
+  <div class="wrap pagehead">
+    <div class="eyebrow" id="p-eb"></div>
+    <h2 class="pagetitle" id="p-title"></h2>
+    <p class="pagelead" id="p-lead"></p>
+    <div class="filterrow" id="regionfilters"></div>
+    <div class="grid g3" id="peoplegrid"></div>
+  </div>
+</section>
+
+<section id="v-fiche">
+  <div class="wrap pagehead" id="fichewrap"></div>
+</section>
+
+<section id="v-map">
+  <div class="wrap pagehead">
+    <div class="eyebrow" id="m-eb"></div>
+    <h2 class="pagetitle" id="m-title"></h2>
+    <p class="pagelead" id="m-lead"></p>
+    <div id="map"></div>
+    <div class="maplegend">
+      <span><i style="background:#B45E23"></i><em id="leg1"></em></span>
+      <span><i style="background:#1F2A5E"></i><em id="leg2"></em></span>
+    </div>
+    <p class="mapnote" id="m-note"></p>
+  </div>
+</section>
+
+<section id="v-pastoralism">
+  <div class="wrap pagehead">
+    <div class="eyebrow" id="pa-eb"></div>
+    <h2 class="pagetitle" id="pa-title"></h2>
+    <p class="pagelead" id="pa-lead"></p>
+    <div class="notice" id="pa-iyrp"></div>
+    <div class="slider-mount" id="slider-past" style="margin:0 0 32px"></div>
+    <div class="grid g2" id="pastblocks"></div>
+  </div>
+</section>
+
+<section id="v-rights">
+  <div class="wrap pagehead">
+    <div class="eyebrow" id="r-eb"></div>
+    <h2 class="pagetitle" id="r-title"></h2>
+    <p class="pagelead" id="r-lead"></p>
+    <div style="overflow-x:auto"><table class="rtable" id="rightstable"></table></div>
+    <h3 class="homehead" id="r-jh"></h3>
+    <div class="grid g2" id="jurisblocks" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<section id="v-news">
+  <div class="wrap pagehead">
+    <div class="eyebrow" id="ne-eb"></div>
+    <h2 class="pagetitle" id="ne-title"></h2>
+    <p class="pagelead" id="ne-lead"></p>
+    <div id="newslist"></div>
+    <h3 class="homehead" id="ag-h"></h3>
+    <p class="homesub" id="ag-sub"></p>
+    <div id="opplist"></div>
+  </div>
+</section>
+
+<section id="v-orgs">
+  <div class="wrap pagehead">
+    <div class="eyebrow" id="o-eb"></div>
+    <h2 class="pagetitle" id="o-title"></h2>
+    <p class="pagelead" id="o-lead"></p>
+    <div class="filterrow" id="orgcats"></div>
+    <select class="ctrysel" id="orgctry" onchange="ORGCTRY=this.value;renderOrgs()"></select>
+    <div class="grid g3" id="orggrid"></div>
+    <div id="joinwrap"></div>
+  </div>
+</section>
+
+<section id="v-resources">
+  <div class="wrap pagehead">
+    <div class="eyebrow" id="re-eb"></div>
+    <h2 class="pagetitle" id="re-title"></h2>
+    <p class="pagelead" id="re-lead"></p>
+    <div class="grid g2" id="resblocks"></div>
+  </div>
+</section>
+
+<section id="v-about">
+  <div class="wrap pagehead">
+    <div class="eyebrow" id="a-eb"></div>
+    <h2 class="pagetitle" id="a-title"></h2>
+    <p class="pagelead" id="a-lead"></p>
+    <div class="grid g2" id="aboutblocks"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="in">
+    <div>
+      <h6>AKAL</h6>
+      <p style="font-size:13.5px;max-width:300px" id="f-mission"></p>
+      <div class="socials">
+        <a href="#" onclick="return false" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v16h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.5c0-2.03-.04-4.64-2.83-4.64-2.83 0-3.27 2.2-3.27 4.5V24h-4V8z"/></svg></a>
+        <a href="#" onclick="return false" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.3c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.3z"/></svg></a>
+        <a href="#" onclick="return false" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h6 id="f-exp"></h6>
+      <a class="flink" onclick="show('peoples')" id="fl-1"></a>
+      <a class="flink" onclick="show('map')" id="fl-2"></a>
+      <a class="flink" onclick="show('pastoralism')" id="fl-3"></a>
+      <a class="flink" onclick="show('rights')" id="fl-4"></a>
+    </div>
+    <div>
+      <h6 id="f-pf"></h6>
+      <a class="flink" onclick="show('about')" id="fl-5"></a>
+      <a class="flink" onclick="show('about')" id="fl-6"></a>
+      <a class="flink" onclick="show('orgs')" id="fl-7"></a>
+    </div>
+    <div>
+      <h6 id="f-nlh"></h6>
+      <p style="font-size:13px" id="f-nlp"></p>
+      <div class="nlform">
+        <input type="email" id="nlmail">
+        <button onclick="nlSubscribe()" id="f-nlbtn"></button>
+      </div>
+      <div class="nlok" id="nlok"></div>
+    </div>
+  </div>
+  <div class="base" id="f-base"></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+"use strict";
+/* ================= TRANSLATIONS ================= */
+var T = {
+en:{topbar:"Global reference platform on Indigenous Peoples & pastoralism",tagline:"Indigenous Peoples of the World",contribute:"Contribute",search:"Search",search_ph:"Search peoples, organizations, calls…",search_empty:"No results.",
+nav:["Home","Peoples","World map","Pastoralism","Rights & advocacy","News","Organizations","Resources","About"],
+h_eyebrow:"Documenting · Connecting · Advocating",h_title:"The living encyclopedia of the world's Indigenous Peoples",h_sub:"UN-style fact sheets, an interactive world map, and the first global hub dedicated to Indigenous pastoralism — built with communities, under Indigenous data sovereignty principles.",h_cta1:"Explore the peoples",h_cta2:"Open the world map",
+st:["Indigenous persons worldwide","Distinct peoples","Peoples documented","Organizations listed"],
+feat_lbl:"Featured people — July 2026",feat_cta:"Read the fact sheet",
+hn_h:"Latest updates",hn_sub:"Curated news from UN mechanisms, regional bodies and Indigenous organizations.",hp_h:"Partners & networks",
+p_title:"Peoples of the world",p_lead:"UN-style fact sheets: identity, demography, territory, livelihoods, legal recognition, threats and resilience. Population figures are ranges from multiple sources; self-identification prevails.",
+all_regions:"All regions",back:"← Back to all peoples",
+m_title:"Interactive world map",m_lead:"Approximate presence areas by people. Click a circle to open the fact sheet.",leg1:"Pastoralist peoples",leg2:"Other Indigenous peoples",m_note:"For safety and data-sovereignty reasons, locations are deliberately approximate. Sacred sites and vulnerable communities are never mapped precisely.",
+pa_title:"Indigenous pastoralism",pa_lead:"The only global section linking Indigenous rights and pastoral livelihoods — mobility as a right, customary land tenure, and the green transition.",pa_iyrp:"2026 is the International Year of Rangelands and Pastoralists (IYRP), declared by the UN General Assembly.",
+r_title:"Rights & advocacy observatory",r_lead:"The international legal architecture protecting Indigenous Peoples, instrument by instrument.",r_jh:"Landmark jurisprudence",rt_h:["Instrument / Mechanism","Scope","Nature"],bind:"Binding",soft:"Declarative",
+ne_title:"News & analysis",ne_lead:"Curated updates with sources, plus in-depth articles.",ag_h:"Agenda & opportunities",ag_sub:"Open calls, fellowships and forums for Indigenous peoples and youth — updated continuously.",
+o_title:"Indigenous organizations of the world",o_lead:"A global directory of Indigenous and pastoralist organizations, filterable by category and country.",
+re_title:"Resource library",re_lead:"Reports, publications and key documents — with Traditional Knowledge labels and access levels.",
+a_title:"About the platform",a_lead:"Vision, governance, ethics and how to contribute.",
+f_mission:"An independent platform documenting the world's Indigenous Peoples with and for communities.",f_exp:"Explore",f_pf:"Platform",f_ethics:"Ethics & data sovereignty",f_gov:"Governance",f_join:"Join the directory",f_nlh:"Newsletter",f_nlp:"Monthly digest of peoples, rights and opportunities.",f_nlph:"Your email address",f_nlbtn:"Subscribe",f_nlok:"✓ Thank you! You are on the list.",f_base:"AKAL · Prototype v0.2 · Built under CARE principles and Free, Prior and Informed Consent · EN / FR / ES",
+fiche_doc:"Fact sheet · People profile",fiche_pop:"Population (range)",fiche_lang:"Language",fiche_countries:"Countries",fiche_status:"Recognition",fiche_region:"Region",fiche_wip:"This fact sheet is being documented with the communities concerned. Content shown is a working draft.",fiche_tr:"This fact sheet is not yet available in this language — showing the English version. Help us translate it.",
+tk:"Traditional Knowledge notice — some knowledge of this people is community-restricted and intentionally not published here, in line with CARE principles and community consent.",
+kf:"Key facts",instr:"Legal instruments",src:"Sources & method",src_txt:"IWGIA · UN DESA · ACHPR WGIP · community sources (under validation)",print:"🖶 Print / PDF",
+slider_note:"Illustrations. Community photographs will be added with Free, Prior and Informed Consent (FPIC).",
+join_h:"Request membership for your organization",join_p:"Indigenous, women's, youth and pastoralist organizations can request to be listed in the directory. Every request is reviewed before publication.",f_org:"Organization name",f_email:"Contact email",f_ctry:"Country",f_cat:"Category",f_msg:"Message (mandate, links…)",f_send:"Send request",f_ok:"✓ Request received. We will get back to you after review.",f_err:"Please provide an organization name and a valid email.",
+kinds:{p:"People",o:"Organization",n:"News",c:"Call"}},
+
+fr:{topbar:"Plateforme mondiale de référence sur les peuples autochtones & le pastoralisme",tagline:"Peuples autochtones du monde",contribute:"Contribuer",search:"Rechercher",search_ph:"Rechercher peuples, organisations, appels…",search_empty:"Aucun résultat.",
+nav:["Accueil","Peuples","Carte mondiale","Pastoralisme","Droits & plaidoyer","Actualités","Organisations","Ressources","À propos"],
+h_eyebrow:"Documenter · Relier · Plaider",h_title:"L'encyclopédie vivante des peuples autochtones du monde",h_sub:"Des fiches au format ONU, une carte mondiale interactive et le premier espace global dédié au pastoralisme autochtone — construits avec les communautés, selon les principes de souveraineté des données autochtones.",h_cta1:"Explorer les peuples",h_cta2:"Ouvrir la carte",
+st:["Personnes autochtones dans le monde","Peuples distincts","Peuples documentés","Organisations recensées"],
+feat_lbl:"Peuple à la une — juillet 2026",feat_cta:"Lire la fiche",
+hn_h:"Dernières actualités",hn_sub:"Une veille curée des mécanismes onusiens, organes régionaux et organisations autochtones.",hp_h:"Partenaires & réseaux",
+p_title:"Peuples du monde",p_lead:"Des fiches au format ONU : identité, démographie, territoire, mode de vie, reconnaissance juridique, menaces et résilience. Les chiffres de population sont des fourchettes issues de sources multiples ; l'auto-identification prime.",
+all_regions:"Toutes les régions",back:"← Retour à tous les peuples",
+m_title:"Carte mondiale interactive",m_lead:"Zones de présence approximatives par peuple. Cliquez sur un cercle pour ouvrir la fiche.",leg1:"Peuples pasteurs",leg2:"Autres peuples autochtones",m_note:"Pour des raisons de sécurité et de souveraineté des données, les localisations sont volontairement approximatives. Les sites sacrés et communautés vulnérables ne sont jamais cartographiés précisément.",
+pa_title:"Pastoralisme autochtone",pa_lead:"La seule section mondiale reliant droits autochtones et modes de vie pastoraux — la mobilité comme droit, le foncier coutumier et la transition verte.",pa_iyrp:"2026 est l'Année internationale des parcours et des pasteurs (IYRP), proclamée par l'Assemblée générale des Nations Unies.",
+r_title:"Observatoire des droits & du plaidoyer",r_lead:"L'architecture juridique internationale qui protège les peuples autochtones, instrument par instrument.",r_jh:"Jurisprudences fondatrices",rt_h:["Instrument / Mécanisme","Portée","Nature"],bind:"Contraignant",soft:"Déclaratif",
+ne_title:"Actualités & analyses",ne_lead:"Une veille curée avec sources, et des articles de fond.",ag_h:"Agenda & opportunités",ag_sub:"Appels à candidatures, bourses et forums pour les peuples et jeunes autochtones — mis à jour en continu.",
+o_title:"Organisations autochtones du monde",o_lead:"Un annuaire mondial des organisations autochtones et pastorales, filtrable par catégorie et par pays.",
+re_title:"Bibliothèque de ressources",re_lead:"Rapports, publications et documents clés — avec étiquettes de savoirs traditionnels (TK Labels) et niveaux d'accès.",
+a_title:"À propos de la plateforme",a_lead:"Vision, gouvernance, éthique et comment contribuer.",
+f_mission:"Une plateforme indépendante qui documente les peuples autochtones du monde avec et pour les communautés.",f_exp:"Explorer",f_pf:"Plateforme",f_ethics:"Éthique & souveraineté des données",f_gov:"Gouvernance",f_join:"Rejoindre l'annuaire",f_nlh:"Infolettre",f_nlp:"Le condensé mensuel : peuples, droits et opportunités.",f_nlph:"Votre adresse e-mail",f_nlbtn:"S'inscrire",f_nlok:"✓ Merci ! Vous êtes sur la liste.",f_base:"AKAL · Prototype v0.2 · Construit selon les principes CARE et le consentement libre, préalable et éclairé · EN / FR / ES",
+fiche_doc:"Fiche · Profil de peuple",fiche_pop:"Population (fourchette)",fiche_lang:"Langue",fiche_countries:"Pays",fiche_status:"Reconnaissance",fiche_region:"Région",fiche_wip:"Cette fiche est en cours de documentation avec les communautés concernées. Le contenu affiché est un brouillon de travail.",fiche_tr:"Cette fiche n'est pas encore disponible dans cette langue — version anglaise affichée. Aidez-nous à la traduire.",
+tk:"Avis Savoirs traditionnels — certains savoirs de ce peuple sont réservés à la communauté et volontairement non publiés ici, conformément aux principes CARE et au consentement communautaire.",
+kf:"Données clés",instr:"Instruments juridiques",src:"Sources & méthode",src_txt:"IWGIA · UN DESA · GT CADHP · sources communautaires (en cours de validation)",print:"🖶 Imprimer / PDF",
+slider_note:"Illustrations. Les photographies communautaires seront ajoutées avec le consentement libre, préalable et éclairé (CLPE).",
+join_h:"Demander l'adhésion de votre organisation",join_p:"Les organisations autochtones, de femmes, de jeunes et pastorales peuvent demander à figurer dans l'annuaire. Chaque demande est examinée avant publication.",f_org:"Nom de l'organisation",f_email:"E-mail de contact",f_ctry:"Pays",f_cat:"Catégorie",f_msg:"Message (mandat, liens…)",f_send:"Envoyer la demande",f_ok:"✓ Demande reçue. Nous reviendrons vers vous après examen.",f_err:"Veuillez indiquer un nom d'organisation et un e-mail valide.",
+kinds:{p:"Peuple",o:"Organisation",n:"Actu",c:"Appel"}},
+
+es:{topbar:"Plataforma mundial de referencia sobre pueblos indígenas y pastoralismo",tagline:"Pueblos indígenas del mundo",contribute:"Contribuir",search:"Buscar",search_ph:"Buscar pueblos, organizaciones, convocatorias…",search_empty:"Sin resultados.",
+nav:["Inicio","Pueblos","Mapa mundial","Pastoreo","Derechos","Noticias","Organizaciones","Recursos","Acerca de"],
+h_eyebrow:"Documentar · Conectar · Defender",h_title:"La enciclopedia viva de los pueblos indígenas del mundo",h_sub:"Fichas estilo ONU, un mapa mundial interactivo y el primer espacio global dedicado al pastoreo indígena — construidos con las comunidades, bajo los principios de soberanía de datos indígenas.",h_cta1:"Explorar los pueblos",h_cta2:"Abrir el mapa",
+st:["Personas indígenas en el mundo","Pueblos distintos","Pueblos documentados","Organizaciones registradas"],
+feat_lbl:"Pueblo destacado — julio 2026",feat_cta:"Leer la ficha",
+hn_h:"Últimas noticias",hn_sub:"Selección curada de mecanismos de la ONU, órganos regionales y organizaciones indígenas.",hp_h:"Socios y redes",
+p_title:"Pueblos del mundo",p_lead:"Fichas estilo ONU: identidad, demografía, territorio, medios de vida, reconocimiento jurídico, amenazas y resiliencia. Las cifras de población son rangos de fuentes múltiples; prevalece la autoidentificación.",
+all_regions:"Todas las regiones",back:"← Volver a todos los pueblos",
+m_title:"Mapa mundial interactivo",m_lead:"Zonas de presencia aproximadas por pueblo. Haga clic en un círculo para abrir la ficha.",leg1:"Pueblos pastores",leg2:"Otros pueblos indígenas",m_note:"Por razones de seguridad y soberanía de datos, las ubicaciones son deliberadamente aproximadas. Los sitios sagrados y las comunidades vulnerables nunca se cartografían con precisión.",
+pa_title:"Pastoreo indígena",pa_lead:"La única sección mundial que vincula los derechos indígenas y los medios de vida pastoriles — la movilidad como derecho, la tenencia consuetudinaria y la transición verde.",pa_iyrp:"2026 es el Año Internacional de los Pastizales y los Pastores (IYRP), proclamado por la Asamblea General de la ONU.",
+r_title:"Observatorio de derechos",r_lead:"La arquitectura jurídica internacional que protege a los pueblos indígenas, instrumento por instrumento.",r_jh:"Jurisprudencia histórica",rt_h:["Instrumento / Mecanismo","Alcance","Naturaleza"],bind:"Vinculante",soft:"Declarativo",
+ne_title:"Noticias y análisis",ne_lead:"Selección curada con fuentes, y artículos de fondo.",ag_h:"Agenda y oportunidades",ag_sub:"Convocatorias, becas y foros para pueblos y jóvenes indígenas — actualizados continuamente.",
+o_title:"Organizaciones indígenas del mundo",o_lead:"Un directorio mundial de organizaciones indígenas y pastoriles, filtrable por categoría y país.",
+re_title:"Biblioteca de recursos",re_lead:"Informes, publicaciones y documentos clave — con etiquetas de conocimientos tradicionales (TK Labels) y niveles de acceso.",
+a_title:"Acerca de la plataforma",a_lead:"Visión, gobernanza, ética y cómo contribuir.",
+f_mission:"Una plataforma independiente que documenta los pueblos indígenas del mundo con y para las comunidades.",f_exp:"Explorar",f_pf:"Plataforma",f_ethics:"Ética y soberanía de datos",f_gov:"Gobernanza",f_join:"Unirse al directorio",f_nlh:"Boletín",f_nlp:"Resumen mensual: pueblos, derechos y oportunidades.",f_nlph:"Su correo electrónico",f_nlbtn:"Suscribirse",f_nlok:"✓ ¡Gracias! Está en la lista.",f_base:"AKAL · Prototipo v0.2 · Construido según los principios CARE y el consentimiento libre, previo e informado · EN / FR / ES",
+fiche_doc:"Ficha · Perfil de pueblo",fiche_pop:"Población (rango)",fiche_lang:"Idioma",fiche_countries:"Países",fiche_status:"Reconocimiento",fiche_region:"Región",fiche_wip:"Esta ficha está siendo documentada con las comunidades. El contenido es un borrador de trabajo.",fiche_tr:"Esta ficha aún no está disponible en este idioma — se muestra la versión en inglés. Ayúdenos a traducirla.",
+tk:"Aviso de conocimientos tradicionales — algunos saberes de este pueblo están reservados a la comunidad y deliberadamente no se publican aquí, conforme a los principios CARE y al consentimiento comunitario.",
+kf:"Datos clave",instr:"Instrumentos jurídicos",src:"Fuentes y método",src_txt:"IWGIA · UN DESA · GT CADHP · fuentes comunitarias (en validación)",print:"🖶 Imprimir / PDF",
+slider_note:"Ilustraciones. Las fotografías comunitarias se añadirán con el consentimiento libre, previo e informado (CLPI).",
+join_h:"Solicitar la adhesión de su organización",join_p:"Las organizaciones indígenas, de mujeres, de jóvenes y pastoriles pueden solicitar figurar en el directorio. Cada solicitud se examina antes de su publicación.",f_org:"Nombre de la organización",f_email:"Correo de contacto",f_ctry:"País",f_cat:"Categoría",f_msg:"Mensaje (mandato, enlaces…)",f_send:"Enviar solicitud",f_ok:"✓ Solicitud recibida. Le responderemos tras su examen.",f_err:"Indique un nombre de organización y un correo válido.",
+kinds:{p:"Pueblo",o:"Organización",n:"Noticia",c:"Convocatoria"}}
+};
+
+/* ================= REFERENCE DATA ================= */
+var REGIONS={africa:{en:"Africa",fr:"Afrique",es:"África"},americas:{en:"Americas",fr:"Amériques",es:"Américas"},arctic:{en:"Arctic & Europe",fr:"Arctique & Europe",es:"Ártico y Europa"},asia:{en:"Asia & Pacific",fr:"Asie & Pacifique",es:"Asia y Pacífico"}};
+var STATUS={state:{en:"State-recognized",fr:"Reconnu par l'État",es:"Reconocido por el Estado",cls:"state"},achpr:{en:"Recognized · ACHPR",fr:"Reconnu · CADHP",es:"Reconocido · CADHP",cls:"achpr"},self:{en:"Self-identified",fr:"Auto-identifié",es:"Autoidentificado",cls:"self"},pastoral:{en:"Pastoralist",fr:"Pasteur",es:"Pastor",cls:"pastoral"}};
+var CATS={all:{en:"All categories",fr:"Toutes les catégories",es:"Todas las categorías"},gen:{en:"Indigenous organizations",fr:"Organisations autochtones",es:"Organizaciones indígenas"},women:{en:"Indigenous women",fr:"Femmes autochtones",es:"Mujeres indígenas"},youth:{en:"Indigenous youth",fr:"Jeunes autochtones",es:"Juventud indígena"},pastoral:{en:"Pastoralist organizations",fr:"Organisations pastorales",es:"Organizaciones pastoriles"}};
+var COUNTRIES={all:{en:"All countries",fr:"Tous les pays",es:"Todos los países"},int:{en:"International",fr:"International",es:"Internacional"},bf:{en:"Burkina Faso",fr:"Burkina Faso",es:"Burkina Faso"},td:{en:"Chad",fr:"Tchad",es:"Chad"},ne:{en:"Niger",fr:"Niger",es:"Níger"},dk:{en:"Denmark",fr:"Danemark",es:"Dinamarca"},us:{en:"United States",fr:"États-Unis",es:"Estados Unidos"},za:{en:"South Africa",fr:"Afrique du Sud",es:"Sudáfrica"},th:{en:"Thailand",fr:"Thaïlande",es:"Tailandia"},ec:{en:"Ecuador",fr:"Équateur",es:"Ecuador"},no:{en:"Norway",fr:"Norvège",es:"Noruega"},pe:{en:"Peru",fr:"Pérou",es:"Perú"},de:{en:"Germany",fr:"Allemagne",es:"Alemania"}};
+
+var PEOPLES=[
+{id:"kel-tamasheq",name:"Kel Tamasheq",endo:"ⴾⵍ ⵜⵎⵛⵗ",region:"africa",pastoral:true,full:true,pop:"2,5 – 4 M",coords:[19.5,3.0],r:650000,
+ countries:{en:"Mali, Niger, Algeria, Libya, Burkina Faso",fr:"Mali, Niger, Algérie, Libye, Burkina Faso",es:"Malí, Níger, Argelia, Libia, Burkina Faso"},
+ lang:{en:"Tamasheq (Tifinagh script)",fr:"Tamasheq (écriture tifinagh)",es:"Tamasheq (escritura tifinagh)"},status:["achpr","self"],
+ desc:{en:"Berber-speaking pastoralists of the central Sahara and Sahel, masters of dromedary husbandry and caravan trade, bearers of the Tifinagh script.",fr:"Pasteurs berbérophones du Sahara central et du Sahel, maîtres de l'élevage du dromadaire et du commerce caravanier, porteurs de l'écriture tifinagh.",es:"Pastores de habla bereber del Sahara central y el Sahel, maestros de la cría de dromedarios y del comercio caravanero, portadores de la escritura tifinagh."}},
+{id:"fulbe",name:"Fulɓe (Peuls / Fulani)",endo:"𞤊𞤵𞤤𞤩𞤫",region:"africa",pastoral:true,pop:"25 – 40 M",coords:[14.0,-4.0],r:550000,
+ countries:{en:"Sahel & West Africa (15+ countries)",fr:"Sahel & Afrique de l'Ouest (15+ pays)",es:"Sahel y África Occidental (15+ países)"},
+ lang:{en:"Fulfulde / Pulaar",fr:"Fulfulde / Pulaar",es:"Fulfulde / Pulaar"},status:["achpr","self"],
+ desc:{en:"One of the world's largest pastoral peoples; the Mbororo branch is recognized as indigenous by the ACHPR.",fr:"L'un des plus grands peuples pasteurs du monde ; la branche Mbororo est reconnue autochtone par la CADHP.",es:"Uno de los mayores pueblos pastores del mundo; la rama Mbororo es reconocida como indígena por la CADHP."}},
+{id:"amazigh",name:"Amazigh (Imazighen)",endo:"ⵉⵎⴰⵣⵉⵗⵏ",region:"africa",pop:"25 – 35 M",coords:[31.0,-6.0],r:400000,
+ countries:{en:"Morocco, Algeria, Tunisia, Libya",fr:"Maroc, Algérie, Tunisie, Libye",es:"Marruecos, Argelia, Túnez, Libia"},
+ lang:{en:"Tamazight (official in Morocco & Algeria)",fr:"Tamazight (officielle au Maroc et en Algérie)",es:"Tamazight (oficial en Marruecos y Argelia)"},status:["state","self"],
+ desc:{en:"Indigenous people of North Africa; Tamazight gained official-language status in Morocco (2011) and Algeria (2016).",fr:"Peuple autochtone d'Afrique du Nord ; le tamazight est devenu langue officielle au Maroc (2011) et en Algérie (2016).",es:"Pueblo indígena del norte de África; el tamazight es lengua oficial en Marruecos (2011) y Argelia (2016)."}},
+{id:"maasai",name:"Maasai",endo:"ɔl Maasai",region:"africa",pastoral:true,pop:"1,2 – 2 M",coords:[-3.0,36.5],r:280000,
+ countries:{en:"Kenya, Tanzania",fr:"Kenya, Tanzanie",es:"Kenia, Tanzania"},
+ lang:{en:"Maa",fr:"Maa",es:"Maa"},status:["achpr","self"],
+ desc:{en:"Semi-nomadic cattle pastoralists of East Africa, at the center of major land-rights struggles including Loliondo.",fr:"Pasteurs bovins semi-nomades d'Afrique de l'Est, au cœur de luttes foncières majeures, dont Loliondo.",es:"Pastores de ganado seminómadas de África Oriental, en el centro de grandes luchas por la tierra, incluida Loliondo."}},
+{id:"san",name:"San",endo:"San / Basarwa",region:"africa",pop:"90 000 – 140 000",coords:[-22.0,21.0],r:300000,
+ countries:{en:"Botswana, Namibia, South Africa",fr:"Botswana, Namibie, Afrique du Sud",es:"Botsuana, Namibia, Sudáfrica"},
+ lang:{en:"Khoisan languages",fr:"Langues khoïsan",es:"Lenguas joisanas"},status:["achpr","self"],
+ desc:{en:"Among the oldest continuous cultures on Earth; hunter-gatherer heritage of southern Africa.",fr:"Parmi les plus anciennes cultures continues de la planète ; héritage chasseur-cueilleur de l'Afrique australe.",es:"Entre las culturas continuas más antiguas del planeta; herencia cazadora-recolectora del sur de África."}},
+{id:"sami",name:"Sámi",endo:"Sápmi",region:"arctic",pastoral:true,pop:"50 000 – 100 000",coords:[68.0,22.0],r:250000,
+ countries:{en:"Norway, Sweden, Finland, Russia",fr:"Norvège, Suède, Finlande, Russie",es:"Noruega, Suecia, Finlandia, Rusia"},
+ lang:{en:"Sámi languages (9 living)",fr:"Langues sámi (9 vivantes)",es:"Lenguas sami (9 vivas)"},status:["state","self"],
+ desc:{en:"Reindeer-herding people of the European Arctic, with their own elected parliaments in three countries.",fr:"Peuple éleveur de rennes de l'Arctique européen, doté de parlements élus dans trois pays.",es:"Pueblo criador de renos del Ártico europeo, con parlamentos electos propios en tres países."}},
+{id:"quechua",name:"Quechua",endo:"Runakuna",region:"americas",pop:"7 – 10 M",coords:[-13.5,-72.0],r:350000,
+ countries:{en:"Peru, Bolivia, Ecuador",fr:"Pérou, Bolivie, Équateur",es:"Perú, Bolivia, Ecuador"},
+ lang:{en:"Quechua / Runasimi (official in Peru & Bolivia)",fr:"Quechua / Runasimi (officielle au Pérou et en Bolivie)",es:"Quechua / Runasimi (oficial en Perú y Bolivia)"},status:["state","self"],
+ desc:{en:"Heirs of the Andean civilizations; llama and alpaca herding remains central to highland livelihoods.",fr:"Héritiers des civilisations andines ; l'élevage de lamas et d'alpagas reste central dans les hautes terres.",es:"Herederos de las civilizaciones andinas; la cría de llamas y alpacas sigue siendo central en el altiplano."}},
+{id:"inuit",name:"Inuit",endo:"ᐃᓄᐃᑦ",region:"americas",pop:"~ 180 000",coords:[66.0,-95.0],r:600000,
+ countries:{en:"Canada, Greenland, Alaska (USA), Chukotka",fr:"Canada, Groenland, Alaska (USA), Tchoukotka",es:"Canadá, Groenlandia, Alaska (EE.UU.), Chukotka"},
+ lang:{en:"Inuktitut & Inuit languages",fr:"Inuktitut & langues inuites",es:"Inuktitut y lenguas inuit"},status:["state","self"],
+ desc:{en:"Circumpolar people of the Arctic; self-government achievements include Nunavut and Greenland's autonomy.",fr:"Peuple circumpolaire de l'Arctique ; parmi ses acquis d'autonomie : le Nunavut et l'autonomie du Groenland.",es:"Pueblo circumpolar del Ártico; entre sus logros de autogobierno: Nunavut y la autonomía de Groenlandia."}}
+];
+
+var ORGS=[
+{n:"Association Tin Hinan",cat:"women",ctry:"bf",m:{en:"Rights of indigenous women & pastoral communities of the Sahel",fr:"Droits des femmes autochtones & communautés pastorales du Sahel",es:"Derechos de las mujeres indígenas y comunidades pastoriles del Sahel"}},
+{n:"AFPAT",cat:"women",ctry:"td",m:{en:"Association of Peul Women & Autochthonous Peoples of Chad — climate & rights advocacy",fr:"Association des Femmes Peules et Peuples Autochtones du Tchad — plaidoyer climat & droits",es:"Asociación de Mujeres Peul y Pueblos Autóctonos de Chad — defensa climática y de derechos"}},
+{n:"FIMI / IIWF",cat:"women",ctry:"pe",m:{en:"International Indigenous Women's Forum — global network and observatory",fr:"Forum international des femmes autochtones — réseau mondial et observatoire",es:"Foro Internacional de Mujeres Indígenas — red mundial y observatorio"}},
+{n:"Global Indigenous Youth Caucus",cat:"youth",ctry:"int",m:{en:"Youth voice within the UN Permanent Forum (UNPFII)",fr:"La voix des jeunes au sein de l'Instance permanente de l'ONU (UNPFII)",es:"La voz de la juventud en el Foro Permanente de la ONU (UNPFII)"}},
+{n:"GYBN",cat:"youth",ctry:"de",m:{en:"Global Youth Biodiversity Network — youth engagement in the CBD, incl. indigenous youth",fr:"Réseau mondial de la jeunesse pour la biodiversité — engagement dans la CDB, dont jeunes autochtones",es:"Red Mundial de Juventud por la Biodiversidad — participación en el CDB, incl. juventud indígena"}},
+{n:"WAMIP",cat:"pastoral",ctry:"int",m:{en:"World Alliance of Mobile Indigenous Peoples — global pastoralist alliance",fr:"Alliance mondiale des peuples autochtones mobiles — alliance pastorale mondiale",es:"Alianza Mundial de Pueblos Indígenas Móviles — alianza pastoril mundial"}},
+{n:"Réseau Billital Maroobé",cat:"pastoral",ctry:"ne",m:{en:"West African network of pastoralist organizations — transhumance & markets",fr:"Réseau ouest-africain des organisations d'éleveurs — transhumance & marchés",es:"Red de África Occidental de organizaciones de pastores — trashumancia y mercados"}},
+{n:"IWGIA",cat:"gen",ctry:"dk",m:{en:"Documentation & advocacy — publishes The Indigenous World",fr:"Documentation & plaidoyer — publie The Indigenous World",es:"Documentación y defensa — publica El Mundo Indígena"}},
+{n:"Cultural Survival",cat:"gen",ctry:"us",m:{en:"Advocacy, community radio & grants (Keepers of the Earth Fund)",fr:"Plaidoyer, radios communautaires & subventions (Keepers of the Earth Fund)",es:"Defensa, radios comunitarias y subvenciones (Keepers of the Earth Fund)"}},
+{n:"IPACC",cat:"gen",ctry:"za",m:{en:"Coordinating committee of ~135 African indigenous organizations",fr:"Comité de coordination d'environ 135 organisations autochtones africaines",es:"Comité coordinador de ~135 organizaciones indígenas africanas"}},
+{n:"AIPP",cat:"gen",ctry:"th",m:{en:"Asia Indigenous Peoples Pact — regional alliance",fr:"Asia Indigenous Peoples Pact — alliance régionale",es:"Asia Indigenous Peoples Pact — alianza regional"}},
+{n:"COICA",cat:"gen",ctry:"ec",m:{en:"Coordination of indigenous organizations of the Amazon basin",fr:"Coordination des organisations autochtones du bassin amazonien",es:"Coordinación de organizaciones indígenas de la cuenca amazónica"}},
+{n:"Saami Council",cat:"gen",ctry:"no",m:{en:"Voluntary Sámi organization across four countries",fr:"Organisation sámi volontaire couvrant quatre pays",es:"Organización sami voluntaria en cuatro países"}}
+];
+
+var NEWS=[
+{d:"02",m:{en:"JUL",fr:"JUIL",es:"JUL"},s:"IYRP / FAO",
+ t:{en:"IYRP 2026: regional rangelands consultations continue across the Sahel",fr:"IYRP 2026 : les consultations régionales sur les parcours se poursuivent au Sahel",es:"IYRP 2026: continúan las consultas regionales sobre pastizales en el Sahel"},
+ p:{en:"The International Year of Rangelands and Pastoralists mobilizes pastoral networks around mobility rights and land tenure.",fr:"L'Année internationale des parcours et des pasteurs mobilise les réseaux pastoraux autour des droits de mobilité et du foncier.",es:"El Año Internacional de los Pastizales moviliza a las redes pastoriles en torno a la movilidad y la tenencia de tierras."}},
+{d:"24",m:{en:"JUN",fr:"JUIN",es:"JUN"},s:{en:"Academic review",fr:"Revue académique",es:"Revista académica"},
+ t:{en:"Green transition and pastoral lands: new research maps land-acquisition pressures",fr:"Transition verte et terres pastorales : de nouvelles recherches cartographient les pressions foncières",es:"Transición verde y tierras pastoriles: nuevas investigaciones mapean las presiones sobre la tierra"},
+ p:{en:"Peer-reviewed work documents how renewable-energy projects overlap customary pastoral territories.",fr:"Des travaux évalués par les pairs documentent le chevauchement entre projets d'énergies renouvelables et territoires pastoraux coutumiers.",es:"Trabajos revisados por pares documentan la superposición de proyectos de energía renovable con territorios pastoriles consuetudinarios."}},
+{d:"15",m:{en:"JUN",fr:"JUIN",es:"JUN"},s:"UN DESA",
+ t:{en:"UNPFII follow-up: recommendations on indigenous data governance",fr:"Suivi de l'UNPFII : recommandations sur la gouvernance des données autochtones",es:"Seguimiento del UNPFII: recomendaciones sobre gobernanza de datos indígenas"},
+ p:{en:"The Permanent Forum reiterates support for CARE principles in national statistics and research.",fr:"L'Instance permanente réitère son soutien aux principes CARE dans les statistiques nationales et la recherche.",es:"El Foro Permanente reitera su apoyo a los principios CARE en las estadísticas nacionales y la investigación."}}
+];
+
+var OPPS=[
+{t:{en:"New Commons Incubator — Indigenous Languages & Cultures",fr:"New Commons Incubator — Langues et cultures autochtones",es:"New Commons Incubator — Lenguas y culturas indígenas"},
+ p:{en:"Funding and support for digital commons projects led by or with indigenous communities.",fr:"Financement et accompagnement de projets de communs numériques portés par ou avec des communautés autochtones.",es:"Financiación y apoyo a proyectos de comunes digitales liderados por o con comunidades indígenas."},
+ dl:{en:"Deadline: 31 July 2026",fr:"Date limite : 31 juillet 2026",es:"Fecha límite: 31 de julio de 2026"}},
+{t:{en:"3rd UN Global Indigenous Youth Forum (UNGIYF)",fr:"3e Forum mondial de la jeunesse autochtone des Nations Unies (UNGIYF)",es:"3er Foro Mundial de la Juventud Indígena de la ONU (UNGIYF)"},
+ p:{en:"FAO-hosted global forum for indigenous youth on food systems and climate.",fr:"Forum mondial accueilli par la FAO pour la jeunesse autochtone : systèmes alimentaires et climat.",es:"Foro mundial organizado por la FAO para la juventud indígena: sistemas alimentarios y clima."},
+ dl:{en:"Call open — check eligibility",fr:"Appel ouvert — vérifier l'éligibilité",es:"Convocatoria abierta — verificar elegibilidad"}},
+{t:{en:"World Heritage training for Indigenous representatives",fr:"Formation Patrimoine mondial pour représentants autochtones",es:"Formación en Patrimonio Mundial para representantes indígenas"},
+ p:{en:"Organized by IIPFWH, Nia Tero, IWGIA, DOCIP and OHCHR.",fr:"Organisée par l'IIPFWH, Nia Tero, IWGIA, DOCIP et le HCDH.",es:"Organizada por IIPFWH, Nia Tero, IWGIA, DOCIP y ACNUDH."},
+ dl:{en:"Applications open",fr:"Candidatures ouvertes",es:"Solicitudes abiertas"}},
+{t:{en:"Pawanka Fund — community grants",fr:"Fonds Pawanka — subventions communautaires",es:"Fondo Pawanka — subvenciones comunitarias"},
+ p:{en:"Indigenous-led fund supporting traditional knowledge and wellbeing initiatives.",fr:"Fonds dirigé par des autochtones soutenant les savoirs traditionnels et le bien-être.",es:"Fondo dirigido por indígenas que apoya los conocimientos tradicionales y el bienestar."},
+ dl:{en:"Rolling basis",fr:"Au fil de l'eau",es:"Convocatoria continua"}}
+];
+
+var INSTRUMENTS=[
+{n:"UNDRIP / DNUDPA (2007)",b:false,sc:{en:"UN Declaration — self-determination (art. 3), lands (art. 26), traditional knowledge (art. 31)",fr:"Déclaration ONU — autodétermination (art. 3), terres (art. 26), savoirs traditionnels (art. 31)",es:"Declaración ONU — libre determinación (art. 3), tierras (art. 26), conocimientos tradicionales (art. 31)"}},
+{n:"ILO C169 (1989)",b:true,sc:{en:"Only binding treaty specific to indigenous peoples — ~24 ratifications, almost none in Africa or Asia",fr:"Seul traité contraignant spécifique aux peuples autochtones — ~24 ratifications, quasi aucune en Afrique ou en Asie",es:"Único tratado vinculante específico — ~24 ratificaciones, casi ninguna en África o Asia"}},
+{n:"CBD art. 8(j) + Nagoya",b:true,sc:{en:"Traditional knowledge, benefit-sharing; Kunming-Montreal target 22 on indigenous participation",fr:"Savoirs traditionnels, partage des avantages ; cible 22 de Kunming-Montréal sur la participation autochtone",es:"Conocimientos tradicionales, participación en beneficios; meta 22 de Kunming-Montreal"}},
+{n:{en:"UNPFII · EMRIP · Special Rapporteur",fr:"UNPFII · EMRIP · Rapporteur spécial",es:"UNPFII · EMRIP · Relator Especial"},b:false,sc:{en:"The three UN mechanisms: permanent forum, expert mechanism, special rapporteur",fr:"Les trois mécanismes onusiens : instance permanente, mécanisme d'experts, rapporteur spécial",es:"Los tres mecanismos de la ONU: foro permanente, mecanismo de expertos, relator especial"}},
+{n:"ACHPR / CADHP",b:true,sc:{en:"African Commission — Working Group on Indigenous Populations; landmark decisions",fr:"Commission africaine — Groupe de travail sur les populations autochtones ; décisions historiques",es:"Comisión Africana — Grupo de Trabajo sobre Poblaciones Indígenas; decisiones históricas"}}
+];
+var JURIS=[
+{t:"Endorois v. Kenya (ACHPR, 2010)",p:{en:"First African ruling recognizing indigenous land rights and ordering restitution.",fr:"Première décision africaine reconnaissant des droits fonciers autochtones et ordonnant restitution.",es:"Primera decisión africana que reconoce derechos territoriales indígenas y ordena restitución."}},
+{t:"Ogiek v. Kenya (African Court, 2017)",p:{en:"The African Court confirmed the Ogiek's indigenous status and rights over the Mau Forest.",fr:"La Cour africaine a confirmé le statut autochtone des Ogiek et leurs droits sur la forêt Mau.",es:"La Corte Africana confirmó el estatus indígena de los Ogiek y sus derechos sobre el bosque Mau."}}
+];
+
+var FICHE_KT={
+fr:{ident:"Les Kel Tamasheq (« ceux qui parlent le tamasheq »), désignés par l'exonyme « Touaregs », forment un peuple berbérophone du Sahara central et du Sahel. Leur langue, le tamasheq, s'écrit en tifinagh, l'un des rares systèmes d'écriture autochtones africains en usage continu. L'organisation sociale traditionnelle s'articule en confédérations (ettebel) — Kel Ahaggar, Kel Ajjer, Kel Aïr, Iwellemmedan, Kel Adagh notamment.",
+mode:"L'économie repose historiquement sur le pastoralisme mobile — dromadaires, caprins, ovins — associé au commerce caravanier transsaharien (sel, dattes, céréales). La mobilité n'est pas une errance mais un système raisonné d'exploitation des parcours, fondé sur une connaissance fine de l'eau, des pâturages et du climat. Les femmes occupent une place importante : transmission de l'écriture, propriété du bétail et de la tente, poésie (tisiway).",
+droits:"Reconnus comme peuple autochtone par le Groupe de travail de la Commission africaine (CADHP). Aucun État de leur aire (Mali, Niger, Algérie, Libye, Burkina Faso) n'a ratifié la Convention 169 de l'OIT. La DNUDPA (2007) constitue le cadre de référence : articles 3 (autodétermination), 26 (terres et territoires), 31 (savoirs et expressions culturelles). Participation active à l'UNPFII et aux réseaux climat (CCNUCC, CDB).",
+menaces:"Sécheresses récurrentes et dérèglement climatique ; insécurité et conflits armés au Sahel entraînant des déplacements massifs ; rétrécissement des espaces pastoraux (agriculture, aires protégées, projets miniers et énergétiques) ; fermetures de frontières entravant la transhumance. Résilience : associations de femmes (Tin Hinan), renaissance culturelle (musique, festivals), plaidoyer international croissant porté par une jeunesse connectée."},
+en:{ident:"The Kel Tamasheq (\u201cthose who speak Tamasheq\u201d), known by the exonym \u201cTuareg\u201d, are a Berber-speaking people of the central Sahara and Sahel. Their language, Tamasheq, is written in Tifinagh — one of the few African indigenous scripts in continuous use. Traditional social organization is built around confederations (ettebel) — notably Kel Ahaggar, Kel Ajjer, Kel Aïr, Iwellemmedan and Kel Adagh.",
+mode:"The economy historically rests on mobile pastoralism — dromedaries, goats, sheep — combined with trans-Saharan caravan trade (salt, dates, grain). Mobility is not wandering but a reasoned rangeland-management system grounded in fine knowledge of water, pasture and climate. Women hold an important position: transmission of the script, ownership of livestock and the tent, poetry (tisiway).",
+droits:"Recognized as an indigenous people by the Working Group of the African Commission (ACHPR). No state in their area (Mali, Niger, Algeria, Libya, Burkina Faso) has ratified ILO Convention 169. UNDRIP (2007) is the reference framework: articles 3 (self-determination), 26 (lands and territories), 31 (knowledge and cultural expressions). Active participation in UNPFII and climate networks (UNFCCC, CBD).",
+menaces:"Recurring droughts and climate disruption; insecurity and armed conflict in the Sahel driving mass displacement; shrinking pastoral space (agriculture, protected areas, mining and energy projects); border closures constraining transhumance. Resilience: women's associations (Tin Hinan), cultural renaissance (music, festivals), growing international advocacy carried by a connected youth."}};
+var FH={fr:{ident:"Identité & langue",mode:"Mode de vie & économie pastorale",droits:"Reconnaissance & droits",menaces:"Menaces & résilience"},
+en:{ident:"Identity & language",mode:"Livelihoods & pastoral economy",droits:"Recognition & rights",menaces:"Threats & resilience"},
+es:{ident:"Identidad y lengua",mode:"Modo de vida y economía pastoril",droits:"Reconocimiento y derechos",menaces:"Amenazas y resiliencia"}};
+
+/* Slider SVG scenes (lightweight, no photos) */
+var SVG_DESERT='<svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="skyD" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4B860"/><stop offset=".6" stop-color="#E8965A"/><stop offset="1" stop-color="#D97B4F"/></linearGradient><path id="cml" d="M0,28 q1,-9 7,-10 q2,-6 6,-6 q4,0 5,6 q6,1 7,9 l2,1 q5,0 6,5 l2,5 h-3 l-2,11 h-2 l1,-10 h-5 l-1,10 h-2 v-10 h-7 l-1,10 h-2 l0,-10 h-4 l-2,9 h-2 z"/></defs><rect width="1200" height="420" fill="url(#skyD)"/><circle cx="920" cy="140" r="58" fill="#FBE3B2" opacity=".9"/><path d="M0,300 Q300,225 600,290 T1200,268 V420 H0 Z" fill="#B4713C"/><path d="M0,342 Q400,272 800,340 T1200,330 V420 H0 Z" fill="#8E5230"/><path d="M0,382 Q300,342 700,386 T1200,376 V420 H0 Z" fill="#6E3E24"/><g fill="#3A2417" transform="translate(420,300) scale(1.6)"><use href="#cml"/><use href="#cml" x="46"/><use href="#cml" x="92"/><use href="#cml" x="138"/></g></svg>';
+var SVG_SAHEL='<svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="skyS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D998"/><stop offset="1" stop-color="#E2A465"/></linearGradient></defs><rect width="1200" height="420" fill="url(#skyS)"/><circle cx="230" cy="120" r="46" fill="#FBEFC9" opacity=".85"/><rect y="330" width="1200" height="90" fill="#7A5A32"/><path d="M0,332 Q300,320 600,331 T1200,328 V420 H0 Z" fill="#66492A"/><g fill="#33291A"><path d="M880,332 l6,-70 q2,-14 10,-20 l-4,22 q30,-34 96,-30 q60,4 78,26 q-90,-14 -140,10 q-24,12 -30,62 z"/><ellipse cx="985" cy="222" rx="120" ry="26"/><g transform="translate(300,290)"><ellipse cx="30" cy="18" rx="26" ry="13"/><rect x="8" y="26" width="5" height="18"/><rect x="44" y="26" width="5" height="18"/><circle cx="58" cy="10" r="7"/><path d="M52,4 q-6,-10 2,-14 M64,4 q6,-10 -2,-14" stroke="#33291A" stroke-width="3" fill="none"/></g><g transform="translate(410,296)"><ellipse cx="26" cy="15" rx="22" ry="11"/><rect x="8" y="22" width="4" height="16"/><rect x="38" y="22" width="4" height="16"/><circle cx="50" cy="9" r="6"/><path d="M45,4 q-5,-8 1,-12 M55,4 q5,-8 -1,-12" stroke="#33291A" stroke-width="2.5" fill="none"/></g><g transform="translate(520,282)"><rect x="10" y="0" width="5" height="52"/><circle cx="12" cy="-6" r="8"/><path d="M12,10 l-14,24 M12,10 l16,26 M28,-30 l0,84" stroke="#33291A" stroke-width="4" fill="none"/></g></g></svg>';
+var SVG_ARCTIC='<svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="skyA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E2A54"/><stop offset="1" stop-color="#7FA8C9"/></linearGradient></defs><rect width="1200" height="420" fill="url(#skyA)"/><path d="M0,120 Q300,40 620,110 T1200,80" stroke="#7FE0C3" stroke-width="26" fill="none" opacity=".28"/><path d="M0,170 Q360,90 720,160 T1200,130" stroke="#9FE8D2" stroke-width="14" fill="none" opacity=".2"/><path d="M0,340 L220,180 L420,340 Z" fill="#2C3A66"/><path d="M300,340 L560,150 L840,340 Z" fill="#3D4E85"/><path d="M700,340 L940,200 L1200,340 Z" fill="#2C3A66"/><rect y="336" width="1200" height="84" fill="#E8EEF5"/><path d="M520,336 l34,-88 l34,88 z" fill="#22304F"/><rect x="551" y="312" width="7" height="24" fill="#E8EEF5" opacity=".5"/><g fill="#22304F" transform="translate(700,306)"><ellipse cx="22" cy="14" rx="18" ry="9"/><rect x="6" y="20" width="4" height="14"/><rect x="32" y="20" width="4" height="14"/><circle cx="42" cy="6" r="5"/><path d="M40,0 q-4,-12 -12,-14 m14,12 q4,-12 12,-14 m-12,14 q0,-10 6,-16" stroke="#22304F" stroke-width="2.5" fill="none"/></g></svg>';
+
+var HOME_SLIDES=[
+{svg:SVG_DESERT,cap:{en:"Central Sahara — lands of the Kel Tamasheq, where mobility is knowledge",fr:"Sahara central — terres des Kel Tamasheq, où la mobilité est un savoir",es:"Sahara central — tierras de los Kel Tamasheq, donde la movilidad es saber"}},
+{svg:SVG_SAHEL,cap:{en:"The Sahel — transhumance, a rational land-use system millennia old",fr:"Le Sahel — la transhumance, un système millénaire d'usage raisonné des terres",es:"El Sahel — la trashumancia, un sistema milenario de uso racional de la tierra"}},
+{svg:SVG_ARCTIC,cap:{en:"Sápmi — the European Arctic of the reindeer herders",fr:"Sápmi — l'Arctique européen des éleveurs de rennes",es:"Sápmi — el Ártico europeo de los criadores de renos"}}];
+var PAST_SLIDES=[
+{svg:SVG_SAHEL,cap:{en:"Cattle herding across the Sahel rangelands",fr:"L'élevage bovin à travers les parcours sahéliens",es:"La ganadería bovina en los pastizales del Sahel"}},
+{svg:SVG_DESERT,cap:{en:"Camel caravans: the dromedary economy of the Sahara",fr:"Caravanes : l'économie du dromadaire au Sahara",es:"Caravanas: la economía del dromedario en el Sahara"}}];
+
+/* ================= STATE & HELPERS ================= */
+var LANG=(navigator.language||'en').slice(0,2);
+if(LANG!=='fr'&&LANG!=='es')LANG='en';
+var VIEW='home', FILTER='all', ORGCAT='all', ORGCTRY='all', MAP=null, CURFICHE=null;
+var TIMERS={};
+function $(id){return document.getElementById(id)}
+function I(k){return T[LANG][k]!==undefined?T[LANG][k]:T.en[k]}
+function P(o){return typeof o==='string'?o:(o[LANG]||o.en)}
+
+/* ================= NAVIGATION ================= */
+function show(v){
+  VIEW=v;
+  var secs=document.querySelectorAll('main section');
+  for(var i=0;i<secs.length;i++)secs[i].classList.remove('on');
+  $('v-'+v).classList.add('on');
+  var links=document.querySelectorAll('nav a');
+  for(var j=0;j<links.length;j++)links[j].classList.remove('on');
+  var n=$('n-'+(v==='fiche'?'peoples':v));
+  if(n)n.classList.add('on');
+  window.scrollTo(0,0);
+  if(v==='map')setTimeout(initMap,60);
+}
+function setLang(l){
+  LANG=l;
+  renderAll();
+  if(VIEW==='fiche'&&CURFICHE)renderFiche(CURFICHE);
+}
+
+/* ================= STATIC TEXTS ================= */
+function applyTexts(){
+  document.documentElement.lang=LANG;
+  var langs=['en','fr','es'];
+  for(var i=0;i<3;i++)$('l-'+langs[i]).classList.toggle('on',langs[i]===LANG);
+  $('tb-txt').textContent=I('topbar');
+  $('tagline').textContent=I('tagline');
+  $('s-lbl').textContent=I('search');
+  $('cta-contrib').textContent=I('contribute');
+  var navIds=['home','peoples','map','pastoralism','rights','news','orgs','resources','about'];
+  for(var k=0;k<navIds.length;k++)$('n-'+navIds[k]).textContent=I('nav')[k];
+  $('h-eyebrow').textContent=I('h_eyebrow');$('h-title').textContent=I('h_title');$('h-sub').textContent=I('h_sub');
+  $('h-cta1').textContent=I('h_cta1');$('h-cta2').textContent=I('h_cta2');
+  for(var s=0;s<4;s++)$('st'+(s+1)).textContent=I('st')[s];
+  $('hn-h').textContent=I('hn_h');$('hn-sub').textContent=I('hn_sub');$('hp-h').textContent=I('hp_h');
+  $('p-eb').textContent=I('nav')[1];$('p-title').textContent=I('p_title');$('p-lead').textContent=I('p_lead');
+  $('m-eb').textContent=I('nav')[2];$('m-title').textContent=I('m_title');$('m-lead').textContent=I('m_lead');
+  $('leg1').textContent=I('leg1');$('leg2').textContent=I('leg2');$('m-note').textContent=I('m_note');
+  $('pa-eb').textContent=I('nav')[3];$('pa-title').textContent=I('pa_title');$('pa-lead').textContent=I('pa_lead');$('pa-iyrp').textContent=I('pa_iyrp');
+  $('r-eb').textContent=I('nav')[4];$('r-title').textContent=I('r_title');$('r-lead').textContent=I('r_lead');$('r-jh').textContent=I('r_jh');
+  $('ne-eb').textContent=I('nav')[5];$('ne-title').textContent=I('ne_title');$('ne-lead').textContent=I('ne_lead');
+  $('ag-h').textContent=I('ag_h');$('ag-sub').textContent=I('ag_sub');
+  $('o-eb').textContent=I('nav')[6];$('o-title').textContent=I('o_title');$('o-lead').textContent=I('o_lead');
+  $('re-eb').textContent=I('nav')[7];$('re-title').textContent=I('re_title');$('re-lead').textContent=I('re_lead');
+  $('a-eb').textContent=I('nav')[8];$('a-title').textContent=I('a_title');$('a-lead').textContent=I('a_lead');
+  $('f-mission').textContent=I('f_mission');$('f-exp').textContent=I('f_exp');$('f-pf').textContent=I('f_pf');
+  $('fl-1').textContent=I('nav')[1];$('fl-2').textContent=I('nav')[2];$('fl-3').textContent=I('nav')[3];$('fl-4').textContent=I('nav')[4];
+  $('fl-5').textContent=I('f_ethics');$('fl-6').textContent=I('f_gov');$('fl-7').textContent=I('f_join');
+  $('f-nlh').textContent=I('f_nlh');$('f-nlp').textContent=I('f_nlp');$('f-nlbtn').textContent=I('f_nlbtn');
+  $('nlmail').placeholder=I('f_nlph');$('nlok').textContent=I('f_nlok');$('f-base').textContent=I('f_base');
+  $('sinput').placeholder=I('search_ph');
+}
+
+/* ================= RENDERERS ================= */
+function tags(p){
+  var h='';
+  if(p.pastoral)h+='<span class="tag pastoral">'+STATUS.pastoral[LANG]+'</span>';
+  for(var i=0;i<p.status.length;i++){var s=STATUS[p.status[i]];h+='<span class="tag '+s.cls+'">'+s[LANG]+'</span>';}
+  return h;
+}
+function renderFilters(){
+  var h='<button class="'+(FILTER==='all'?'on':'')+'" onclick="FILTER=\'all\';renderFilters();renderPeoples()">'+I('all_regions')+'</button>';
+  for(var r in REGIONS)h+='<button class="'+(FILTER===r?'on':'')+'" onclick="FILTER=\''+r+'\';renderFilters();renderPeoples()">'+REGIONS[r][LANG]+'</button>';
+  $('regionfilters').innerHTML=h;
+}
+function renderPeoples(){
+  var h='';
+  for(var i=0;i<PEOPLES.length;i++){
+    var p=PEOPLES[i];
+    if(FILTER!=='all'&&p.region!==FILTER)continue;
+    h+='<div class="card"><div class="top"><div class="endo">'+p.endo+'</div><h3>'+p.name+'</h3><div class="reg">'+REGIONS[p.region][LANG]+' · '+P(p.countries)+'</div></div>'
+      +'<div class="body"><div class="tags">'+tags(p)+'</div><p>'+P(p.desc)+'</p>'
+      +'<span class="linkmore" onclick="openFiche(\''+p.id+'\')">'+I('feat_cta')+' →</span></div></div>';
+  }
+  $('peoplegrid').innerHTML=h;
+  $('st-p').textContent=PEOPLES.length;
+}
+function renderFeatured(){
+  var p=PEOPLES[0];
+  $('featured').innerHTML='<div class="left"><div class="lbl">'+I('feat_lbl')+'</div><div class="endo">'+p.endo+'</div><h3>'+p.name+'</h3><div class="reg">'+P(p.countries)+'</div></div>'
+    +'<div class="right"><div class="tags">'+tags(p)+'</div><p>'+P(p.desc)+'</p>'
+    +'<button class="btn solid" onclick="openFiche(\''+p.id+'\')">'+I('feat_cta')+'</button></div>';
+}
+function newsHTML(n){
+  return '<div class="newsitem"><div class="date"><b>'+n.d+'</b><span>'+P(n.m)+'</span></div>'
+    +'<div><h4>'+P(n.t)+'</h4><p>'+P(n.p)+'</p><span class="src">'+P(n.s)+'</span></div></div>';
+}
+function renderNews(){
+  var h='',hh='';
+  for(var i=0;i<NEWS.length;i++){h+=newsHTML(NEWS[i]);if(i<2)hh+=newsHTML(NEWS[i]);}
+  $('newslist').innerHTML=h;
+  $('home-news').innerHTML=hh;
+}
+function renderOpps(){
+  var h='';
+  for(var i=0;i<OPPS.length;i++){
+    var o=OPPS[i];
+    h+='<div class="newsitem opp"><div style="flex:1"><h4>'+P(o.t)+'</h4><p>'+P(o.p)+'</p><span class="deadline">'+P(o.dl)+'</span></div></div>';
+  }
+  $('opplist').innerHTML=h;
+}
+function renderOrgs(){
+  var h='';
+  for(var c in CATS)h+='<button class="'+(ORGCAT===c?'on':'')+'" onclick="ORGCAT=\''+c+'\';renderOrgs()">'+CATS[c][LANG]+'</button>';
+  $('orgcats').innerHTML=h;
+  var used=['all'],i;
+  for(i=0;i<ORGS.length;i++)if(used.indexOf(ORGS[i].ctry)<0)used.push(ORGS[i].ctry);
+  var oh='';
+  for(i=0;i<used.length;i++)oh+='<option value="'+used[i]+'"'+(ORGCTRY===used[i]?' selected':'')+'>'+COUNTRIES[used[i]][LANG]+'</option>';
+  $('orgctry').innerHTML=oh;
+  var g='';var count=0;
+  for(i=0;i<ORGS.length;i++){
+    var o=ORGS[i];
+    if(ORGCAT!=='all'&&o.cat!==ORGCAT)continue;
+    if(ORGCTRY!=='all'&&o.ctry!==ORGCTRY)continue;
+    count++;
+    g+='<div class="card"><div class="body" style="padding-top:22px"><span class="badge-cat">'+CATS[o.cat][LANG]+'</span>'
+      +'<h3 style="font-family:var(--serif);font-size:19px;color:var(--indigo);margin-bottom:4px">'+o.n+'</h3>'
+      +'<div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--laterite);font-weight:700;margin-bottom:10px">'+COUNTRIES[o.ctry][LANG]+'</div>'
+      +'<p style="font-size:14px;color:var(--gris)">'+P(o.m)+'</p></div></div>';
+  }
+  $('orggrid').innerHTML=count?g:'<p style="color:var(--gris)">'+I('search_empty')+'</p>';
+  $('st-o').textContent=ORGS.length;
+  renderJoin();
+}
+function renderJoin(){
+  var opts='';
+  for(var c in CATS){if(c==='all')continue;opts+='<option value="'+c+'">'+CATS[c][LANG]+'</option>';}
+  $('joinwrap').innerHTML='<div class="joinbox"><h3>'+I('join_h')+'</h3><p>'+I('join_p')+'</p>'
+    +'<div class="jgrid">'
+    +'<div class="jfield"><label>'+I('f_org')+' *</label><input id="j-org" type="text"></div>'
+    +'<div class="jfield"><label>'+I('f_email')+' *</label><input id="j-mail" type="email"></div>'
+    +'<div class="jfield"><label>'+I('f_ctry')+'</label><input id="j-ctry" type="text"></div>'
+    +'<div class="jfield"><label>'+I('f_cat')+'</label><select id="j-cat">'+opts+'</select></div>'
+    +'<div class="jfield full"><label>'+I('f_msg')+'</label><textarea id="j-msg"></textarea></div>'
+    +'<div class="full"><button class="btn solid" onclick="joinSubmit()">'+I('f_send')+'</button></div>'
+    +'</div><div class="jok" id="j-ok">'+I('f_ok')+'</div><div class="jerr" id="j-err">'+I('f_err')+'</div></div>';
+}
+function joinSubmit(){
+  var org=$('j-org').value.trim(),mail=$('j-mail').value.trim();
+  var ok=org.length>1&&mail.indexOf('@')>0&&mail.indexOf('.')>0;
+  $('j-err').style.display=ok?'none':'block';
+  $('j-ok').style.display=ok?'block':'none';
+  if(ok){$('j-org').value='';$('j-mail').value='';$('j-ctry').value='';$('j-msg').value='';}
+}
+function renderRights(){
+  var h='<tr><th>'+I('rt_h')[0]+'</th><th>'+I('rt_h')[1]+'</th><th>'+I('rt_h')[2]+'</th></tr>';
+  for(var i=0;i<INSTRUMENTS.length;i++){
+    var it=INSTRUMENTS[i];
+    h+='<tr><td><b>'+P(it.n)+'</b></td><td>'+P(it.sc)+'</td><td><span class="pill '+(it.b?'bind':'soft')+'">'+(it.b?I('bind'):I('soft'))+'</span></td></tr>';
+  }
+  $('rightstable').innerHTML=h;
+  var j='';
+  for(var k=0;k<JURIS.length;k++)j+='<div class="secblock"><h4>'+JURIS[k].t+'</h4><p>'+P(JURIS[k].p)+'</p></div>';
+  $('jurisblocks').innerHTML=j;
+}
+function renderPast(){
+  var B=[
+  {h:{en:"Mobility as a right",fr:"La mobilité comme droit",es:"La movilidad como derecho"},p:{en:"Transhumance is a rational land-use system, not a problem to be settled. Cross-border protocols (ECOWAS) and the Declaration on Transhumance frame mobility as a protected practice.",fr:"La transhumance est un système rationnel d'usage des terres, pas un problème à sédentariser. Les protocoles transfrontaliers (CEDEAO) et la Déclaration sur la Transhumance encadrent la mobilité comme pratique protégée.",es:"La trashumancia es un sistema racional de uso de la tierra, no un problema que sedentarizar. Los protocolos transfronterizos (CEDEAO) y la Declaración sobre la Trashumancia enmarcan la movilidad como práctica protegida."}},
+  {h:{en:"Customary tenure & the green transition",fr:"Foncier coutumier & transition verte",es:"Tenencia consuetudinaria y transición verde"},p:{en:"Solar, wind and carbon projects increasingly overlap rangelands governed by customary law. Without FPIC, the green transition risks reproducing colonial land grabs.",fr:"Projets solaires, éoliens et carbone chevauchent de plus en plus des parcours régis par le droit coutumier. Sans CLPE, la transition verte risque de reproduire les accaparements coloniaux.",es:"Los proyectos solares, eólicos y de carbono se superponen cada vez más a pastizales regidos por el derecho consuetudinario. Sin CLPI, la transición verde corre el riesgo de reproducir despojos coloniales."}},
+  {h:{en:"Knowledge systems",fr:"Systèmes de savoirs",es:"Sistemas de conocimiento"},p:{en:"Herd genetics, water reading, drought forecasting: pastoral knowledge is climate science. Documenting it requires community consent and TK labels.",fr:"Génétique des troupeaux, lecture de l'eau, prévision des sécheresses : les savoirs pastoraux sont une science du climat. Les documenter exige le consentement communautaire et des étiquettes TK.",es:"Genética de rebaños, lectura del agua, previsión de sequías: los saberes pastoriles son ciencia climática. Documentarlos exige consentimiento comunitario y etiquetas TK."}},
+  {h:{en:"Pastoral peoples on this platform",fr:"Peuples pasteurs sur cette plateforme",es:"Pueblos pastores en esta plataforma"},p:{en:"Kel Tamasheq (dromedaries), Fulɓe/Mbororo (cattle), Maasai (cattle), Sámi (reindeer), Quechua (camelids) — explore their fact sheets.",fr:"Kel Tamasheq (dromadaires), Fulɓe/Mbororo (bovins), Maasaï (bovins), Sámi (rennes), Quechua (camélidés) — explorez leurs fiches.",es:"Kel Tamasheq (dromedarios), Fulɓe/Mbororo (bovinos), Maasái (bovinos), Sami (renos), Quechua (camélidos) — explore sus fichas."}}];
+  var h='';
+  for(var i=0;i<B.length;i++)h+='<div class="secblock"><h4>'+P(B[i].h)+'</h4><p>'+P(B[i].p)+'</p></div>';
+  $('pastblocks').innerHTML=h;
+}
+function renderRes(){
+  var R=[
+  {h:{en:"Key reports",fr:"Rapports clés",es:"Informes clave"},p:{en:"The Indigenous World (IWGIA, annual) · State of the World's Indigenous Peoples (UN DESA) · ACHPR Working Group reports.",fr:"The Indigenous World (IWGIA, annuel) · State of the World's Indigenous Peoples (UN DESA) · Rapports du Groupe de travail de la CADHP.",es:"El Mundo Indígena (IWGIA, anual) · Estado de los Pueblos Indígenas del Mundo (ONU DESA) · Informes del Grupo de Trabajo de la CADHP."}},
+  {h:{en:"Glossary (coming)",fr:"Glossaire (à venir)",es:"Glosario (próximamente)"},p:{en:"FPIC, EMRIP, art. 8(j), endonym, transhumance… 80 terms of indigenous advocacy explained in three languages.",fr:"CLPE, EMRIP, art. 8(j), endonyme, transhumance… 80 termes du plaidoyer autochtone expliqués en trois langues.",es:"CLPI, EMRIP, art. 8(j), endónimo, trashumancia… 80 términos de la defensa indígena explicados en tres idiomas."}}];
+  var h='';
+  for(var i=0;i<R.length;i++)h+='<div class="secblock"><h4>'+P(R[i].h)+'</h4><p>'+P(R[i].p)+'</p></div>';
+  $('resblocks').innerHTML=h;
+}
+function renderAbout(){
+  var A=[
+  {h:{en:"Ethics & data sovereignty",fr:"Éthique & souveraineté des données",es:"Ética y soberanía de datos"},p:{en:"Built on the CARE principles (Collective benefit, Authority to control, Responsibility, Ethics) and Free, Prior and Informed Consent. Communities decide what is published, restricted or withheld. Sacred sites are never mapped.",fr:"Fondée sur les principes CARE (bénéfice collectif, autorité de contrôle, responsabilité, éthique) et le consentement libre, préalable et éclairé. Les communautés décident de ce qui est publié, restreint ou retenu. Les sites sacrés ne sont jamais cartographiés.",es:"Basada en los principios CARE y el consentimiento libre, previo e informado. Las comunidades deciden qué se publica, restringe o retiene. Los sitios sagrados nunca se cartografían."}},
+  {h:{en:"Governance (in construction)",fr:"Gouvernance (en construction)",es:"Gobernanza (en construcción)"},p:{en:"A validation council of indigenous representatives, researchers, youth and women reviews every fact sheet before publication.",fr:"Un conseil de validation composé de représentants autochtones, de chercheurs, de jeunes et de femmes relit chaque fiche avant publication.",es:"Un consejo de validación compuesto por representantes indígenas, investigadores, jóvenes y mujeres revisa cada ficha antes de su publicación."}},
+  {h:{en:"Contribute",fr:"Contribuer",es:"Contribuir"},p:{en:"Suggest corrections, propose a people's fact sheet with your community, translate content, or list your organization via the membership form on the Organizations page.",fr:"Suggérez des corrections, proposez une fiche avec votre communauté, traduisez des contenus, ou référencez votre organisation via le formulaire d'adhésion de la page Organisations.",es:"Sugiera correcciones, proponga una ficha con su comunidad, traduzca contenidos o registre su organización mediante el formulario de adhesión de la página Organizaciones."}},
+  {h:{en:"Roadmap",fr:"Feuille de route",es:"Hoja de ruta"},p:{en:"Phase 2: full organizations directory, indigenous languages module, media library, online academy, community space.",fr:"Phase 2 : annuaire complet des organisations, module langues autochtones, médiathèque, académie en ligne, espace communautaire.",es:"Fase 2: directorio completo de organizaciones, módulo de lenguas indígenas, mediateca, academia en línea, espacio comunitario."}}];
+  var h='';
+  for(var i=0;i<A.length;i++)h+='<div class="secblock"><h4>'+P(A[i].h)+'</h4><p>'+P(A[i].p)+'</p></div>';
+  $('aboutblocks').innerHTML=h;
+}
+
+/* ================= FICHE ================= */
+function openFiche(id){renderFiche(id);show('fiche');}
+function renderFiche(id){
+  CURFICHE=id;
+  var p=null;
+  for(var i=0;i<PEOPLES.length;i++)if(PEOPLES[i].id===id)p=PEOPLES[i];
+  if(!p)return;
+  var body='',notice='';
+  if(p.full){
+    var cl=FICHE_KT[LANG]?LANG:'en';
+    if(!FICHE_KT[LANG])notice='<div class="notice">'+I('fiche_tr')+'</div>';
+    var c=FICHE_KT[cl],hh=FH[cl]||FH.en,keys=['ident','mode','droits','menaces'];
+    for(var k=0;k<keys.length;k++)body+='<div class="fsec"><h4>'+hh[keys[k]]+'</h4><p>'+c[keys[k]]+'</p></div>';
+  }else{
+    notice='<div class="notice">'+I('fiche_wip')+'</div>';
+    body='<div class="fsec"><p>'+P(p.desc)+'</p></div>';
+  }
+  var st='';
+  for(var s=0;s<p.status.length;s++){st+=(s?' · ':'')+STATUS[p.status[s]][LANG];}
+  $('fichewrap').innerHTML=
+   '<div class="crumb"><a onclick="show(\'peoples\')">'+I('nav')[1]+'</a> › '+REGIONS[p.region][LANG]+' › <b>'+p.name+'</b></div>'
+  +'<span class="linkmore" onclick="show(\'peoples\')">'+I('back')+'</span>'
+  +'<div class="ftoolbar"><button onclick="window.print()">'+I('print')+'</button></div>'
+  +'<div class="fiche">'
+  +'<div class="fiche-head"><div class="tifbg">'+p.endo.slice(0,4)+'</div>'
+  +'<div class="doc">'+I('fiche_doc')+' · AK-'+p.id.toUpperCase().slice(0,6)+'-2026</div>'
+  +'<div class="endo">'+p.endo+'</div><h3>'+p.name+'</h3><div class="aka">'+REGIONS[p.region][LANG]+'</div></div>'
+  +'<div class="fiche-meta">'
+  +'<div><label>'+I('fiche_pop')+'</label><b>'+p.pop+'</b></div>'
+  +'<div><label>'+I('fiche_lang')+'</label><b>'+P(p.lang)+'</b></div>'
+  +'<div><label>'+I('fiche_countries')+'</label><b>'+P(p.countries)+'</b></div>'
+  +'<div><label>'+I('fiche_status')+'</label><b>'+st+'</b></div></div>'
+  +'<div class="fiche-body"><div>'+notice+body
+  +'<div class="tklabel"><span style="font-size:20px">◈</span><span>'+I('tk')+'</span></div></div>'
+  +'<div>'
+  +'<div class="sidebox"><h5>'+I('kf')+'</h5><table>'
+  +'<tr><td>'+I('fiche_pop')+'</td><td>'+p.pop+'</td></tr>'
+  +'<tr><td>'+I('fiche_region')+'</td><td>'+REGIONS[p.region][LANG]+'</td></tr>'
+  +'<tr><td>'+I('fiche_status')+'</td><td>'+STATUS[p.status[0]][LANG]+'</td></tr></table></div>'
+  +'<div class="sidebox"><h5>'+I('instr')+'</h5><table>'
+  +'<tr><td>UNDRIP / DNUDPA</td><td>✓</td></tr><tr><td>ILO C169</td><td>—</td></tr>'
+  +'<tr><td>CBD 8(j)</td><td>✓</td></tr><tr><td>ACHPR / CADHP</td><td>✓</td></tr></table></div>'
+  +'<div class="sidebox"><h5>'+I('src')+'</h5><p>'+I('src_txt')+'</p></div>'
+  +'</div></div></div>';
+}
+
+/* ================= SLIDERS ================= */
+function mountSlider(id,slides){
+  var el=$(id);if(!el)return;
+  var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var figs='',dots='';
+  for(var i=0;i<slides.length;i++){
+    figs+='<figure class="slide">'+slides[i].svg+'<figcaption>'+P(slides[i].cap)+'</figcaption></figure>';
+    dots+='<button data-i="'+i+'" aria-label="Slide '+(i+1)+'"></button>';
+  }
+  el.innerHTML='<div class="slider"><div class="strack">'+figs+'</div><div class="sdots">'+dots+'</div></div><p class="slidenote">'+I('slider_note')+'</p>';
+  var track=el.querySelector('.strack');
+  var btns=el.querySelectorAll('.sdots button');
+  var cur=0;
+  function goTo(n){
+    cur=(n+slides.length)%slides.length;
+    track.style.transform='translateX(-'+(cur*100)+'%)';
+    for(var b=0;b<btns.length;b++)btns[b].classList.toggle('on',b===cur);
+  }
+  function start(){if(!rm)TIMERS[id]=setInterval(function(){goTo(cur+1)},6000)}
+  function stop(){if(TIMERS[id])clearInterval(TIMERS[id])}
+  for(var b=0;b<btns.length;b++){
+    (function(btn){btn.onclick=function(){goTo(parseInt(btn.getAttribute('data-i'),10));stop();start();}})(btns[b]);
+  }
+  var sl=el.querySelector('.slider');
+  sl.addEventListener('mouseenter',stop);
+  sl.addEventListener('mouseleave',function(){stop();start();});
+  var x0=null;
+  track.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  track.addEventListener('touchend',function(e){
+    if(x0===null)return;
+    var dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>40)goTo(cur+(dx<0?1:-1));
+    x0=null;stop();start();
+  },{passive:true});
+  stop();goTo(0);start();
+}
+
+/* ================= SEARCH ================= */
+function openSearch(){$('smodal').classList.add('on');$('sinput').value='';doSearch('');setTimeout(function(){$('sinput').focus()},30);}
+function closeSearch(){$('smodal').classList.remove('on');}
+function doSearch(q){
+  q=q.trim().toLowerCase();
+  var ix=[],i;
+  for(i=0;i<PEOPLES.length;i++){var p=PEOPLES[i];ix.push({k:I('kinds').p,t:p.name,s:P(p.countries),act:"openFiche('"+p.id+"')",h:(p.name+' '+p.endo+' '+P(p.desc)+' '+P(p.countries)).toLowerCase()});}
+  for(i=0;i<ORGS.length;i++){var o=ORGS[i];ix.push({k:I('kinds').o,t:o.n,s:P(o.m),act:"show('orgs')",h:(o.n+' '+P(o.m)).toLowerCase()});}
+  for(i=0;i<NEWS.length;i++){var n=NEWS[i];ix.push({k:I('kinds').n,t:P(n.t),s:P(n.s),act:"show('news')",h:(P(n.t)+' '+P(n.p)).toLowerCase()});}
+  for(i=0;i<OPPS.length;i++){var op=OPPS[i];ix.push({k:I('kinds').c,t:P(op.t),s:P(op.dl),act:"show('news')",h:(P(op.t)+' '+P(op.p)).toLowerCase()});}
+  var res=[];
+  for(i=0;i<ix.length;i++){if(!q||ix[i].h.indexOf(q)>=0)res.push(ix[i]);if(res.length>=8)break;}
+  var h='';
+  for(i=0;i<res.length;i++)h+='<div class="sitem" onclick="closeSearch();'+res[i].act+'"><span class="kind">'+res[i].k+'</span><b>'+res[i].t+'</b><span>'+res[i].s+'</span></div>';
+  $('sres').innerHTML=h||'<div class="sempty">'+I('search_empty')+'</div>';
+}
+$('sinput').addEventListener('input',function(){doSearch(this.value)});
+$('sinput').addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch()});
+$('smodal').addEventListener('click',function(e){if(e.target===this)closeSearch()});
+document.addEventListener('keydown',function(e){
+  var typing=document.activeElement&&(document.activeElement.tagName==='INPUT'||document.activeElement.tagName==='TEXTAREA');
+  if(e.key==='/'&&!typing&&!$('smodal').classList.contains('on')){e.preventDefault();openSearch();}
+  if(e.key==='Escape')closeSearch();
+});
+
+/* ================= MAP ================= */
+function initMap(){
+  if(MAP){MAP.invalidateSize();return;}
+  if(typeof L==='undefined')return;
+  MAP=L.map('map',{scrollWheelZoom:false}).setView([15,10],2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:8}).addTo(MAP);
+  for(var i=0;i<PEOPLES.length;i++){
+    (function(p){
+      var col=p.pastoral?'#B45E23':'#1F2A5E';
+      var c=L.circle(p.coords,{radius:p.r,color:col,weight:1.5,fillColor:col,fillOpacity:.22}).addTo(MAP);
+      c.bindPopup('<div style="font-family:Georgia,serif;font-size:16px;color:#1F2A5E;font-weight:600">'+p.name+'</div>'
+        +'<div style="font-size:12px;color:#6B675E;margin:2px 0 6px">'+P(p.countries)+'</div>'
+        +'<span style="color:#B45E23;font-weight:600;font-size:13px;cursor:pointer" onclick="openFiche(\''+p.id+'\')">'+I('feat_cta')+' →</span>');
+    })(PEOPLES[i]);
+  }
+}
+
+/* ================= MISC & INIT ================= */
+function nlSubscribe(){
+  var v=$('nlmail').value;
+  if(v.indexOf('@')>0){$('nlok').style.display='block';$('nlmail').value='';}
+}
+function renderAll(){
+  applyTexts();
+  renderFilters();renderPeoples();renderFeatured();renderNews();renderOpps();
+  renderOrgs();renderRights();renderPast();renderRes();renderAbout();
+  mountSlider('slider-home',HOME_SLIDES);
+  mountSlider('slider-past',PAST_SLIDES);
+  if(MAP){MAP.remove();MAP=null;if(VIEW==='map')initMap();}
+}
+renderAll();
+show('home');
+</script>
+</body>
+</html>

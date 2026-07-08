@@ -1,0 +1,236 @@
+[
+  {
+    "slug": "kel-tamasheq",
+    "name": "Kel Tamasheq",
+    "endonym": "ⴾⵍ ⵜⵎⵛⵗ",
+    "region": "africa",
+    "pastoral": true,
+    "population": "2,5 – 4 M",
+    "coords": [19.5, 3.0],
+    "radius": 650000,
+    "recognition": ["achpr", "self"],
+    "visibility": "public",
+    "countries": {
+      "en": "Mali, Niger, Algeria, Libya, Burkina Faso",
+      "fr": "Mali, Niger, Algérie, Libye, Burkina Faso",
+      "es": "Malí, Níger, Argelia, Libia, Burkina Faso"
+    },
+    "language": {
+      "en": "Tamasheq (Tifinagh script)",
+      "fr": "Tamasheq (écriture tifinagh)",
+      "es": "Tamasheq (escritura tifinagh)"
+    },
+    "summary": {
+      "en": "Berber-speaking pastoralists of the central Sahara and Sahel, masters of dromedary husbandry and caravan trade, bearers of the Tifinagh script.",
+      "fr": "Pasteurs berbérophones du Sahara central et du Sahel, maîtres de l'élevage du dromadaire et du commerce caravanier, porteurs de l'écriture tifinagh.",
+      "es": "Pastores de habla bereber del Sahara central y el Sahel, maestros de la cría de dromedarios y del comercio caravanero, portadores de la escritura tifinagh."
+    },
+    "sections": {
+      "fr": {
+        "identity": "Les Kel Tamasheq (« ceux qui parlent le tamasheq »), désignés par l'exonyme « Touaregs », forment un peuple berbérophone du Sahara central et du Sahel. Leur langue, le tamasheq, s'écrit en tifinagh, l'un des rares systèmes d'écriture autochtones africains en usage continu. L'organisation sociale traditionnelle s'articule en confédérations (ettebel) — Kel Ahaggar, Kel Ajjer, Kel Aïr, Iwellemmedan, Kel Adagh notamment.",
+        "livelihoods": "L'économie repose historiquement sur le pastoralisme mobile — dromadaires, caprins, ovins — associé au commerce caravanier transsaharien (sel, dattes, céréales). La mobilité n'est pas une errance mais un système raisonné d'exploitation des parcours, fondé sur une connaissance fine de l'eau, des pâturages et du climat. Les femmes occupent une place importante : transmission de l'écriture, propriété du bétail et de la tente, poésie (tisiway).",
+        "rights": "Reconnus comme peuple autochtone par le Groupe de travail de la Commission africaine (CADHP). Aucun État de leur aire (Mali, Niger, Algérie, Libye, Burkina Faso) n'a ratifié la Convention 169 de l'OIT. La DNUDPA (2007) constitue le cadre de référence : articles 3 (autodétermination), 26 (terres et territoires), 31 (savoirs et expressions culturelles). Participation active à l'UNPFII et aux réseaux climat (CCNUCC, CDB).",
+        "threats": "Sécheresses récurrentes et dérèglement climatique ; insécurité et conflits armés au Sahel entraînant des déplacements massifs ; rétrécissement des espaces pastoraux (agriculture, aires protégées, projets miniers et énergétiques) ; fermetures de frontières entravant la transhumance. Résilience : associations de femmes (Tin Hinan), renaissance culturelle (musique, festivals), plaidoyer international croissant porté par une jeunesse connectée."
+      },
+      "en": {
+        "identity": "The Kel Tamasheq (\"those who speak Tamasheq\"), known by the exonym \"Tuareg\", are a Berber-speaking people of the central Sahara and Sahel. Their language, Tamasheq, is written in Tifinagh — one of the few African indigenous scripts in continuous use. Traditional social organization is built around confederations (ettebel) — notably Kel Ahaggar, Kel Ajjer, Kel Aïr, Iwellemmedan and Kel Adagh.",
+        "livelihoods": "The economy historically rests on mobile pastoralism — dromedaries, goats, sheep — combined with trans-Saharan caravan trade (salt, dates, grain). Mobility is not wandering but a reasoned rangeland-management system grounded in fine knowledge of water, pasture and climate. Women hold an important position: transmission of the script, ownership of livestock and the tent, poetry (tisiway).",
+        "rights": "Recognized as an indigenous people by the Working Group of the African Commission (ACHPR). No state in their area (Mali, Niger, Algeria, Libya, Burkina Faso) has ratified ILO Convention 169. UNDRIP (2007) is the reference framework: articles 3 (self-determination), 26 (lands and territories), 31 (knowledge and cultural expressions). Active participation in UNPFII and climate networks (UNFCCC, CBD).",
+        "threats": "Recurring droughts and climate disruption; insecurity and armed conflict in the Sahel driving mass displacement; shrinking pastoral space (agriculture, protected areas, mining and energy projects); border closures constraining transhumance. Resilience: women's associations (Tin Hinan), cultural renaissance (music, festivals), growing international advocacy carried by a connected youth."
+      }
+    },
+    "sources": ["IWGIA", "UN DESA", "ACHPR WGIP", "Community sources (under validation)"]
+  },
+  {
+    "slug": "fulbe",
+    "name": "Fulɓe (Peuls / Fulani)",
+    "endonym": "𞤊𞤵𞤤𞤩𞤫",
+    "region": "africa",
+    "pastoral": true,
+    "population": "25 – 40 M",
+    "coords": [14.0, -4.0],
+    "radius": 550000,
+    "recognition": ["achpr", "self"],
+    "visibility": "public",
+    "countries": {
+      "en": "Sahel & West Africa (15+ countries)",
+      "fr": "Sahel & Afrique de l'Ouest (15+ pays)",
+      "es": "Sahel y África Occidental (15+ países)"
+    },
+    "language": {
+      "en": "Fulfulde / Pulaar",
+      "fr": "Fulfulde / Pulaar",
+      "es": "Fulfulde / Pulaar"
+    },
+    "summary": {
+      "en": "One of the world's largest pastoral peoples; the Mbororo branch is recognized as indigenous by the ACHPR.",
+      "fr": "L'un des plus grands peuples pasteurs du monde ; la branche Mbororo est reconnue autochtone par la CADHP.",
+      "es": "Uno de los mayores pueblos pastores del mundo; la rama Mbororo es reconocida como indígena por la CADHP."
+    },
+    "sources": ["IWGIA", "UN DESA", "ACHPR WGIP", "Community sources (under validation)"]
+  },
+  {
+    "slug": "amazigh",
+    "name": "Amazigh (Imazighen)",
+    "endonym": "ⵉⵎⴰⵣⵉⵗⵏ",
+    "region": "africa",
+    "pastoral": false,
+    "population": "25 – 35 M",
+    "coords": [31.0, -6.0],
+    "radius": 400000,
+    "recognition": ["state", "self"],
+    "visibility": "public",
+    "countries": {
+      "en": "Morocco, Algeria, Tunisia, Libya",
+      "fr": "Maroc, Algérie, Tunisie, Libye",
+      "es": "Marruecos, Argelia, Túnez, Libia"
+    },
+    "language": {
+      "en": "Tamazight (official in Morocco & Algeria)",
+      "fr": "Tamazight (officielle au Maroc et en Algérie)",
+      "es": "Tamazight (oficial en Marruecos y Argelia)"
+    },
+    "summary": {
+      "en": "Indigenous people of North Africa; Tamazight gained official-language status in Morocco (2011) and Algeria (2016).",
+      "fr": "Peuple autochtone d'Afrique du Nord ; le tamazight est devenu langue officielle au Maroc (2011) et en Algérie (2016).",
+      "es": "Pueblo indígena del norte de África; el tamazight es lengua oficial en Marruecos (2011) y Argelia (2016)."
+    },
+    "sources": ["IWGIA", "UN DESA", "ACHPR WGIP", "Community sources (under validation)"]
+  },
+  {
+    "slug": "maasai",
+    "name": "Maasai",
+    "endonym": "ɔl Maasai",
+    "region": "africa",
+    "pastoral": true,
+    "population": "1,2 – 2 M",
+    "coords": [-3.0, 36.5],
+    "radius": 280000,
+    "recognition": ["achpr", "self"],
+    "visibility": "public",
+    "countries": {
+      "en": "Kenya, Tanzania",
+      "fr": "Kenya, Tanzanie",
+      "es": "Kenia, Tanzania"
+    },
+    "language": {"en": "Maa", "fr": "Maa", "es": "Maa"},
+    "summary": {
+      "en": "Semi-nomadic cattle pastoralists of East Africa, at the center of major land-rights struggles including Loliondo.",
+      "fr": "Pasteurs bovins semi-nomades d'Afrique de l'Est, au cœur de luttes foncières majeures, dont Loliondo.",
+      "es": "Pastores de ganado seminómadas de África Oriental, en el centro de grandes luchas por la tierra, incluida Loliondo."
+    },
+    "sources": ["IWGIA", "UN DESA", "ACHPR WGIP", "Community sources (under validation)"]
+  },
+  {
+    "slug": "san",
+    "name": "San",
+    "endonym": "San / Basarwa",
+    "region": "africa",
+    "pastoral": false,
+    "population": "90 000 – 140 000",
+    "coords": [-22.0, 21.0],
+    "radius": 300000,
+    "recognition": ["achpr", "self"],
+    "visibility": "public",
+    "countries": {
+      "en": "Botswana, Namibia, South Africa",
+      "fr": "Botswana, Namibie, Afrique du Sud",
+      "es": "Botsuana, Namibia, Sudáfrica"
+    },
+    "language": {
+      "en": "Khoisan languages",
+      "fr": "Langues khoïsan",
+      "es": "Lenguas joisanas"
+    },
+    "summary": {
+      "en": "Among the oldest continuous cultures on Earth; hunter-gatherer heritage of southern Africa.",
+      "fr": "Parmi les plus anciennes cultures continues de la planète ; héritage chasseur-cueilleur de l'Afrique australe.",
+      "es": "Entre las culturas continuas más antiguas del planeta; herencia cazadora-recolectora del sur de África."
+    },
+    "sources": ["IWGIA", "UN DESA", "ACHPR WGIP", "Community sources (under validation)"]
+  },
+  {
+    "slug": "sami",
+    "name": "Sámi",
+    "endonym": "Sápmi",
+    "region": "arctic",
+    "pastoral": true,
+    "population": "50 000 – 100 000",
+    "coords": [68.0, 22.0],
+    "radius": 250000,
+    "recognition": ["state", "self"],
+    "visibility": "public",
+    "countries": {
+      "en": "Norway, Sweden, Finland, Russia",
+      "fr": "Norvège, Suède, Finlande, Russie",
+      "es": "Noruega, Suecia, Finlandia, Rusia"
+    },
+    "language": {
+      "en": "Sámi languages (9 living)",
+      "fr": "Langues sámi (9 vivantes)",
+      "es": "Lenguas sami (9 vivas)"
+    },
+    "summary": {
+      "en": "Reindeer-herding people of the European Arctic, with their own elected parliaments in three countries.",
+      "fr": "Peuple éleveur de rennes de l'Arctique européen, doté de parlements élus dans trois pays.",
+      "es": "Pueblo criador de renos del Ártico europeo, con parlamentos electos propios en tres países."
+    },
+    "sources": ["IWGIA", "UN DESA", "ACHPR WGIP", "Community sources (under validation)"]
+  },
+  {
+    "slug": "quechua",
+    "name": "Quechua",
+    "endonym": "Runakuna",
+    "region": "americas",
+    "pastoral": false,
+    "population": "7 – 10 M",
+    "coords": [-13.5, -72.0],
+    "radius": 350000,
+    "recognition": ["state", "self"],
+    "visibility": "public",
+    "countries": {
+      "en": "Peru, Bolivia, Ecuador",
+      "fr": "Pérou, Bolivie, Équateur",
+      "es": "Perú, Bolivia, Ecuador"
+    },
+    "language": {
+      "en": "Quechua / Runasimi (official in Peru & Bolivia)",
+      "fr": "Quechua / Runasimi (officielle au Pérou et en Bolivie)",
+      "es": "Quechua / Runasimi (oficial en Perú y Bolivia)"
+    },
+    "summary": {
+      "en": "Heirs of the Andean civilizations; llama and alpaca herding remains central to highland livelihoods.",
+      "fr": "Héritiers des civilisations andines ; l'élevage de lamas et d'alpagas reste central dans les hautes terres.",
+      "es": "Herederos de las civilizaciones andinas; la cría de llamas y alpacas sigue siendo central en el altiplano."
+    },
+    "sources": ["IWGIA", "UN DESA", "ACHPR WGIP", "Community sources (under validation)"]
+  },
+  {
+    "slug": "inuit",
+    "name": "Inuit",
+    "endonym": "ᐃᓄᐃᑦ",
+    "region": "americas",
+    "pastoral": false,
+    "population": "~ 180 000",
+    "coords": [66.0, -95.0],
+    "radius": 600000,
+    "recognition": ["state", "self"],
+    "visibility": "public",
+    "countries": {
+      "en": "Canada, Greenland, Alaska (USA), Chukotka",
+      "fr": "Canada, Groenland, Alaska (USA), Tchoukotka",
+      "es": "Canadá, Groenlandia, Alaska (EE.UU.), Chukotka"
+    },
+    "language": {
+      "en": "Inuktitut & Inuit languages",
+      "fr": "Inuktitut & langues inuites",
+      "es": "Inuktitut y lenguas inuit"
+    },
+    "summary": {
+      "en": "Circumpolar people of the Arctic; self-government achievements include Nunavut and Greenland's autonomy.",
+      "fr": "Peuple circumpolaire de l'Arctique ; parmi ses acquis d'autonomie : le Nunavut et l'autonomie du Groenland.",
+      "es": "Pueblo circumpolar del Ártico; entre sus logros de autogobierno: Nunavut y la autonomía de Groenlandia."
+    },
+    "sources": ["IWGIA", "UN DESA", "ACHPR WGIP", "Community sources (under validation)"]
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "home": [
+    {
+      "scene": "desert",
+      "caption": {
+        "en": "Central Sahara — lands of the Kel Tamasheq, where mobility is knowledge",
+        "fr": "Sahara central — terres des Kel Tamasheq, où la mobilité est un savoir",
+        "es": "Sahara central — tierras de los Kel Tamasheq, donde la movilidad es saber"
+      }
+    },
+    {
+      "scene": "sahel",
+      "caption": {
+        "en": "The Sahel — transhumance, a rational land-use system millennia old",
+        "fr": "Le Sahel — la transhumance, un système millénaire d'usage raisonné des terres",
+        "es": "El Sahel — la trashumancia, un sistema milenario de uso racional de la tierra"
+      }
+    },
+    {
+      "scene": "arctic",
+      "caption": {
+        "en": "Sápmi — the European Arctic of the reindeer herders",
+        "fr": "Sápmi — l'Arctique européen des éleveurs de rennes",
+        "es": "Sápmi — el Ártico europeo de los criadores de renos"
+      }
+    }
+  ],
+  "pastoralism": [
+    {
+      "scene": "sahel",
+      "caption": {
+        "en": "Cattle herding across the Sahel rangelands",
+        "fr": "L'élevage bovin à travers les parcours sahéliens",
+        "es": "La ganadería bovina en los pastizales del Sahel"
+      }
+    },
+    {
+      "scene": "desert",
+      "caption": {
+        "en": "Camel caravans: the dromedary economy of the Sahara",
+        "fr": "Caravanes : l'économie du dromadaire au Sahara",
+        "es": "Caravanas: la economía del dromedario en el Sahara"
+      }
+    }
+  ]
+}

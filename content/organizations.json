@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Association Tin Hinan",
+    "category": "women",
+    "country": "bf",
+    "mission": {
+      "en": "Rights of indigenous women & pastoral communities of the Sahel",
+      "fr": "Droits des femmes autochtones & communautés pastorales du Sahel",
+      "es": "Derechos de las mujeres indígenas y comunidades pastoriles del Sahel"
+    }
+  },
+  {
+    "name": "AFPAT",
+    "category": "women",
+    "country": "td",
+    "mission": {
+      "en": "Association of Peul Women & Autochthonous Peoples of Chad — climate & rights advocacy",
+      "fr": "Association des Femmes Peules et Peuples Autochtones du Tchad — plaidoyer climat & droits",
+      "es": "Asociación de Mujeres Peul y Pueblos Autóctonos de Chad — defensa climática y de derechos"
+    }
+  },
+  {
+    "name": "FIMI / IIWF",
+    "category": "women",
+    "country": "pe",
+    "mission": {
+      "en": "International Indigenous Women's Forum — global network and observatory",
+      "fr": "Forum international des femmes autochtones — réseau mondial et observatoire",
+      "es": "Foro Internacional de Mujeres Indígenas — red mundial y observatorio"
+    }
+  },
+  {
+    "name": "Global Indigenous Youth Caucus",
+    "category": "youth",
+    "country": "int",
+    "mission": {
+      "en": "Youth voice within the UN Permanent Forum (UNPFII)",
+      "fr": "La voix des jeunes au sein de l'Instance permanente de l'ONU (UNPFII)",
+      "es": "La voz de la juventud en el Foro Permanente de la ONU (UNPFII)"
+    }
+  },
+  {
+    "name": "GYBN",
+    "category": "youth",
+    "country": "de",
+    "mission": {
+      "en": "Global Youth Biodiversity Network — youth engagement in the CBD, incl. indigenous youth",
+      "fr": "Réseau mondial de la jeunesse pour la biodiversité — engagement dans la CDB, dont jeunes autochtones",
+      "es": "Red Mundial de Juventud por la Biodiversidad — participación en el CDB, incl. juventud indígena"
+    }
+  },
+  {
+    "name": "WAMIP",
+    "category": "pastoral",
+    "country": "int",
+    "mission": {
+      "en": "World Alliance of Mobile Indigenous Peoples — global pastoralist alliance",
+      "fr": "Alliance mondiale des peuples autochtones mobiles — alliance pastorale mondiale",
+      "es": "Alianza Mundial de Pueblos Indígenas Móviles — alianza pastoril mundial"
+    }
+  },
+  {
+    "name": "Réseau Billital Maroobé",
+    "category": "pastoral",
+    "country": "ne",
+    "mission": {
+      "en": "West African network of pastoralist organizations — transhumance & markets",
+      "fr": "Réseau ouest-africain des organisations d'éleveurs — transhumance & marchés",
+      "es": "Red de África Occidental de organizaciones de pastores — trashumancia y mercados"
+    }
+  },
+  {
+    "name": "IWGIA",
+    "category": "gen",
+    "country": "dk",
+    "mission": {
+      "en": "Documentation & advocacy — publishes The Indigenous World",
+      "fr": "Documentation & plaidoyer — publie The Indigenous World",
+      "es": "Documentación y defensa — publica El Mundo Indígena"
+    }
+  },
+  {
+    "name": "Cultural Survival",
+    "category": "gen",
+    "country": "us",
+    "mission": {
+      "en": "Advocacy, community radio & grants (Keepers of the Earth Fund)",
+      "fr": "Plaidoyer, radios communautaires & subventions (Keepers of the Earth Fund)",
+      "es": "Defensa, radios comunitarias y subvenciones (Keepers of the Earth Fund)"
+    }
+  },
+  {
+    "name": "IPACC",
+    "category": "gen",
+    "country": "za",
+    "mission": {
+      "en": "Coordinating committee of ~135 African indigenous organizations",
+      "fr": "Comité de coordination d'environ 135 organisations autochtones africaines",
+      "es": "Comité coordinador de ~135 organizaciones indígenas africanas"
+    }
+  },
+  {
+    "name": "AIPP",
+    "category": "gen",
+    "country": "th",
+    "mission": {
+      "en": "Asia Indigenous Peoples Pact — regional alliance",
+      "fr": "Asia Indigenous Peoples Pact — alliance régionale",
+      "es": "Asia Indigenous Peoples Pact — alianza regional"
+    }
+  },
+  {
+    "name": "COICA",
+    "category": "gen",
+    "country": "ec",
+    "mission": {
+      "en": "Coordination of indigenous organizations of the Amazon basin",
+      "fr": "Coordination des organisations autochtones du bassin amazonien",
+      "es": "Coordinación de organizaciones indígenas de la cuenca amazónica"
+    }
+  },
+  {
+    "name": "Saami Council",
+    "category": "gen",
+    "country": "no",
+    "mission": {
+      "en": "Voluntary Sámi organization across four countries",
+      "fr": "Organisation sámi volontaire couvrant quatre pays",
+      "es": "Organización sami voluntaria en cuatro países"
+    }
+  }
+]

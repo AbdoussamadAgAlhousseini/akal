@@ -1,0 +1,139 @@
+{
+  "Metadata": {
+    "title": "AKAL — Peuples autochtones du monde",
+    "description": "AKAL — plateforme mondiale de référence sur les peuples autochtones et le pastoralisme : fiches au format ONU, carte mondiale, observatoire des droits et opportunités. EN · FR · ES."
+  },
+  "Layout": {
+    "tagline": "Peuples autochtones du monde",
+    "topbar": "Plateforme mondiale de référence sur les peuples autochtones & le pastoralisme",
+    "contribute": "Contribuer",
+    "search": "Rechercher",
+    "searchPlaceholder": "Rechercher peuples, organisations, appels…",
+    "searchEmpty": "Aucun résultat."
+  },
+  "Nav": {
+    "home": "Accueil",
+    "peoples": "Peuples",
+    "map": "Carte mondiale",
+    "pastoralism": "Pastoralisme",
+    "rights": "Droits & plaidoyer",
+    "news": "Actualités",
+    "organizations": "Organisations",
+    "resources": "Ressources",
+    "about": "À propos"
+  },
+  "Home": {
+    "eyebrow": "Documenter · Relier · Plaider",
+    "title": "L'encyclopédie vivante des peuples autochtones du monde",
+    "sub": "Des fiches au format ONU, une carte mondiale interactive et le premier espace global dédié au pastoralisme autochtone — construits avec les communautés, selon les principes de souveraineté des données autochtones.",
+    "cta1": "Explorer les peuples",
+    "cta2": "Ouvrir la carte",
+    "statPersons": "Personnes autochtones dans le monde",
+    "statPeoples": "Peuples distincts",
+    "statDocumented": "Peuples documentés",
+    "statOrgs": "Organisations recensées",
+    "featuredLabel": "Peuple à la une — juillet 2026",
+    "readSheet": "Lire la fiche",
+    "latestHeading": "Dernières actualités",
+    "latestSub": "Une veille curée des mécanismes onusiens, organes régionaux et organisations autochtones.",
+    "partnersHeading": "Partenaires & réseaux",
+    "sliderNote": "Illustrations. Les photographies communautaires seront ajoutées avec le consentement libre, préalable et éclairé (CLPE)."
+  },
+  "Peoples": {
+    "title": "Peuples du monde",
+    "lead": "Des fiches au format ONU : identité, démographie, territoire, mode de vie, reconnaissance juridique, menaces et résilience. Les chiffres de population sont des fourchettes issues de sources multiples ; l'auto-identification prime.",
+    "allRegions": "Toutes les régions",
+    "back": "← Retour à tous les peuples",
+    "readSheet": "Lire la fiche"
+  },
+  "Map": {
+    "title": "Carte mondiale interactive",
+    "lead": "Zones de présence approximatives par peuple. Cliquez sur un cercle pour ouvrir la fiche.",
+    "legendPastoral": "Peuples pasteurs",
+    "legendOther": "Autres peuples autochtones",
+    "note": "Pour des raisons de sécurité et de souveraineté des données, les localisations sont volontairement approximatives. Les sites sacrés et communautés vulnérables ne sont jamais cartographiés précisément."
+  },
+  "Pastoralism": {
+    "title": "Pastoralisme autochtone",
+    "lead": "La seule section mondiale reliant droits autochtones et modes de vie pastoraux — la mobilité comme droit, le foncier coutumier et la transition verte.",
+    "iyrp": "2026 est l'Année internationale des parcours et des pasteurs (IYRP), proclamée par l'Assemblée générale des Nations Unies."
+  },
+  "Rights": {
+    "title": "Observatoire des droits & du plaidoyer",
+    "lead": "L'architecture juridique internationale qui protège les peuples autochtones, instrument par instrument.",
+    "jurisprudence": "Jurisprudences fondatrices",
+    "colInstrument": "Instrument / Mécanisme",
+    "colScope": "Portée",
+    "colNature": "Nature",
+    "binding": "Contraignant",
+    "declarative": "Déclaratif"
+  },
+  "News": {
+    "title": "Actualités & analyses",
+    "lead": "Une veille curée avec sources, et des articles de fond.",
+    "agendaHeading": "Agenda & opportunités",
+    "agendaSub": "Appels à candidatures, bourses et forums pour les peuples et jeunes autochtones — mis à jour en continu."
+  },
+  "Organizations": {
+    "title": "Organisations autochtones du monde",
+    "lead": "Un annuaire mondial des organisations autochtones et pastorales, filtrable par catégorie et par pays.",
+    "joinHeading": "Demander l'adhésion de votre organisation",
+    "joinText": "Les organisations autochtones, de femmes, de jeunes et pastorales peuvent demander à figurer dans l'annuaire. Chaque demande est examinée avant publication.",
+    "fieldOrg": "Nom de l'organisation",
+    "fieldEmail": "E-mail de contact",
+    "fieldCountry": "Pays",
+    "fieldCategory": "Catégorie",
+    "fieldMessage": "Message (mandat, liens…)",
+    "send": "Envoyer la demande",
+    "ok": "✓ Demande reçue. Nous reviendrons vers vous après examen.",
+    "err": "Veuillez indiquer un nom d'organisation et un e-mail valide."
+  },
+  "Resources": {
+    "title": "Bibliothèque de ressources",
+    "lead": "Rapports, publications et documents clés — avec étiquettes de savoirs traditionnels (TK Labels) et niveaux d'accès."
+  },
+  "About": {
+    "title": "À propos de la plateforme",
+    "lead": "Vision, gouvernance, éthique et comment contribuer."
+  },
+  "Fiche": {
+    "doc": "Fiche · Profil de peuple",
+    "population": "Population (fourchette)",
+    "language": "Langue",
+    "countries": "Pays",
+    "status": "Reconnaissance",
+    "region": "Région",
+    "wip": "Cette fiche est en cours de documentation avec les communautés concernées. Le contenu affiché est un brouillon de travail.",
+    "translation": "Cette fiche n'est pas encore disponible dans cette langue — version anglaise affichée. Aidez-nous à la traduire.",
+    "tk": "Avis Savoirs traditionnels — certains savoirs de ce peuple sont réservés à la communauté et volontairement non publiés ici, conformément aux principes CARE et au consentement communautaire.",
+    "keyFacts": "Données clés",
+    "instruments": "Instruments juridiques",
+    "sources": "Sources & méthode",
+    "sourcesText": "IWGIA · UN DESA · GT CADHP · sources communautaires (en cours de validation)",
+    "print": "🖶 Imprimer / PDF",
+    "secIdentity": "Identité & langue",
+    "secLivelihoods": "Mode de vie & économie pastorale",
+    "secRights": "Reconnaissance & droits",
+    "secThreats": "Menaces & résilience"
+  },
+  "Search": {
+    "people": "Peuple",
+    "organization": "Organisation",
+    "news": "Actu",
+    "call": "Appel"
+  },
+  "Footer": {
+    "mission": "Une plateforme indépendante qui documente les peuples autochtones du monde avec et pour les communautés.",
+    "explore": "Explorer",
+    "platform": "Plateforme",
+    "ethics": "Éthique & souveraineté des données",
+    "governance": "Gouvernance",
+    "join": "Rejoindre l'annuaire",
+    "newsletterHeading": "Infolettre",
+    "newsletterText": "Le condensé mensuel : peuples, droits et opportunités.",
+    "newsletterPlaceholder": "Votre adresse e-mail",
+    "newsletterButton": "S'inscrire",
+    "newsletterOk": "✓ Merci ! Vous êtes sur la liste.",
+    "legal": "AKAL · Prototype v0.2 · Construit selon les principes CARE et le consentement libre, préalable et éclairé · EN / FR / ES"
+  }
+}

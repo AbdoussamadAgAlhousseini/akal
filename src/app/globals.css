@@ -2,26 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * AKAL global base — mirrors akal_prototype.html :root + body.
+ * Colors are duplicated here as CSS variables (in addition to the Tailwind
+ * theme) so components can use var(--…) and rgba() overlays identically to
+ * the prototype.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --indigo: #1f2a5e;
+  --indigo-deep: #141c42;
+  --sable: #faf7f1;
+  --sable-2: #f1ebdd;
+  --laterite: #b45e23;
+  --laterite-soft: #e8d9c8;
+  --or: #e9c46a;
+  --encre: #1d1b17;
+  --gris: #6b675e;
+  --ligne: #ddd5c4;
+  --blanc: #fff;
+  --ok: #2f6b4f;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial,
+    sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--sable);
+    color: var(--encre);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  /* Respect users who prefer reduced motion (prototype rule). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* Print: keep only the fact sheet, drop chrome (prototype @media print). */
+  @media print {
+    body {
+      background: #fff;
+    }
+    header,
+    footer,
+    .no-print {
+      display: none !important;
+    }
   }
 }

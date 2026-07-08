@@ -1,0 +1,51 @@
+[
+  {
+    "day": "02",
+    "month": {"en": "JUL", "fr": "JUIL", "es": "JUL"},
+    "source": "IYRP / FAO",
+    "title": {
+      "en": "IYRP 2026: regional rangelands consultations continue across the Sahel",
+      "fr": "IYRP 2026 : les consultations régionales sur les parcours se poursuivent au Sahel",
+      "es": "IYRP 2026: continúan las consultas regionales sobre pastizales en el Sahel"
+    },
+    "body": {
+      "en": "The International Year of Rangelands and Pastoralists mobilizes pastoral networks around mobility rights and land tenure.",
+      "fr": "L'Année internationale des parcours et des pasteurs mobilise les réseaux pastoraux autour des droits de mobilité et du foncier.",
+      "es": "El Año Internacional de los Pastizales moviliza a las redes pastoriles en torno a la movilidad y la tenencia de tierras."
+    }
+  },
+  {
+    "day": "24",
+    "month": {"en": "JUN", "fr": "JUIN", "es": "JUN"},
+    "source": {
+      "en": "Academic review",
+      "fr": "Revue académique",
+      "es": "Revista académica"
+    },
+    "title": {
+      "en": "Green transition and pastoral lands: new research maps land-acquisition pressures",
+      "fr": "Transition verte et terres pastorales : de nouvelles recherches cartographient les pressions foncières",
+      "es": "Transición verde y tierras pastoriles: nuevas investigaciones mapean las presiones sobre la tierra"
+    },
+    "body": {
+      "en": "Peer-reviewed work documents how renewable-energy projects overlap customary pastoral territories.",
+      "fr": "Des travaux évalués par les pairs documentent le chevauchement entre projets d'énergies renouvelables et territoires pastoraux coutumiers.",
+      "es": "Trabajos revisados por pares documentan la superposición de proyectos de energía renovable con territorios pastoriles consuetudinarios."
+    }
+  },
+  {
+    "day": "15",
+    "month": {"en": "JUN", "fr": "JUIN", "es": "JUN"},
+    "source": "UN DESA",
+    "title": {
+      "en": "UNPFII follow-up: recommendations on indigenous data governance",
+      "fr": "Suivi de l'UNPFII : recommandations sur la gouvernance des données autochtones",
+      "es": "Seguimiento del UNPFII: recomendaciones sobre gobernanza de datos indígenas"
+    },
+    "body": {
+      "en": "The Permanent Forum reiterates support for CARE principles in national statistics and research.",
+      "fr": "L'Instance permanente réitère son soutien aux principes CARE dans les statistiques nationales et la recherche.",
+      "es": "El Foro Permanente reitera su apoyo a los principios CARE en las estadísticas nacionales y la investigación."
+    }
+  }
+]

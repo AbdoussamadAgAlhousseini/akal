@@ -1,0 +1,139 @@
+{
+  "Metadata": {
+    "title": "AKAL — Indigenous Peoples of the World",
+    "description": "AKAL — global reference platform on Indigenous Peoples and pastoralism: UN-style fact sheets, world map, rights observatory and opportunities. EN · FR · ES."
+  },
+  "Layout": {
+    "tagline": "Indigenous Peoples of the World",
+    "topbar": "Global reference platform on Indigenous Peoples & pastoralism",
+    "contribute": "Contribute",
+    "search": "Search",
+    "searchPlaceholder": "Search peoples, organizations, calls…",
+    "searchEmpty": "No results."
+  },
+  "Nav": {
+    "home": "Home",
+    "peoples": "Peoples",
+    "map": "World map",
+    "pastoralism": "Pastoralism",
+    "rights": "Rights & advocacy",
+    "news": "News",
+    "organizations": "Organizations",
+    "resources": "Resources",
+    "about": "About"
+  },
+  "Home": {
+    "eyebrow": "Documenting · Connecting · Advocating",
+    "title": "The living encyclopedia of the world's Indigenous Peoples",
+    "sub": "UN-style fact sheets, an interactive world map, and the first global hub dedicated to Indigenous pastoralism — built with communities, under Indigenous data sovereignty principles.",
+    "cta1": "Explore the peoples",
+    "cta2": "Open the world map",
+    "statPersons": "Indigenous persons worldwide",
+    "statPeoples": "Distinct peoples",
+    "statDocumented": "Peoples documented",
+    "statOrgs": "Organizations listed",
+    "featuredLabel": "Featured people — July 2026",
+    "readSheet": "Read the fact sheet",
+    "latestHeading": "Latest updates",
+    "latestSub": "Curated news from UN mechanisms, regional bodies and Indigenous organizations.",
+    "partnersHeading": "Partners & networks",
+    "sliderNote": "Illustrations. Community photographs will be added with Free, Prior and Informed Consent (FPIC)."
+  },
+  "Peoples": {
+    "title": "Peoples of the world",
+    "lead": "UN-style fact sheets: identity, demography, territory, livelihoods, legal recognition, threats and resilience. Population figures are ranges from multiple sources; self-identification prevails.",
+    "allRegions": "All regions",
+    "back": "← Back to all peoples",
+    "readSheet": "Read the fact sheet"
+  },
+  "Map": {
+    "title": "Interactive world map",
+    "lead": "Approximate presence areas by people. Click a circle to open the fact sheet.",
+    "legendPastoral": "Pastoralist peoples",
+    "legendOther": "Other Indigenous peoples",
+    "note": "For safety and data-sovereignty reasons, locations are deliberately approximate. Sacred sites and vulnerable communities are never mapped precisely."
+  },
+  "Pastoralism": {
+    "title": "Indigenous pastoralism",
+    "lead": "The only global section linking Indigenous rights and pastoral livelihoods — mobility as a right, customary land tenure, and the green transition.",
+    "iyrp": "2026 is the International Year of Rangelands and Pastoralists (IYRP), declared by the UN General Assembly."
+  },
+  "Rights": {
+    "title": "Rights & advocacy observatory",
+    "lead": "The international legal architecture protecting Indigenous Peoples, instrument by instrument.",
+    "jurisprudence": "Landmark jurisprudence",
+    "colInstrument": "Instrument / Mechanism",
+    "colScope": "Scope",
+    "colNature": "Nature",
+    "binding": "Binding",
+    "declarative": "Declarative"
+  },
+  "News": {
+    "title": "News & analysis",
+    "lead": "Curated updates with sources, plus in-depth articles.",
+    "agendaHeading": "Agenda & opportunities",
+    "agendaSub": "Open calls, fellowships and forums for Indigenous peoples and youth — updated continuously."
+  },
+  "Organizations": {
+    "title": "Indigenous organizations of the world",
+    "lead": "A global directory of Indigenous and pastoralist organizations, filterable by category and country.",
+    "joinHeading": "Request membership for your organization",
+    "joinText": "Indigenous, women's, youth and pastoralist organizations can request to be listed in the directory. Every request is reviewed before publication.",
+    "fieldOrg": "Organization name",
+    "fieldEmail": "Contact email",
+    "fieldCountry": "Country",
+    "fieldCategory": "Category",
+    "fieldMessage": "Message (mandate, links…)",
+    "send": "Send request",
+    "ok": "✓ Request received. We will get back to you after review.",
+    "err": "Please provide an organization name and a valid email."
+  },
+  "Resources": {
+    "title": "Resource library",
+    "lead": "Reports, publications and key documents — with Traditional Knowledge labels and access levels."
+  },
+  "About": {
+    "title": "About the platform",
+    "lead": "Vision, governance, ethics and how to contribute."
+  },
+  "Fiche": {
+    "doc": "Fact sheet · People profile",
+    "population": "Population (range)",
+    "language": "Language",
+    "countries": "Countries",
+    "status": "Recognition",
+    "region": "Region",
+    "wip": "This fact sheet is being documented with the communities concerned. Content shown is a working draft.",
+    "translation": "This fact sheet is not yet available in this language — showing the English version. Help us translate it.",
+    "tk": "Traditional Knowledge notice — some knowledge of this people is community-restricted and intentionally not published here, in line with CARE principles and community consent.",
+    "keyFacts": "Key facts",
+    "instruments": "Legal instruments",
+    "sources": "Sources & method",
+    "sourcesText": "IWGIA · UN DESA · ACHPR WGIP · community sources (under validation)",
+    "print": "🖶 Print / PDF",
+    "secIdentity": "Identity & language",
+    "secLivelihoods": "Livelihoods & pastoral economy",
+    "secRights": "Recognition & rights",
+    "secThreats": "Threats & resilience"
+  },
+  "Search": {
+    "people": "People",
+    "organization": "Organization",
+    "news": "News",
+    "call": "Call"
+  },
+  "Footer": {
+    "mission": "An independent platform documenting the world's Indigenous Peoples with and for communities.",
+    "explore": "Explore",
+    "platform": "Platform",
+    "ethics": "Ethics & data sovereignty",
+    "governance": "Governance",
+    "join": "Join the directory",
+    "newsletterHeading": "Newsletter",
+    "newsletterText": "Monthly digest of peoples, rights and opportunities.",
+    "newsletterPlaceholder": "Your email address",
+    "newsletterButton": "Subscribe",
+    "newsletterOk": "✓ Thank you! You are on the list.",
+    "legal": "AKAL · Prototype v0.2 · Built under CARE principles and Free, Prior and Informed Consent · EN / FR / ES"
+  }
+}

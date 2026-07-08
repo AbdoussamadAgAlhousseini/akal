@@ -1,0 +1,50 @@
+[
+  {
+    "heading": {
+      "en": "Ethics & data sovereignty",
+      "fr": "Éthique & souveraineté des données",
+      "es": "Ética y soberanía de datos"
+    },
+    "body": {
+      "en": "Built on the CARE principles (Collective benefit, Authority to control, Responsibility, Ethics) and Free, Prior and Informed Consent. Communities decide what is published, restricted or withheld. Sacred sites are never mapped.",
+      "fr": "Fondée sur les principes CARE (bénéfice collectif, autorité de contrôle, responsabilité, éthique) et le consentement libre, préalable et éclairé. Les communautés décident de ce qui est publié, restreint ou retenu. Les sites sacrés ne sont jamais cartographiés.",
+      "es": "Basada en los principios CARE y el consentimiento libre, previo e informado. Las comunidades deciden qué se publica, restringe o retiene. Los sitios sagrados nunca se cartografían."
+    }
+  },
+  {
+    "heading": {
+      "en": "Governance (in construction)",
+      "fr": "Gouvernance (en construction)",
+      "es": "Gobernanza (en construcción)"
+    },
+    "body": {
+      "en": "A validation council of indigenous representatives, researchers, youth and women reviews every fact sheet before publication.",
+      "fr": "Un conseil de validation composé de représentants autochtones, de chercheurs, de jeunes et de femmes relit chaque fiche avant publication.",
+      "es": "Un consejo de validación compuesto por representantes indígenas, investigadores, jóvenes y mujeres revisa cada ficha antes de su publicación."
+    }
+  },
+  {
+    "heading": {
+      "en": "Contribute",
+      "fr": "Contribuer",
+      "es": "Contribuir"
+    },
+    "body": {
+      "en": "Suggest corrections, propose a people's fact sheet with your community, translate content, or list your organization via the membership form on the Organizations page.",
+      "fr": "Suggérez des corrections, proposez une fiche avec votre communauté, traduisez des contenus, ou référencez votre organisation via le formulaire d'adhésion de la page Organisations.",
+      "es": "Sugiera correcciones, proponga una ficha con su comunidad, traduzca contenidos o registre su organización mediante el formulario de adhesión de la página Organizaciones."
+    }
+  },
+  {
+    "heading": {
+      "en": "Roadmap",
+      "fr": "Feuille de route",
+      "es": "Hoja de ruta"
+    },
+    "body": {
+      "en": "Phase 2: full organizations directory, indigenous languages module, media library, online academy, community space.",
+      "fr": "Phase 2 : annuaire complet des organisations, module langues autochtones, médiathèque, académie en ligne, espace communautaire.",
+      "es": "Fase 2: directorio completo de organizaciones, módulo de lenguas indígenas, mediateca, academia en línea, espacio comunitario."
+    }
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "regions": {
+    "africa": {"en": "Africa", "fr": "Afrique", "es": "África"},
+    "americas": {"en": "Americas", "fr": "Amériques", "es": "Américas"},
+    "arctic": {"en": "Arctic & Europe", "fr": "Arctique & Europe", "es": "Ártico y Europa"},
+    "asia": {"en": "Asia & Pacific", "fr": "Asie & Pacifique", "es": "Asia y Pacífico"}
+  },
+  "status": {
+    "state": {"en": "State-recognized", "fr": "Reconnu par l'État", "es": "Reconocido por el Estado"},
+    "achpr": {"en": "Recognized · ACHPR", "fr": "Reconnu · CADHP", "es": "Reconocido · CADHP"},
+    "self": {"en": "Self-identified", "fr": "Auto-identifié", "es": "Autoidentificado"},
+    "pastoral": {"en": "Pastoralist", "fr": "Pasteur", "es": "Pastor"}
+  },
+  "categories": {
+    "all": {"en": "All categories", "fr": "Toutes les catégories", "es": "Todas las categorías"},
+    "gen": {"en": "Indigenous organizations", "fr": "Organisations autochtones", "es": "Organizaciones indígenas"},
+    "women": {"en": "Indigenous women", "fr": "Femmes autochtones", "es": "Mujeres indígenas"},
+    "youth": {"en": "Indigenous youth", "fr": "Jeunes autochtones", "es": "Juventud indígena"},
+    "pastoral": {"en": "Pastoralist organizations", "fr": "Organisations pastorales", "es": "Organizaciones pastoriles"}
+  },
+  "countries": {
+    "all": {"en": "All countries", "fr": "Tous les pays", "es": "Todos los países"},
+    "int": {"en": "International", "fr": "International", "es": "Internacional"},
+    "bf": {"en": "Burkina Faso", "fr": "Burkina Faso", "es": "Burkina Faso"},
+    "td": {"en": "Chad", "fr": "Tchad", "es": "Chad"},
+    "ne": {"en": "Niger", "fr": "Niger", "es": "Níger"},
+    "dk": {"en": "Denmark", "fr": "Danemark", "es": "Dinamarca"},
+    "us": {"en": "United States", "fr": "États-Unis", "es": "Estados Unidos"},
+    "za": {"en": "South Africa", "fr": "Afrique du Sud", "es": "Sudáfrica"},
+    "th": {"en": "Thailand", "fr": "Thaïlande", "es": "Tailandia"},
+    "ec": {"en": "Ecuador", "fr": "Équateur", "es": "Ecuador"},
+    "no": {"en": "Norway", "fr": "Norvège", "es": "Noruega"},
+    "pe": {"en": "Peru", "fr": "Pérou", "es": "Perú"},
+    "de": {"en": "Germany", "fr": "Allemagne", "es": "Alemania"}
+  }
+}

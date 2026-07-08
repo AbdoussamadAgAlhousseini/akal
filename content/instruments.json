@@ -1,0 +1,51 @@
+[
+  {
+    "name": "UNDRIP / DNUDPA (2007)",
+    "binding": false,
+    "scope": {
+      "en": "UN Declaration — self-determination (art. 3), lands (art. 26), traditional knowledge (art. 31)",
+      "fr": "Déclaration ONU — autodétermination (art. 3), terres (art. 26), savoirs traditionnels (art. 31)",
+      "es": "Declaración ONU — libre determinación (art. 3), tierras (art. 26), conocimientos tradicionales (art. 31)"
+    }
+  },
+  {
+    "name": "ILO C169 (1989)",
+    "binding": true,
+    "scope": {
+      "en": "Only binding treaty specific to indigenous peoples — ~24 ratifications, almost none in Africa or Asia",
+      "fr": "Seul traité contraignant spécifique aux peuples autochtones — ~24 ratifications, quasi aucune en Afrique ou en Asie",
+      "es": "Único tratado vinculante específico — ~24 ratificaciones, casi ninguna en África o Asia"
+    }
+  },
+  {
+    "name": "CBD art. 8(j) + Nagoya",
+    "binding": true,
+    "scope": {
+      "en": "Traditional knowledge, benefit-sharing; Kunming-Montreal target 22 on indigenous participation",
+      "fr": "Savoirs traditionnels, partage des avantages ; cible 22 de Kunming-Montréal sur la participation autochtone",
+      "es": "Conocimientos tradicionales, participación en beneficios; meta 22 de Kunming-Montreal"
+    }
+  },
+  {
+    "name": {
+      "en": "UNPFII · EMRIP · Special Rapporteur",
+      "fr": "UNPFII · EMRIP · Rapporteur spécial",
+      "es": "UNPFII · EMRIP · Relator Especial"
+    },
+    "binding": false,
+    "scope": {
+      "en": "The three UN mechanisms: permanent forum, expert mechanism, special rapporteur",
+      "fr": "Les trois mécanismes onusiens : instance permanente, mécanisme d'experts, rapporteur spécial",
+      "es": "Los tres mecanismos de la ONU: foro permanente, mecanismo de expertos, relator especial"
+    }
+  },
+  {
+    "name": "ACHPR / CADHP",
+    "binding": true,
+    "scope": {
+      "en": "African Commission — Working Group on Indigenous Populations; landmark decisions",
+      "fr": "Commission africaine — Groupe de travail sur les populations autochtones ; décisions historiques",
+      "es": "Comisión Africana — Grupo de Trabajo sobre Poblaciones Indígenas; decisiones históricas"
+    }
+  }
+]
