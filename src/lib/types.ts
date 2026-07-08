@@ -61,7 +61,18 @@ export type Organization = {
   /** Country code used by the taxonomy (e.g. "bf", "td", "int"). */
   country: string;
   mission: Localized;
+  /** Official website (optional — only shown when a verified value is set). */
   url?: string;
+  /** Public contact email (optional — only shown when a verified value is set). */
+  email?: string;
+  logo?: string;
+};
+
+export type Partner = {
+  name: string;
+  /** Official website (optional). */
+  url?: string;
+  /** Path to a logo image under /public (optional; falls back to the name). */
   logo?: string;
 };
 
@@ -114,7 +125,7 @@ export type Taxonomies = {
 
 export type HomeContent = {
   stats: {indigenousPersons: string; distinctPeoples: string};
-  partners: string[];
+  partners: Partner[];
 };
 
 /** Destination of a search hit — a subset of the app's known pathnames. */

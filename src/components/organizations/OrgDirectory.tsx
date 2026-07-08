@@ -87,6 +87,28 @@ export default function OrgDirectory({
                 <p className="text-[14px] text-gris">
                   {localize(org.mission, locale)}
                 </p>
+                {(org.url || org.email) && (
+                  <div className="mt-3 flex flex-col gap-1 border-t border-ligne pt-3 text-[13px]">
+                    {org.url && (
+                      <a
+                        href={org.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-laterite hover:underline"
+                      >
+                        {org.url.replace(/^https?:\/\//, '').replace(/\/$/, '')} ↗
+                      </a>
+                    )}
+                    {org.email && (
+                      <a
+                        href={`mailto:${org.email}`}
+                        className="text-indigo hover:underline"
+                      >
+                        {org.email}
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}

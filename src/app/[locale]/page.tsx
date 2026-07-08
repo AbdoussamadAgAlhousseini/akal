@@ -115,15 +115,33 @@ export default async function HomePage({params}: Props) {
         <h2 className="mb-1.5 mt-[52px] font-serif text-[26px] font-semibold text-indigo">
           {t('partnersHeading')}
         </h2>
-        <div className="mt-[18px] flex flex-wrap gap-[13px] pb-[70px]">
-          {home.partners.map((p) => (
-            <span
-              key={p}
-              className="rounded border border-ligne bg-white px-5 py-[11px] text-[13px] font-semibold text-gris"
-            >
-              {p}
-            </span>
-          ))}
+        <div className="mt-[18px] flex flex-wrap items-center gap-[13px] pb-[70px]">
+          {home.partners.map((p) => {
+            const inner = p.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={p.logo} alt={p.name} className="h-7 w-auto" />
+            ) : (
+              <span className="text-[13px] font-semibold text-gris">{p.name}</span>
+            );
+            const base =
+              'flex items-center rounded border border-ligne bg-white px-5 py-[11px]';
+            return p.url ? (
+              <a
+                key={p.name}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={p.name}
+                className={`${base} hover:border-indigo`}
+              >
+                {inner}
+              </a>
+            ) : (
+              <span key={p.name} className={base}>
+                {inner}
+              </span>
+            );
+          })}
         </div>
       </Container>
     </main>

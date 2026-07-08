@@ -4,10 +4,10 @@
     "distinctPeoples": "~5 000"
   },
   "partners": [
-    "Association Tin Hinan",
-    "IWGIA",
-    "Cultural Survival",
-    "IPACC",
-    "GYBN"
+    {"name": "Association Tin Hinan"},
+    {"name": "IWGIA"},
+    {"name": "Cultural Survival"},
+    {"name": "IPACC"},
+    {"name": "GYBN"}
   ]
 }
