@@ -3,6 +3,7 @@
     "name": "Association Tin Hinan",
     "category": "women",
     "country": "bf",
+    "url": "http://www.tin-hinane.org",
     "mission": {
       "en": "Rights of indigenous women & pastoral communities of the Sahel",
       "fr": "Droits des femmes autochtones & communautés pastorales du Sahel",
@@ -13,6 +14,7 @@
     "name": "AFPAT",
     "category": "women",
     "country": "td",
+    "url": "https://afpat.net",
     "mission": {
       "en": "Association of Peul Women & Autochthonous Peoples of Chad — climate & rights advocacy",
       "fr": "Association des Femmes Peules et Peuples Autochtones du Tchad — plaidoyer climat & droits",
@@ -23,6 +25,7 @@
     "name": "FIMI / IIWF",
     "category": "women",
     "country": "pe",
+    "url": "https://fimi-iiwf.org",
     "mission": {
       "en": "International Indigenous Women's Forum — global network and observatory",
       "fr": "Forum international des femmes autochtones — réseau mondial et observatoire",
@@ -33,6 +36,7 @@
     "name": "Global Indigenous Youth Caucus",
     "category": "youth",
     "country": "int",
+    "url": "https://www.globalindigenousyouthcaucus.org",
     "mission": {
       "en": "Youth voice within the UN Permanent Forum (UNPFII)",
       "fr": "La voix des jeunes au sein de l'Instance permanente de l'ONU (UNPFII)",
@@ -43,6 +47,7 @@
     "name": "GYBN",
     "category": "youth",
     "country": "de",
+    "url": "https://gybn.org",
     "mission": {
       "en": "Global Youth Biodiversity Network — youth engagement in the CBD, incl. indigenous youth",
       "fr": "Réseau mondial de la jeunesse pour la biodiversité — engagement dans la CDB, dont jeunes autochtones",
@@ -53,6 +58,7 @@
     "name": "WAMIP",
     "category": "pastoral",
     "country": "int",
+    "url": "https://wamipglobal.com",
     "mission": {
       "en": "World Alliance of Mobile Indigenous Peoples — global pastoralist alliance",
       "fr": "Alliance mondiale des peuples autochtones mobiles — alliance pastorale mondiale",
@@ -63,6 +69,7 @@
     "name": "Réseau Billital Maroobé",
     "category": "pastoral",
     "country": "ne",
+    "url": "https://maroobe.com",
     "mission": {
       "en": "West African network of pastoralist organizations — transhumance & markets",
       "fr": "Réseau ouest-africain des organisations d'éleveurs — transhumance & marchés",
@@ -73,6 +80,7 @@
     "name": "IWGIA",
     "category": "gen",
     "country": "dk",
+    "url": "https://www.iwgia.org",
     "mission": {
       "en": "Documentation & advocacy — publishes The Indigenous World",
       "fr": "Documentation & plaidoyer — publie The Indigenous World",
@@ -83,6 +91,7 @@
     "name": "Cultural Survival",
     "category": "gen",
     "country": "us",
+    "url": "https://www.culturalsurvival.org",
     "mission": {
       "en": "Advocacy, community radio & grants (Keepers of the Earth Fund)",
       "fr": "Plaidoyer, radios communautaires & subventions (Keepers of the Earth Fund)",
@@ -93,6 +102,7 @@
     "name": "IPACC",
     "category": "gen",
     "country": "za",
+    "url": "https://www.ipacc.org.za",
     "mission": {
       "en": "Coordinating committee of ~135 African indigenous organizations",
       "fr": "Comité de coordination d'environ 135 organisations autochtones africaines",
@@ -103,6 +113,7 @@
     "name": "AIPP",
     "category": "gen",
     "country": "th",
+    "url": "https://aippnet.org",
     "mission": {
       "en": "Asia Indigenous Peoples Pact — regional alliance",
       "fr": "Asia Indigenous Peoples Pact — alliance régionale",
@@ -113,6 +124,7 @@
     "name": "COICA",
     "category": "gen",
     "country": "ec",
+    "url": "https://coicamazonia.org",
     "mission": {
       "en": "Coordination of indigenous organizations of the Amazon basin",
       "fr": "Coordination des organisations autochtones du bassin amazonien",
@@ -123,6 +135,7 @@
     "name": "Saami Council",
     "category": "gen",
     "country": "no",
+    "url": "https://www.saamicouncil.net",
     "mission": {
       "en": "Voluntary Sámi organization across four countries",
       "fr": "Organisation sámi volontaire couvrant quatre pays",
