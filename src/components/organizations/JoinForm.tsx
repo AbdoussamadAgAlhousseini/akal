@@ -20,21 +20,44 @@ export default function JoinForm({
   const [category, setCategory] = useState(categories[0]?.key ?? '');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState<'idle' | 'ok' | 'err'>('idle');
+  const [submitting, setSubmitting] = useState(false);
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const valid =
       org.trim().length > 1 &&
       email.includes('@') &&
       email.lastIndexOf('.') > email.indexOf('@');
-    if (valid) {
-      setStatus('ok');
-      setOrg('');
-      setEmail('');
-      setCountry('');
-      setMessage('');
-    } else {
+    if (!valid) {
       setStatus('err');
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/join', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          organization: org.trim(),
+          email: email.trim(),
+          country: country.trim() || undefined,
+          category,
+          message: message.trim() || undefined
+        })
+      });
+      if (res.ok) {
+        setStatus('ok');
+        setOrg('');
+        setEmail('');
+        setCountry('');
+        setMessage('');
+      } else {
+        setStatus('err');
+      }
+    } catch {
+      setStatus('err');
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -121,7 +144,8 @@ export default function JoinForm({
         <div className="sm:col-span-2">
           <button
             type="submit"
-            className="rounded bg-laterite px-6 py-3 text-[14.5px] font-semibold text-white hover:bg-[#9E501B]"
+            disabled={submitting}
+            className="rounded bg-laterite px-6 py-3 text-[14.5px] font-semibold text-white hover:bg-[#9E501B] disabled:opacity-60"
           >
             {t('send')}
           </button>

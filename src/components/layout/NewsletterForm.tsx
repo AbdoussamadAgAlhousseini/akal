@@ -1,22 +1,38 @@
 'use client';
 
 import {useState} from 'react';
-import {useTranslations} from 'next-intl';
+import {useLocale, useTranslations} from 'next-intl';
 
 /**
- * Footer newsletter sign-up. Client-side validation + confirmation only;
- * the real subscription endpoint is wired later (roadmap step 3, backend).
+ * Footer newsletter sign-up. Posts to /api/newsletter, which stores the
+ * subscriber in Supabase. No email is sent to subscribers yet (needs a
+ * verified sending domain — later phase).
  */
 export default function NewsletterForm() {
   const t = useTranslations('Footer');
+  const locale = useLocale();
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (email.includes('@') && email.includes('.')) {
-      setDone(true);
-      setEmail('');
+    if (!email.includes('@') || !email.includes('.')) return;
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email.trim(), locale})
+      });
+      if (res.ok) {
+        setDone(true);
+        setEmail('');
+      }
+    } catch {
+      // keep the form as-is on network error
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -34,7 +50,8 @@ export default function NewsletterForm() {
         />
         <button
           type="submit"
-          className="rounded bg-laterite px-[15px] py-2.5 text-[13.5px] font-semibold text-white hover:bg-[#9E501B]"
+          disabled={submitting}
+          className="rounded bg-laterite px-[15px] py-2.5 text-[13.5px] font-semibold text-white hover:bg-[#9E501B] disabled:opacity-60"
         >
           {t('newsletterButton')}
         </button>
