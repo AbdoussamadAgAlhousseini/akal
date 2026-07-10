@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {
+  getAdminContributions,
   getAdminNews,
   getAdminOpps,
   getAdminOrgs,
@@ -9,18 +10,21 @@ import {
 import {Card} from '../ui';
 
 export default async function Dashboard() {
-  const [orgs, news, opps, requests, subs] = await Promise.all([
+  const [orgs, news, opps, requests, subs, contribs] = await Promise.all([
     getAdminOrgs(),
     getAdminNews(),
     getAdminOpps(),
     getAdminRequests(),
-    getAdminSubscribers()
+    getAdminSubscribers(),
+    getAdminContributions()
   ]);
 
   const pending = requests.filter((r) => r.status === 'pending').length;
+  const newContribs = contribs.filter((c) => c.status === 'new').length;
 
   const stats = [
     {label: 'Demandes en attente', value: pending, href: '/admin/requests', accent: pending > 0},
+    {label: 'Contributions nouvelles', value: newContribs, href: '/admin/contributions', accent: newContribs > 0},
     {label: 'Organisations', value: orgs.length, href: '/admin/organizations'},
     {label: 'Actualités', value: news.length, href: '/admin/news'},
     {label: 'Opportunités', value: opps.length, href: '/admin/opportunities'},

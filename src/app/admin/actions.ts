@@ -159,6 +159,27 @@ export async function deleteRequest(fd: FormData) {
   redirect('/admin/requests');
 }
 
+// ---- Contributions ----
+export async function setContributionStatus(fd: FormData) {
+  guard();
+  await getSupabaseAdmin()
+    .from('contributions')
+    .update({status: str(fd, 'status')})
+    .eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/contributions');
+}
+
+export async function deleteContribution(fd: FormData) {
+  guard();
+  await getSupabaseAdmin()
+    .from('contributions')
+    .delete()
+    .eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/contributions');
+}
+
 // ---- Subscribers ----
 export async function deleteSubscriber(fd: FormData) {
   guard();

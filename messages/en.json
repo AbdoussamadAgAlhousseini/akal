@@ -96,6 +96,25 @@
     "title": "About the platform",
     "lead": "Vision, governance, ethics and how to contribute."
   },
+  "Contribute": {
+    "title": "Contribute to AKAL",
+    "lead": "AKAL is built with communities. Suggest a correction, propose a people's fact sheet, help translate, or reach out — every contribution is reviewed by our team.",
+    "name": "Your name",
+    "email": "Your email",
+    "type": "Type of contribution",
+    "message": "Your message",
+    "messagePlaceholder": "Tell us about your contribution (links, details…)",
+    "send": "Send contribution",
+    "ok": "✓ Thank you! Your contribution has been received. We will get back to you after review.",
+    "err": "Please provide your name, a valid email and a message.",
+    "types": {
+      "correction": "Suggest a correction",
+      "factSheet": "Propose a people's fact sheet",
+      "translation": "Help translate",
+      "organization": "List an organization",
+      "other": "Other"
+    }
+  },
   "Fiche": {
     "doc": "Fact sheet · People profile",
     "population": "Population (range)",

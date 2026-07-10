@@ -42,7 +42,7 @@ export default async function Header() {
             <Search entries={searchIndex} />
             <LangSwitcher />
             <Link
-              href="/about"
+              href="/contribute"
               className="rounded bg-laterite px-[17px] py-2.5 text-[13.5px] font-semibold text-white hover:bg-[#9E501B]"
             >
               {t('contribute')}

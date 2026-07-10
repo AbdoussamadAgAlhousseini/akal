@@ -14,7 +14,8 @@ const STATIC_HREFS: StaticPathname[] = [
   '/news',
   '/organizations',
   '/resources',
-  '/about'
+  '/about',
+  '/contribute'
 ];
 
 type Href = Parameters<typeof getPathname>[0]['href'];

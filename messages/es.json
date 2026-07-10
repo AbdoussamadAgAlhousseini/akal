@@ -96,6 +96,25 @@
     "title": "Acerca de la plataforma",
     "lead": "Visión, gobernanza, ética y cómo contribuir."
   },
+  "Contribute": {
+    "title": "Contribuir a AKAL",
+    "lead": "AKAL se construye con las comunidades. Sugiera una corrección, proponga una ficha de pueblo, ayude a traducir o escríbanos — cada contribución es revisada por nuestro equipo.",
+    "name": "Su nombre",
+    "email": "Su correo electrónico",
+    "type": "Tipo de contribución",
+    "message": "Su mensaje",
+    "messagePlaceholder": "Cuéntenos sobre su contribución (enlaces, detalles…)",
+    "send": "Enviar contribución",
+    "ok": "✓ ¡Gracias! Su contribución ha sido recibida. Le responderemos tras su revisión.",
+    "err": "Indique su nombre, un correo válido y un mensaje.",
+    "types": {
+      "correction": "Sugerir una corrección",
+      "factSheet": "Proponer una ficha de pueblo",
+      "translation": "Ayudar a traducir",
+      "organization": "Registrar una organización",
+      "other": "Otro"
+    }
+  },
   "Fiche": {
     "doc": "Ficha · Perfil de pueblo",
     "population": "Población (rango)",

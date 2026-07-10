@@ -53,6 +53,16 @@ export type AdminSubscriber = {
   created_at: string;
 };
 
+export type AdminContribution = {
+  id: string;
+  name: string;
+  email: string;
+  type: string;
+  message: string;
+  status: string;
+  created_at: string;
+};
+
 async function all<T>(table: string, order: string, ascending = true): Promise<T[]> {
   try {
     const {data, error} = await getSupabaseAdmin()
@@ -72,3 +82,5 @@ export const getAdminRequests = () =>
   all<AdminRequest>('membership_requests', 'created_at', false);
 export const getAdminSubscribers = () =>
   all<AdminSubscriber>('newsletter_subscribers', 'created_at', false);
+export const getAdminContributions = () =>
+  all<AdminContribution>('contributions', 'created_at', false);

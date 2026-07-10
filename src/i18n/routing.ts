@@ -62,6 +62,11 @@ export const routing = defineRouting({
       en: '/about',
       fr: '/a-propos',
       es: '/acerca-de'
+    },
+    '/contribute': {
+      en: '/contribute',
+      fr: '/contribuer',
+      es: '/contribuir'
     }
   }
 });
