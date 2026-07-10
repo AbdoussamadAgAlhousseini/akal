@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import {useLocale, useTranslations} from 'next-intl';
 
 /**
@@ -14,6 +14,7 @@ export default function NewsletterForm() {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const hpRef = useRef<HTMLInputElement>(null);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -23,7 +24,11 @@ export default function NewsletterForm() {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email: email.trim(), locale})
+        body: JSON.stringify({
+          email: email.trim(),
+          locale,
+          website: hpRef.current?.value || ''
+        })
       });
       if (res.ok) {
         setDone(true);
@@ -39,6 +44,15 @@ export default function NewsletterForm() {
   return (
     <div>
       <form onSubmit={onSubmit} className="mt-2.5 flex gap-2">
+        <input
+          ref={hpRef}
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute left-[-9999px] h-0 w-0 overflow-hidden opacity-0"
+        />
         <input
           type="email"
           required

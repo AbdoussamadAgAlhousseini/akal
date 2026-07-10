@@ -1,6 +1,7 @@
 import {NextResponse} from 'next/server';
 import {z} from 'zod';
 import {getSupabaseAdmin} from '@/lib/supabase';
+import {clientIp, rateLimit} from '@/lib/rate-limit';
 
 const schema = z.object({
   email: z.string().trim().email().max(200),
@@ -13,9 +14,25 @@ const schema = z.object({
  * subscribers yet (that needs a verified sending domain — later phase).
  */
 export async function POST(req: Request) {
+  if (!rateLimit(`nl:${clientIp(req)}`)) {
+    return NextResponse.json({error: 'rate'}, {status: 429});
+  }
+
+  let raw: unknown;
+  try {
+    raw = await req.json();
+  } catch {
+    return NextResponse.json({error: 'invalid'}, {status: 400});
+  }
+
+  // Honeypot: bots fill the hidden `website` field — pretend success, store nothing.
+  if (raw && typeof raw === 'object' && (raw as {website?: string}).website) {
+    return NextResponse.json({ok: true});
+  }
+
   let data: z.infer<typeof schema>;
   try {
-    data = schema.parse(await req.json());
+    data = schema.parse(raw);
   } catch {
     return NextResponse.json({error: 'invalid'}, {status: 400});
   }

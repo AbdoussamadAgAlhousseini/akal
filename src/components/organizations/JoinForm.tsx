@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import {useTranslations} from 'next-intl';
 
 /**
@@ -21,6 +21,7 @@ export default function JoinForm({
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState<'idle' | 'ok' | 'err'>('idle');
   const [submitting, setSubmitting] = useState(false);
+  const hpRef = useRef<HTMLInputElement>(null);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -42,7 +43,8 @@ export default function JoinForm({
           email: email.trim(),
           country: country.trim() || undefined,
           category,
-          message: message.trim() || undefined
+          message: message.trim() || undefined,
+          website: hpRef.current?.value || ''
         })
       });
       if (res.ok) {
@@ -77,6 +79,16 @@ export default function JoinForm({
         onSubmit={onSubmit}
         className="grid grid-cols-1 gap-[15px] sm:grid-cols-2"
       >
+        {/* Honeypot — hidden from users, only bots fill it */}
+        <input
+          ref={hpRef}
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute left-[-9999px] h-0 w-0 overflow-hidden opacity-0"
+        />
         <div>
           <label htmlFor="j-org" className={label}>
             {t('fieldOrg')} *
