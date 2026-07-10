@@ -1,0 +1,171 @@
+'use server';
+
+import {revalidatePath, revalidateTag} from 'next/cache';
+import {redirect} from 'next/navigation';
+import {getSupabaseAdmin} from '@/lib/supabase';
+import {
+  checkPassword,
+  clearSession,
+  isAuthed,
+  setSession
+} from '@/lib/admin-auth';
+
+function guard() {
+  if (!isAuthed()) throw new Error('Unauthorized');
+}
+
+function str(fd: FormData, key: string): string {
+  const v = fd.get(key);
+  return typeof v === 'string' ? v.trim() : '';
+}
+
+function loc(fd: FormData, base: string) {
+  return {en: str(fd, `${base}_en`), fr: str(fd, `${base}_fr`), es: str(fd, `${base}_es`)};
+}
+
+function num(fd: FormData, key: string): number {
+  const n = parseInt(str(fd, key), 10);
+  return Number.isFinite(n) ? n : 0;
+}
+
+/** Refresh the admin section AND the public site (content cache tag). */
+function refresh() {
+  revalidateTag('content');
+  revalidatePath('/admin', 'layout');
+}
+
+// ---- Auth ----
+export async function login(fd: FormData) {
+  if (checkPassword(str(fd, 'password'))) {
+    setSession();
+    redirect('/admin');
+  }
+  redirect('/admin/login?error=1');
+}
+
+export async function logout() {
+  clearSession();
+  redirect('/admin/login');
+}
+
+// ---- Organizations ----
+export async function saveOrg(fd: FormData) {
+  guard();
+  const id = str(fd, 'id');
+  const row = {
+    name: str(fd, 'name'),
+    category: str(fd, 'category'),
+    country: str(fd, 'country'),
+    mission: loc(fd, 'mission'),
+    url: str(fd, 'url') || null,
+    email: str(fd, 'email') || null,
+    status: str(fd, 'status') || 'pending',
+    sort: num(fd, 'sort')
+  };
+  const db = getSupabaseAdmin();
+  if (id) await db.from('organizations').update(row).eq('id', id);
+  else await db.from('organizations').insert(row);
+  refresh();
+  redirect('/admin/organizations');
+}
+
+export async function setOrgStatus(fd: FormData) {
+  guard();
+  await getSupabaseAdmin()
+    .from('organizations')
+    .update({status: str(fd, 'status')})
+    .eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/organizations');
+}
+
+export async function deleteOrg(fd: FormData) {
+  guard();
+  await getSupabaseAdmin().from('organizations').delete().eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/organizations');
+}
+
+// ---- News ----
+export async function saveNews(fd: FormData) {
+  guard();
+  const id = str(fd, 'id');
+  const row = {
+    day: str(fd, 'day'),
+    month: loc(fd, 'month'),
+    source: loc(fd, 'source'),
+    title: loc(fd, 'title'),
+    body: loc(fd, 'body'),
+    published: str(fd, 'published') === 'on',
+    sort: num(fd, 'sort')
+  };
+  const db = getSupabaseAdmin();
+  if (id) await db.from('news').update(row).eq('id', id);
+  else await db.from('news').insert(row);
+  refresh();
+  redirect('/admin/news');
+}
+
+export async function deleteNews(fd: FormData) {
+  guard();
+  await getSupabaseAdmin().from('news').delete().eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/news');
+}
+
+// ---- Opportunities ----
+export async function saveOpp(fd: FormData) {
+  guard();
+  const id = str(fd, 'id');
+  const row = {
+    title: loc(fd, 'title'),
+    body: loc(fd, 'body'),
+    deadline: loc(fd, 'deadline'),
+    published: str(fd, 'published') === 'on',
+    sort: num(fd, 'sort')
+  };
+  const db = getSupabaseAdmin();
+  if (id) await db.from('opportunities').update(row).eq('id', id);
+  else await db.from('opportunities').insert(row);
+  refresh();
+  redirect('/admin/opportunities');
+}
+
+export async function deleteOpp(fd: FormData) {
+  guard();
+  await getSupabaseAdmin().from('opportunities').delete().eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/opportunities');
+}
+
+// ---- Membership requests ----
+export async function setRequestStatus(fd: FormData) {
+  guard();
+  await getSupabaseAdmin()
+    .from('membership_requests')
+    .update({status: str(fd, 'status')})
+    .eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/requests');
+}
+
+export async function deleteRequest(fd: FormData) {
+  guard();
+  await getSupabaseAdmin()
+    .from('membership_requests')
+    .delete()
+    .eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/requests');
+}
+
+// ---- Subscribers ----
+export async function deleteSubscriber(fd: FormData) {
+  guard();
+  await getSupabaseAdmin()
+    .from('newsletter_subscribers')
+    .delete()
+    .eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/subscribers');
+}
