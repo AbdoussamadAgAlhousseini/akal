@@ -33,8 +33,8 @@ export default async function NewsPage({
   const t = await getTranslations('News');
   const tn = await getTranslations('Nav');
 
-  const news = getNews();
-  const opportunities = getOpportunities();
+  const news = await getNews();
+  const opportunities = await getOpportunities();
 
   return (
     <section className="pb-[70px]">

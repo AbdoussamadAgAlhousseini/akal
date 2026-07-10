@@ -26,10 +26,10 @@ export default async function HomePage({params}: Props) {
 
   const home = getHome();
   const peoples = getPeoples();
-  const orgs = getOrganizations();
+  const orgs = await getOrganizations();
   const taxonomies = getTaxonomies();
   const featured = getFeaturedPeople();
-  const news = getNews();
+  const news = await getNews();
   const slides = getSlides('home');
 
   const stats = [

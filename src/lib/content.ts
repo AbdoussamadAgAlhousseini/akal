@@ -1,5 +1,8 @@
 import 'server-only';
 
+import {unstable_cache} from 'next/cache';
+import {getSupabaseAdmin} from './supabase';
+
 import type {
   ContentBlock,
   HomeContent,
@@ -14,9 +17,6 @@ import type {
 } from './types';
 
 import peoplesData from '../../content/peoples.json';
-import organizationsData from '../../content/organizations.json';
-import newsData from '../../content/news.json';
-import opportunitiesData from '../../content/opportunities.json';
 import instrumentsData from '../../content/instruments.json';
 import jurisprudenceData from '../../content/jurisprudence.json';
 import taxonomiesData from '../../content/taxonomies.json';
@@ -64,17 +64,62 @@ export function getFeaturedPeople(): People {
   return getPeoples()[0];
 }
 
-export function getOrganizations(): Organization[] {
-  return organizationsData as Organization[];
-}
+/**
+ * Organizations, news and opportunities live in Supabase so they can be managed
+ * (added/edited, requests approved) without a redeploy. Reads are cached for a
+ * few minutes and shared across requests; edits appear within that window. On
+ * any error (or missing env) they return [] so the site never crashes.
+ */
+export const getOrganizations = unstable_cache(
+  async (): Promise<Organization[]> => {
+    try {
+      const {data, error} = await getSupabaseAdmin()
+        .from('organizations')
+        .select('name,category,country,mission,url,email,logo')
+        .eq('status', 'approved')
+        .order('sort', {ascending: true});
+      return error || !data ? [] : (data as Organization[]);
+    } catch {
+      return [];
+    }
+  },
+  ['organizations'],
+  {revalidate: 300, tags: ['content']}
+);
 
-export function getNews(): NewsItem[] {
-  return newsData as NewsItem[];
-}
+export const getNews = unstable_cache(
+  async (): Promise<NewsItem[]> => {
+    try {
+      const {data, error} = await getSupabaseAdmin()
+        .from('news')
+        .select('day,month,source,title,body')
+        .eq('published', true)
+        .order('sort', {ascending: true});
+      return error || !data ? [] : (data as NewsItem[]);
+    } catch {
+      return [];
+    }
+  },
+  ['news'],
+  {revalidate: 300, tags: ['content']}
+);
 
-export function getOpportunities(): Opportunity[] {
-  return opportunitiesData as Opportunity[];
-}
+export const getOpportunities = unstable_cache(
+  async (): Promise<Opportunity[]> => {
+    try {
+      const {data, error} = await getSupabaseAdmin()
+        .from('opportunities')
+        .select('title,body,deadline')
+        .eq('published', true)
+        .order('sort', {ascending: true});
+      return error || !data ? [] : (data as Opportunity[]);
+    } catch {
+      return [];
+    }
+  },
+  ['opportunities'],
+  {revalidate: 300, tags: ['content']}
+);
 
 export function getInstruments(): Instrument[] {
   return instrumentsData as Instrument[];

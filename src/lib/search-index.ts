@@ -32,7 +32,7 @@ export async function buildSearchIndex(locale: string): Promise<SearchEntry[]> {
     });
   }
 
-  for (const o of getOrganizations()) {
+  for (const o of await getOrganizations()) {
     const mission = localize(o.mission, locale);
     entries.push({
       kind: t('organization'),
@@ -43,7 +43,7 @@ export async function buildSearchIndex(locale: string): Promise<SearchEntry[]> {
     });
   }
 
-  for (const n of getNews()) {
+  for (const n of await getNews()) {
     const title = localize(n.title, locale);
     entries.push({
       kind: t('news'),
@@ -54,7 +54,7 @@ export async function buildSearchIndex(locale: string): Promise<SearchEntry[]> {
     });
   }
 
-  for (const op of getOpportunities()) {
+  for (const op of await getOpportunities()) {
     const title = localize(op.title, locale);
     entries.push({
       kind: t('call'),

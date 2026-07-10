@@ -34,7 +34,7 @@ export default async function OrganizationsPage({
   const t = await getTranslations('Organizations');
   const tn = await getTranslations('Nav');
 
-  const orgs = getOrganizations();
+  const orgs = await getOrganizations();
   const taxonomies = getTaxonomies();
 
   // Membership categories: every category except the "all" filter entry.
