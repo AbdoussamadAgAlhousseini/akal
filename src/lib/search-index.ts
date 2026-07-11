@@ -20,7 +20,7 @@ export async function buildSearchIndex(locale: string): Promise<SearchEntry[]> {
   const t = await getTranslations({locale, namespace: 'Search'});
   const entries: SearchEntry[] = [];
 
-  for (const p of getPeoples()) {
+  for (const p of await getPeoples()) {
     const countries = localize(p.countries, locale);
     entries.push({
       kind: t('people'),

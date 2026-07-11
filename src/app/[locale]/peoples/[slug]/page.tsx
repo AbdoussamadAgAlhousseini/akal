@@ -14,8 +14,8 @@ type Props = {
 
 // Pre-render every public fact sheet in every locale. Non-public slugs are
 // never emitted (the loader filters `visibility`).
-export function generateStaticParams() {
-  const slugs = getPeopleSlugs();
+export async function generateStaticParams() {
+  const slugs = await getPeopleSlugs();
   return routing.locales.flatMap((locale) =>
     slugs.map((slug) => ({locale, slug}))
   );
@@ -23,7 +23,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({params}: Props): Promise<Metadata> {
   const {locale, slug} = await params;
-  const person = getPeople(slug);
+  const person = await getPeople(slug);
   if (!person) return {title: 'AKAL'};
   return buildMetadata({
     locale,
@@ -38,7 +38,7 @@ export default async function PeopleFichePage({params}: Props) {
   setRequestLocale(locale);
 
   // Server-side visibility gate (§7.1): restricted/community/unpublished → 404.
-  const person = getPeople(slug);
+  const person = await getPeople(slug);
   if (!person) notFound();
 
   const taxonomies = getTaxonomies();

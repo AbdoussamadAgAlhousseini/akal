@@ -25,10 +25,10 @@ export default async function HomePage({params}: Props) {
   const t = await getTranslations('Home');
 
   const home = getHome();
-  const peoples = getPeoples();
+  const peoples = await getPeoples();
   const orgs = await getOrganizations();
   const taxonomies = getTaxonomies();
-  const featured = getFeaturedPeople();
+  const featured = await getFeaturedPeople();
   const news = await getNews();
   const slides = getSlides('home');
 
@@ -98,13 +98,15 @@ export default async function HomePage({params}: Props) {
           <Slider slides={slides} locale={locale} note={t('sliderNote')} />
         </div>
 
-        <FeaturedPeople
-          person={featured}
-          taxonomies={taxonomies}
-          locale={locale}
-          label={t('featuredLabel')}
-          readSheet={t('readSheet')}
-        />
+        {featured && (
+          <FeaturedPeople
+            person={featured}
+            taxonomies={taxonomies}
+            locale={locale}
+            label={t('featuredLabel')}
+            readSheet={t('readSheet')}
+          />
+        )}
 
         <h2 className="mb-1.5 mt-[52px] font-serif text-[26px] font-semibold text-indigo">
           {t('latestHeading')}

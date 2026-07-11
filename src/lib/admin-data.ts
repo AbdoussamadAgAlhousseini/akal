@@ -53,6 +53,34 @@ export type AdminSubscriber = {
   created_at: string;
 };
 
+export type AdminPeople = {
+  id: string;
+  slug: string;
+  name: string;
+  endonym: string;
+  region: string;
+  pastoral: boolean;
+  population: string;
+  lat: number;
+  lng: number;
+  radius: number;
+  recognition: string[];
+  countries: Localized;
+  language: Localized;
+  summary: Localized;
+  sections:
+    | Record<
+        string,
+        {identity: string; livelihoods: string; rights: string; threats: string}
+      >
+    | null;
+  visibility: string;
+  consent_status: string | null;
+  sources: string[];
+  featured: boolean;
+  sort: number;
+};
+
 export type AdminContribution = {
   id: string;
   name: string;
@@ -84,3 +112,4 @@ export const getAdminSubscribers = () =>
   all<AdminSubscriber>('newsletter_subscribers', 'created_at', false);
 export const getAdminContributions = () =>
   all<AdminContribution>('contributions', 'created_at', false);
+export const getAdminPeoples = () => all<AdminPeople>('peoples', 'sort');

@@ -33,7 +33,7 @@ export default async function PeoplesPage({
   const t = await getTranslations('Peoples');
   const tn = await getTranslations('Nav');
 
-  const peoples = getPeoples();
+  const peoples = await getPeoples();
   const taxonomies = getTaxonomies();
 
   const regions = Object.entries(taxonomies.regions).map(([key, label]) => ({

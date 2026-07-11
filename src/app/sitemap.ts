@@ -21,8 +21,9 @@ const STATIC_HREFS: StaticPathname[] = [
 type Href = Parameters<typeof getPathname>[0]['href'];
 
 /** Full sitemap: every page in every locale, with hreflang alternates. */
-export default function sitemap(): MetadataRoute.Sitemap {
-  const slugHrefs: Href[] = getPeopleSlugs().map((slug) => ({
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const slugs = await getPeopleSlugs();
+  const slugHrefs: Href[] = slugs.map((slug) => ({
     pathname: '/peoples/[slug]' as const,
     params: {slug}
   }));

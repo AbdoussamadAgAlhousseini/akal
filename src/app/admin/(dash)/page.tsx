@@ -4,19 +4,21 @@ import {
   getAdminNews,
   getAdminOpps,
   getAdminOrgs,
+  getAdminPeoples,
   getAdminRequests,
   getAdminSubscribers
 } from '@/lib/admin-data';
 import {PageTitle} from '../ui';
 
 export default async function Dashboard() {
-  const [orgs, news, opps, requests, subs, contribs] = await Promise.all([
+  const [orgs, news, opps, requests, subs, contribs, peoples] = await Promise.all([
     getAdminOrgs(),
     getAdminNews(),
     getAdminOpps(),
     getAdminRequests(),
     getAdminSubscribers(),
-    getAdminContributions()
+    getAdminContributions(),
+    getAdminPeoples()
   ]);
 
   const pending = requests.filter((r) => r.status === 'pending').length;
@@ -25,6 +27,7 @@ export default async function Dashboard() {
   const stats = [
     {label: 'Demandes en attente', value: pending, href: '/admin/requests', accent: pending > 0},
     {label: 'Contributions nouvelles', value: newContribs, href: '/admin/contributions', accent: newContribs > 0},
+    {label: 'Peuples', value: peoples.length, href: '/admin/peoples', accent: false},
     {label: 'Organisations', value: orgs.length, href: '/admin/organizations', accent: false},
     {label: 'Actualités', value: news.length, href: '/admin/news', accent: false},
     {label: 'Opportunités', value: opps.length, href: '/admin/opportunities', accent: false},

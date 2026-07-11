@@ -180,6 +180,80 @@ export async function deleteContribution(fd: FormData) {
   redirect('/admin/contributions');
 }
 
+// ---- Peoples (fact sheets) ----
+const LANGS = ['fr', 'en', 'es'] as const;
+const SECTION_KEYS = ['identity', 'livelihoods', 'rights', 'threats'] as const;
+
+export async function savePeople(fd: FormData) {
+  guard();
+  const id = str(fd, 'id');
+
+  // Long sections: include a language only if at least one of its 4 parts is set.
+  const sections: Record<string, Record<string, string>> = {};
+  for (const l of LANGS) {
+    const parts = SECTION_KEYS.map((k) => str(fd, `sec_${k}_${l}`));
+    if (parts.some((v) => v.length > 0)) {
+      sections[l] = {
+        identity: parts[0],
+        livelihoods: parts[1],
+        rights: parts[2],
+        threats: parts[3]
+      };
+    }
+  }
+
+  const recognition = ['state', 'achpr', 'self'].filter(
+    (r) => str(fd, `rec_${r}`) === 'on'
+  );
+  const sources = str(fd, 'sources')
+    .split('\n')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const featured = str(fd, 'featured') === 'on';
+
+  const row = {
+    slug: str(fd, 'slug'),
+    name: str(fd, 'name'),
+    endonym: str(fd, 'endonym'),
+    region: str(fd, 'region'),
+    pastoral: str(fd, 'pastoral') === 'on',
+    population: str(fd, 'population'),
+    lat: Number(str(fd, 'lat')) || 0,
+    lng: Number(str(fd, 'lng')) || 0,
+    radius: num(fd, 'radius') || 300000,
+    recognition,
+    countries: loc(fd, 'countries'),
+    language: loc(fd, 'language'),
+    summary: loc(fd, 'summary'),
+    sections: Object.keys(sections).length ? sections : null,
+    visibility: str(fd, 'visibility') || 'public',
+    consent_status: str(fd, 'consent_status') || null,
+    sources,
+    featured,
+    sort: num(fd, 'sort')
+  };
+
+  const db = getSupabaseAdmin();
+  // Only one people can be featured at a time.
+  if (featured) {
+    await db
+      .from('peoples')
+      .update({featured: false})
+      .neq('id', id || '00000000-0000-0000-0000-000000000000');
+  }
+  if (id) await db.from('peoples').update(row).eq('id', id);
+  else await db.from('peoples').insert(row);
+  refresh();
+  redirect('/admin/peoples');
+}
+
+export async function deletePeople(fd: FormData) {
+  guard();
+  await getSupabaseAdmin().from('peoples').delete().eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/peoples');
+}
+
 // ---- Subscribers ----
 export async function deleteSubscriber(fd: FormData) {
   guard();

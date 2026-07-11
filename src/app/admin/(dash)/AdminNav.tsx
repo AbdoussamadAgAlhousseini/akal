@@ -7,6 +7,7 @@ const NAV = [
   {href: '/admin', label: 'Tableau de bord'},
   {href: '/admin/requests', label: "Demandes d'adhésion"},
   {href: '/admin/contributions', label: 'Contributions'},
+  {href: '/admin/peoples', label: 'Peuples'},
   {href: '/admin/organizations', label: 'Organisations'},
   {href: '/admin/news', label: 'Actualités'},
   {href: '/admin/opportunities', label: 'Opportunités'},

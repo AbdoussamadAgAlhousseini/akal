@@ -8,6 +8,7 @@ import type {
   HomeContent,
   Instrument,
   Jurisprudence,
+  Localized,
   NewsItem,
   Opportunity,
   Organization,
@@ -16,7 +17,6 @@ import type {
   Taxonomies
 } from './types';
 
-import peoplesData from '../../content/peoples.json';
 import instrumentsData from '../../content/instruments.json';
 import jurisprudenceData from '../../content/jurisprudence.json';
 import taxonomiesData from '../../content/taxonomies.json';
@@ -38,31 +38,108 @@ import homeData from '../../content/home.json';
  * the HTML, and the search index.
  */
 
-const ALL_PEOPLES = peoplesData as People[];
+type PeopleRow = {
+  slug: string;
+  name: string;
+  endonym: string;
+  region: string;
+  pastoral: boolean;
+  population: string;
+  lat: number;
+  lng: number;
+  radius: number;
+  recognition: string[];
+  countries: Localized;
+  language: Localized;
+  summary: Localized;
+  sections: People['sections'] | null;
+  visibility: string;
+  consent_status: string | null;
+  sources: string[];
+  featured: boolean;
+};
 
-/** Only publicly cleared fact sheets ever leave the server. */
-function isPublic(p: People): boolean {
-  return p.visibility === 'public';
+function rowToPeople(r: PeopleRow): People {
+  return {
+    slug: r.slug,
+    name: r.name,
+    endonym: r.endonym,
+    region: r.region as People['region'],
+    pastoral: r.pastoral,
+    population: r.population,
+    coords: [r.lat, r.lng],
+    radius: r.radius,
+    recognition: r.recognition as People['recognition'],
+    countries: r.countries,
+    language: r.language,
+    summary: r.summary,
+    sections: r.sections ?? undefined,
+    visibility: r.visibility as People['visibility'],
+    consentStatus: r.consent_status ?? undefined,
+    sources: r.sources
+  };
 }
 
-export function getPeoples(): People[] {
-  return ALL_PEOPLES.filter(isPublic);
-}
+/**
+ * Peoples live in Supabase. Only `visibility = 'public'` fact sheets are ever
+ * returned — restricted/community/unpublished peoples never reach the client,
+ * the HTML, the map or the search index (data sovereignty, §7.1). Cached ~5min.
+ */
+export const getPeoples = unstable_cache(
+  async (): Promise<People[]> => {
+    try {
+      const {data, error} = await getSupabaseAdmin()
+        .from('peoples')
+        .select('*')
+        .eq('visibility', 'public')
+        .order('sort', {ascending: true});
+      return error || !data ? [] : (data as PeopleRow[]).map(rowToPeople);
+    } catch {
+      return [];
+    }
+  },
+  ['peoples'],
+  {revalidate: 300, tags: ['content']}
+);
 
-export function getPeople(slug: string): People | undefined {
-  const person = ALL_PEOPLES.find((p) => p.slug === slug);
-  return person && isPublic(person) ? person : undefined;
+/** A single public fact sheet (undefined if non-public or missing). */
+export async function getPeople(slug: string): Promise<People | undefined> {
+  return (await getPeoples()).find((p) => p.slug === slug);
 }
 
 /** Slugs for `generateStaticParams` — public peoples only. */
-export function getPeopleSlugs(): string[] {
-  return getPeoples().map((p) => p.slug);
+export async function getPeopleSlugs(): Promise<string[]> {
+  return (await getPeoples()).map((p) => p.slug);
 }
 
-export function getFeaturedPeople(): People {
-  // The prototype features the first documented people (Kel Tamasheq).
-  return getPeoples()[0];
-}
+/** The "featured" public people (flag set in the admin), else the first one. */
+export const getFeaturedPeople = unstable_cache(
+  async (): Promise<People | undefined> => {
+    try {
+      const db = getSupabaseAdmin();
+      let res = await db
+        .from('peoples')
+        .select('*')
+        .eq('visibility', 'public')
+        .eq('featured', true)
+        .order('sort', {ascending: true})
+        .limit(1);
+      if (!res.data || res.data.length === 0) {
+        res = await db
+          .from('peoples')
+          .select('*')
+          .eq('visibility', 'public')
+          .order('sort', {ascending: true})
+          .limit(1);
+      }
+      return res.data?.[0] ? rowToPeople(res.data[0] as PeopleRow) : undefined;
+    } catch {
+      return undefined;
+    }
+  },
+  ['featured-people'],
+  {revalidate: 300, tags: ['content']}
+);
 
 /**
  * Organizations, news and opportunities live in Supabase so they can be managed

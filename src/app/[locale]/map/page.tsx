@@ -35,7 +35,7 @@ export default async function MapPage({
   const tp = await getTranslations('Peoples');
 
   // Only public peoples reach the client (visibility filtered server-side).
-  const items = getPeoples().map((p) => ({
+  const items = (await getPeoples()).map((p) => ({
     slug: p.slug,
     name: p.name,
     countries: localize(p.countries, locale),
