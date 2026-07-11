@@ -9,6 +9,26 @@ import {
   isAuthed,
   setSession
 } from '@/lib/admin-auth';
+import initialPeoples from '../../../content/peoples.json';
+
+type SeedPerson = {
+  slug: string;
+  name: string;
+  endonym: string;
+  region: string;
+  pastoral?: boolean;
+  population: string;
+  coords: [number, number];
+  radius: number;
+  recognition: string[];
+  countries: unknown;
+  language: unknown;
+  summary: unknown;
+  sections?: unknown;
+  visibility?: string;
+  consentStatus?: string;
+  sources: string[];
+};
 
 function guard() {
   if (!isAuthed()) throw new Error('Unauthorized');
@@ -250,6 +270,41 @@ export async function savePeople(fd: FormData) {
 export async function deletePeople(fd: FormData) {
   guard();
   await getSupabaseAdmin().from('peoples').delete().eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/admin/peoples');
+}
+
+/** One-time import of the bundled starter fact sheets (only if the table is empty). */
+export async function seedInitialPeoples() {
+  guard();
+  const db = getSupabaseAdmin();
+  const {count} = await db
+    .from('peoples')
+    .select('id', {count: 'exact', head: true});
+  if (!count) {
+    const rows = (initialPeoples as unknown as SeedPerson[]).map((p, i) => ({
+      slug: p.slug,
+      name: p.name,
+      endonym: p.endonym,
+      region: p.region,
+      pastoral: p.pastoral === true,
+      population: p.population,
+      lat: p.coords[0],
+      lng: p.coords[1],
+      radius: p.radius,
+      recognition: p.recognition,
+      countries: p.countries,
+      language: p.language,
+      summary: p.summary,
+      sections: p.sections ?? null,
+      visibility: p.visibility ?? 'public',
+      consent_status: p.consentStatus ?? null,
+      sources: p.sources,
+      featured: p.slug === 'kel-tamasheq',
+      sort: i
+    }));
+    await db.from('peoples').insert(rows);
+  }
   refresh();
   redirect('/admin/peoples');
 }

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import {getAdminPeoples} from '@/lib/admin-data';
 import {getTaxonomies} from '@/lib/content';
 import {localize} from '@/lib/localize';
-import {deletePeople, savePeople} from '../../actions';
+import {deletePeople, savePeople, seedInitialPeoples} from '../../actions';
 import {
   Card,
   Field,
@@ -52,6 +52,21 @@ export default async function PeoplesAdmin({
       <PageTitle hint="Fiches des peuples. Elles alimentent la page Peuples, la carte et le peuple à la une.">
         Peuples
       </PageTitle>
+
+      {peoples.length === 0 && (
+        <Card>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-[14px] text-gris">
+              Aucun peuple pour l'instant. Importez les 8 fiches de base pour
+              démarrer (Kel Tamasheq, Fulɓe, Amazigh, Maasai, San, Sámi, Quechua,
+              Inuit).
+            </p>
+            <form action={seedInitialPeoples}>
+              <button className={btn}>Importer les 8 peuples de base</button>
+            </form>
+          </div>
+        </Card>
+      )}
 
       <Card title={e ? `Modifier — ${e.name}` : 'Ajouter un peuple'}>
         <form action={savePeople} className="flex flex-col gap-4">
