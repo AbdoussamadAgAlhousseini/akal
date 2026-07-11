@@ -3,7 +3,17 @@ import {getAdminOrgs} from '@/lib/admin-data';
 import {getTaxonomies} from '@/lib/content';
 import {localize} from '@/lib/localize';
 import {deleteOrg, saveOrg, setOrgStatus} from '../../actions';
-import {Card, Field, Select, TriField, btn, btnGhost} from '../../ui';
+import {
+  Card,
+  Field,
+  PageTitle,
+  Select,
+  StatusBadge,
+  TriField,
+  btn,
+  btnDanger,
+  btnGhost
+} from '../../ui';
 
 const STATUS_LABEL: Record<string, string> = {
   approved: 'Approuvée',
@@ -35,9 +45,9 @@ export default async function OrgAdmin({
 
   return (
     <div className="flex flex-col gap-5">
-      <h1 className="font-serif text-[26px] font-semibold text-indigo">
+      <PageTitle hint="Ajoutez, modifiez, approuvez ou masquez les organisations de l'annuaire.">
         Organisations
-      </h1>
+      </PageTitle>
 
       <Card title={editing ? `Modifier — ${editing.name}` : 'Ajouter une organisation'}>
         <form action={saveOrg} className="flex flex-col gap-3">
@@ -96,17 +106,16 @@ export default async function OrgAdmin({
               <span className="min-w-[160px] flex-1 font-semibold text-indigo">
                 {o.name}
               </span>
-              <span
-                className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
+              <StatusBadge
+                label={STATUS_LABEL[o.status] ?? o.status}
+                tone={
                   o.status === 'approved'
-                    ? 'bg-[#E3EBE6] text-ok'
+                    ? 'ok'
                     : o.status === 'rejected'
-                      ? 'bg-[#F6E0DA] text-[#8A3A22]'
-                      : 'bg-sable-2 text-gris'
-                }`}
-              >
-                {STATUS_LABEL[o.status] ?? o.status}
-              </span>
+                      ? 'bad'
+                      : 'warn'
+                }
+              />
               <div className="flex flex-wrap gap-1.5">
                 <Link href={`/admin/organizations?edit=${o.id}`} className={btnGhost}>
                   Modifier
@@ -127,9 +136,7 @@ export default async function OrgAdmin({
                 )}
                 <form action={deleteOrg}>
                   <input type="hidden" name="id" defaultValue={o.id} />
-                  <button className="rounded border border-[#E7C4B8] bg-white px-3 py-1.5 text-[13px] font-semibold text-[#8A3A22] hover:border-[#8A3A22]">
-                    Supprimer
-                  </button>
+                  <button className={btnDanger}>Supprimer</button>
                 </form>
               </div>
             </div>

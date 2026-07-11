@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {getAdminOpps} from '@/lib/admin-data';
 import {deleteOpp, saveOpp} from '../../actions';
-import {Card, Field, TriField, btn, btnGhost} from '../../ui';
+import {Card, Field, PageTitle, StatusBadge, TriField, btn, btnDanger, btnGhost} from '../../ui';
 
 export default async function OppAdmin({
   searchParams
@@ -14,9 +14,9 @@ export default async function OppAdmin({
 
   return (
     <div className="flex flex-col gap-5">
-      <h1 className="font-serif text-[26px] font-semibold text-indigo">
+      <PageTitle hint="Ajoutez, modifiez ou dépubliez les opportunités.">
         Opportunités
-      </h1>
+      </PageTitle>
 
       <Card title={editing ? 'Modifier une opportunité' : 'Ajouter une opportunité'}>
         <form action={saveOpp} className="flex flex-col gap-3">
@@ -64,20 +64,14 @@ export default async function OppAdmin({
               <span className="min-w-[200px] flex-1 font-semibold text-indigo">
                 {o.title?.fr || o.title?.en}
               </span>
-              {!o.published && (
-                <span className="rounded-full bg-sable-2 px-2 py-0.5 text-[11px] font-bold text-gris">
-                  Brouillon
-                </span>
-              )}
+              {!o.published && <StatusBadge label="Brouillon" tone="warn" />}
               <div className="flex gap-1.5">
                 <Link href={`/admin/opportunities?edit=${o.id}`} className={btnGhost}>
                   Modifier
                 </Link>
                 <form action={deleteOpp}>
                   <input type="hidden" name="id" defaultValue={o.id} />
-                  <button className="rounded border border-[#E7C4B8] bg-white px-3 py-1.5 text-[13px] font-semibold text-[#8A3A22] hover:border-[#8A3A22]">
-                    Supprimer
-                  </button>
+                  <button className={btnDanger}>Supprimer</button>
                 </form>
               </div>
             </div>

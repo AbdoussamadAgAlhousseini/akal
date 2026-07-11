@@ -3,7 +3,7 @@ import {getAdminRequests} from '@/lib/admin-data';
 import {getTaxonomies} from '@/lib/content';
 import {localize} from '@/lib/localize';
 import {deleteRequest, setRequestStatus} from '../../actions';
-import {Card, btnGhost} from '../../ui';
+import {Card, PageTitle, StatusBadge, btnDanger, btnGhost} from '../../ui';
 
 const STATUS: Record<string, string> = {
   pending: 'En attente',
@@ -18,9 +18,7 @@ export default async function RequestsAdmin() {
 
   return (
     <div className="flex flex-col gap-5">
-      <h1 className="font-serif text-[26px] font-semibold text-indigo">
-        Demandes d'adhésion
-      </h1>
+      <PageTitle>Demandes d'adhésion</PageTitle>
       <p className="text-[13px] text-gris">
         Après approbation, ajoutez l'organisation dans l'onglet{' '}
         <Link href="/admin/organizations" className="font-semibold text-laterite">
@@ -41,9 +39,18 @@ export default async function RequestsAdmin() {
             <span className="font-serif text-[18px] font-semibold text-indigo">
               {r.organization}
             </span>
-            <span className="rounded-full bg-sable-2 px-2.5 py-0.5 text-[11.5px] font-bold text-indigo">
-              {STATUS[r.status] ?? r.status}
-            </span>
+            <StatusBadge
+              label={STATUS[r.status] ?? r.status}
+              tone={
+                r.status === 'approved'
+                  ? 'ok'
+                  : r.status === 'rejected'
+                    ? 'bad'
+                    : r.status === 'reviewed'
+                      ? 'neutral'
+                      : 'warn'
+              }
+            />
           </div>
           <div className="grid gap-1 text-[14px] text-encre sm:grid-cols-2">
             <div>
@@ -80,9 +87,7 @@ export default async function RequestsAdmin() {
             ))}
             <form action={deleteRequest}>
               <input type="hidden" name="id" defaultValue={r.id} />
-              <button className="rounded border border-[#E7C4B8] bg-white px-3 py-1.5 text-[13px] font-semibold text-[#8A3A22] hover:border-[#8A3A22]">
-                Supprimer
-              </button>
+              <button className={btnDanger}>Supprimer</button>
             </form>
           </div>
         </Card>

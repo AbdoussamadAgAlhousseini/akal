@@ -1,15 +1,15 @@
 import {getAdminSubscribers} from '@/lib/admin-data';
 import {deleteSubscriber} from '../../actions';
-import {Card} from '../../ui';
+import {Card, PageTitle, btnDanger} from '../../ui';
 
 export default async function SubscribersAdmin() {
   const subs = await getAdminSubscribers();
 
   return (
     <div className="flex flex-col gap-5">
-      <h1 className="font-serif text-[26px] font-semibold text-indigo">
+      <PageTitle hint="Personnes inscrites à l'infolettre.">
         Inscrits newsletter
-      </h1>
+      </PageTitle>
 
       <Card title={`Liste (${subs.length})`}>
         {subs.length === 0 ? (
@@ -35,9 +35,7 @@ export default async function SubscribersAdmin() {
                 </span>
                 <form action={deleteSubscriber}>
                   <input type="hidden" name="id" defaultValue={s.id} />
-                  <button className="rounded border border-[#E7C4B8] bg-white px-3 py-1.5 text-[13px] font-semibold text-[#8A3A22] hover:border-[#8A3A22]">
-                    Supprimer
-                  </button>
+                  <button className={btnDanger}>Supprimer</button>
                 </form>
               </div>
             ))}

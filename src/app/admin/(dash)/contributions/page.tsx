@@ -1,6 +1,6 @@
 import {getAdminContributions} from '@/lib/admin-data';
 import {deleteContribution, setContributionStatus} from '../../actions';
-import {Card, btnGhost} from '../../ui';
+import {Card, PageTitle, StatusBadge, btnDanger, btnGhost} from '../../ui';
 
 const TYPE: Record<string, string> = {
   correction: 'Correction',
@@ -21,9 +21,9 @@ export default async function ContributionsAdmin() {
 
   return (
     <div className="flex flex-col gap-5">
-      <h1 className="font-serif text-[26px] font-semibold text-indigo">
+      <PageTitle hint="Corrections, propositions de fiches, traductions et messages reçus.">
         Contributions
-      </h1>
+      </PageTitle>
 
       {items.length === 0 && (
         <Card>
@@ -38,12 +38,17 @@ export default async function ContributionsAdmin() {
               {c.name}
             </span>
             <div className="flex items-center gap-2">
-              <span className="rounded-full bg-laterite-soft px-2.5 py-0.5 text-[11.5px] font-bold text-laterite">
-                {TYPE[c.type] ?? c.type}
-              </span>
-              <span className="rounded-full bg-sable-2 px-2.5 py-0.5 text-[11.5px] font-bold text-indigo">
-                {STATUS[c.status] ?? c.status}
-              </span>
+              <StatusBadge label={TYPE[c.type] ?? c.type} tone="accent" />
+              <StatusBadge
+                label={STATUS[c.status] ?? c.status}
+                tone={
+                  c.status === 'done'
+                    ? 'ok'
+                    : c.status === 'reviewed'
+                      ? 'neutral'
+                      : 'warn'
+                }
+              />
             </div>
           </div>
           <div className="text-[14px] text-encre">
@@ -68,9 +73,7 @@ export default async function ContributionsAdmin() {
             ))}
             <form action={deleteContribution}>
               <input type="hidden" name="id" defaultValue={c.id} />
-              <button className="rounded border border-[#E7C4B8] bg-white px-3 py-1.5 text-[13px] font-semibold text-[#8A3A22] hover:border-[#8A3A22]">
-                Supprimer
-              </button>
+              <button className={btnDanger}>Supprimer</button>
             </form>
           </div>
         </Card>
