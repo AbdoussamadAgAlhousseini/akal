@@ -91,7 +91,7 @@ export default async function OrgAdmin({
               {editing ? 'Enregistrer' : 'Ajouter'}
             </button>
             {editing && (
-              <Link href="/admin/organizations" className={btnGhost}>
+              <Link href="/abdoussamad/organizations" className={btnGhost}>
                 Annuler
               </Link>
             )}
@@ -117,7 +117,7 @@ export default async function OrgAdmin({
                 }
               />
               <div className="flex flex-wrap gap-1.5">
-                <Link href={`/admin/organizations?edit=${o.id}`} className={btnGhost}>
+                <Link href={`/abdoussamad/organizations?edit=${o.id}`} className={btnGhost}>
                   Modifier
                 </Link>
                 {o.status !== 'approved' && (

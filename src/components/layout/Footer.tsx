@@ -107,7 +107,7 @@ export default async function Footer() {
       </div>
 
       <div className="border-t border-white/[0.12] px-4 py-[15px] text-center text-xs text-[#7C84AB]">
-        {t('legal')}
+        © {new Date().getFullYear()} AKAL
       </div>
     </footer>
   );

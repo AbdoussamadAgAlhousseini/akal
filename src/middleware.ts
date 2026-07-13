@@ -5,8 +5,8 @@ export default createMiddleware(routing);
 
 export const config = {
   // Match all pathnames except:
-  // - /api, /admin (admin is French-only, outside i18n routing)
+  // - /api, /abdoussamad (admin is French-only, outside i18n routing)
   // - /_next, /_vercel (internals)
   // - any path containing a dot (static files like favicon.ico, images…)
-  matcher: '/((?!api|admin|_next|_vercel|.*\\..*).*)'
+  matcher: '/((?!api|abdoussamad|_next|_vercel|.*\\..*).*)'
 };

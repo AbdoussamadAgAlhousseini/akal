@@ -4,6 +4,7 @@ import {
   getAdminNews,
   getAdminOpps,
   getAdminOrgs,
+  getAdminPartners,
   getAdminPeoples,
   getAdminRequests,
   getAdminSubscribers
@@ -11,27 +12,30 @@ import {
 import {PageTitle} from '../ui';
 
 export default async function Dashboard() {
-  const [orgs, news, opps, requests, subs, contribs, peoples] = await Promise.all([
-    getAdminOrgs(),
-    getAdminNews(),
-    getAdminOpps(),
-    getAdminRequests(),
-    getAdminSubscribers(),
-    getAdminContributions(),
-    getAdminPeoples()
-  ]);
+  const [orgs, news, opps, requests, subs, contribs, peoples, partners] =
+    await Promise.all([
+      getAdminOrgs(),
+      getAdminNews(),
+      getAdminOpps(),
+      getAdminRequests(),
+      getAdminSubscribers(),
+      getAdminContributions(),
+      getAdminPeoples(),
+      getAdminPartners()
+    ]);
 
   const pending = requests.filter((r) => r.status === 'pending').length;
   const newContribs = contribs.filter((c) => c.status === 'new').length;
 
   const stats = [
-    {label: 'Demandes en attente', value: pending, href: '/admin/requests', accent: pending > 0},
-    {label: 'Contributions nouvelles', value: newContribs, href: '/admin/contributions', accent: newContribs > 0},
-    {label: 'Peuples', value: peoples.length, href: '/admin/peoples', accent: false},
-    {label: 'Organisations', value: orgs.length, href: '/admin/organizations', accent: false},
-    {label: 'Actualités', value: news.length, href: '/admin/news', accent: false},
-    {label: 'Opportunités', value: opps.length, href: '/admin/opportunities', accent: false},
-    {label: 'Inscrits newsletter', value: subs.length, href: '/admin/subscribers', accent: false}
+    {label: 'Demandes en attente', value: pending, href: '/abdoussamad/requests', accent: pending > 0},
+    {label: 'Contributions nouvelles', value: newContribs, href: '/abdoussamad/contributions', accent: newContribs > 0},
+    {label: 'Peuples', value: peoples.length, href: '/abdoussamad/peoples', accent: false},
+    {label: 'Organisations', value: orgs.length, href: '/abdoussamad/organizations', accent: false},
+    {label: 'Partenaires', value: partners.length, href: '/abdoussamad/partners', accent: false},
+    {label: 'Actualités', value: news.length, href: '/abdoussamad/news', accent: false},
+    {label: 'Opportunités', value: opps.length, href: '/abdoussamad/opportunities', accent: false},
+    {label: 'Inscrits newsletter', value: subs.length, href: '/abdoussamad/subscribers', accent: false}
   ];
 
   return (

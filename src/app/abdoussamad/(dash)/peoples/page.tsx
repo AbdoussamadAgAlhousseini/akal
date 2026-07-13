@@ -167,7 +167,7 @@ export default async function PeoplesAdmin({
               {e ? 'Enregistrer' : 'Ajouter le peuple'}
             </button>
             {e && (
-              <Link href="/admin/peoples" className={btnGhost}>
+              <Link href="/abdoussamad/peoples" className={btnGhost}>
                 Annuler
               </Link>
             )}
@@ -189,7 +189,7 @@ export default async function PeoplesAdmin({
                 tone={p.visibility === 'public' ? 'ok' : 'warn'}
               />
               <div className="flex gap-1.5">
-                <Link href={`/admin/peoples?edit=${p.id}`} className={btnGhost}>
+                <Link href={`/abdoussamad/peoples?edit=${p.id}`} className={btnGhost}>
                   Modifier
                 </Link>
                 <form action={deletePeople}>

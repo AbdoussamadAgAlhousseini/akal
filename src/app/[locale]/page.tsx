@@ -3,12 +3,14 @@ import {Link} from '@/i18n/navigation';
 import Container from '@/components/common/Container';
 import Slider from '@/components/common/Slider';
 import FeaturedPeople from '@/components/home/FeaturedPeople';
+import PartnersMarquee from '@/components/home/PartnersMarquee';
 import NewsList from '@/components/news/NewsList';
 import {
   getFeaturedPeople,
   getHome,
   getNews,
   getOrganizations,
+  getPartners,
   getPeoples,
   getSlides,
   getTaxonomies
@@ -30,6 +32,7 @@ export default async function HomePage({params}: Props) {
   const taxonomies = getTaxonomies();
   const featured = await getFeaturedPeople();
   const news = await getNews();
+  const partners = await getPartners();
   const slides = getSlides('home');
 
   const stats = [
@@ -114,37 +117,14 @@ export default async function HomePage({params}: Props) {
         <p className="mb-6 text-[15px] text-gris">{t('latestSub')}</p>
         <NewsList items={news} locale={locale} limit={2} />
 
-        <h2 className="mb-1.5 mt-[52px] font-serif text-[26px] font-semibold text-indigo">
-          {t('partnersHeading')}
-        </h2>
-        <div className="mt-[18px] flex flex-wrap items-center gap-[13px] pb-[70px]">
-          {home.partners.map((p) => {
-            const inner = p.logo ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={p.logo} alt={p.name} className="h-7 w-auto" />
-            ) : (
-              <span className="text-[13px] font-semibold text-gris">{p.name}</span>
-            );
-            const base =
-              'flex items-center rounded border border-ligne bg-white px-5 py-[11px]';
-            return p.url ? (
-              <a
-                key={p.name}
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={p.name}
-                className={`${base} hover:border-indigo`}
-              >
-                {inner}
-              </a>
-            ) : (
-              <span key={p.name} className={base}>
-                {inner}
-              </span>
-            );
-          })}
-        </div>
+        {partners.length > 0 && (
+          <>
+            <h2 className="mb-1.5 mt-[52px] font-serif text-[26px] font-semibold text-indigo">
+              {t('partnersHeading')}
+            </h2>
+            <PartnersMarquee partners={partners} />
+          </>
+        )}
       </Container>
     </main>
   );

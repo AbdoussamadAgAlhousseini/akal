@@ -10,6 +10,7 @@ import {
   setSession
 } from '@/lib/admin-auth';
 import initialPeoples from '../../../content/peoples.json';
+import homeData from '../../../content/home.json';
 
 type SeedPerson = {
   slug: string;
@@ -51,21 +52,21 @@ function num(fd: FormData, key: string): number {
 /** Refresh the admin section AND the public site (content cache tag). */
 function refresh() {
   revalidateTag('content');
-  revalidatePath('/admin', 'layout');
+  revalidatePath('/abdoussamad', 'layout');
 }
 
 // ---- Auth ----
 export async function login(fd: FormData) {
   if (checkPassword(str(fd, 'password'))) {
     setSession();
-    redirect('/admin');
+    redirect('/abdoussamad');
   }
-  redirect('/admin/login?error=1');
+  redirect('/abdoussamad/login?error=1');
 }
 
 export async function logout() {
   clearSession();
-  redirect('/admin/login');
+  redirect('/abdoussamad/login');
 }
 
 // ---- Organizations ----
@@ -86,7 +87,7 @@ export async function saveOrg(fd: FormData) {
   if (id) await db.from('organizations').update(row).eq('id', id);
   else await db.from('organizations').insert(row);
   refresh();
-  redirect('/admin/organizations');
+  redirect('/abdoussamad/organizations');
 }
 
 export async function setOrgStatus(fd: FormData) {
@@ -96,14 +97,14 @@ export async function setOrgStatus(fd: FormData) {
     .update({status: str(fd, 'status')})
     .eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/organizations');
+  redirect('/abdoussamad/organizations');
 }
 
 export async function deleteOrg(fd: FormData) {
   guard();
   await getSupabaseAdmin().from('organizations').delete().eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/organizations');
+  redirect('/abdoussamad/organizations');
 }
 
 // ---- News ----
@@ -123,14 +124,14 @@ export async function saveNews(fd: FormData) {
   if (id) await db.from('news').update(row).eq('id', id);
   else await db.from('news').insert(row);
   refresh();
-  redirect('/admin/news');
+  redirect('/abdoussamad/news');
 }
 
 export async function deleteNews(fd: FormData) {
   guard();
   await getSupabaseAdmin().from('news').delete().eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/news');
+  redirect('/abdoussamad/news');
 }
 
 // ---- Opportunities ----
@@ -141,6 +142,7 @@ export async function saveOpp(fd: FormData) {
     title: loc(fd, 'title'),
     body: loc(fd, 'body'),
     deadline: loc(fd, 'deadline'),
+    link: str(fd, 'link') || null,
     published: str(fd, 'published') === 'on',
     sort: num(fd, 'sort')
   };
@@ -148,14 +150,14 @@ export async function saveOpp(fd: FormData) {
   if (id) await db.from('opportunities').update(row).eq('id', id);
   else await db.from('opportunities').insert(row);
   refresh();
-  redirect('/admin/opportunities');
+  redirect('/abdoussamad/opportunities');
 }
 
 export async function deleteOpp(fd: FormData) {
   guard();
   await getSupabaseAdmin().from('opportunities').delete().eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/opportunities');
+  redirect('/abdoussamad/opportunities');
 }
 
 // ---- Membership requests ----
@@ -166,7 +168,7 @@ export async function setRequestStatus(fd: FormData) {
     .update({status: str(fd, 'status')})
     .eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/requests');
+  redirect('/abdoussamad/requests');
 }
 
 export async function deleteRequest(fd: FormData) {
@@ -176,7 +178,7 @@ export async function deleteRequest(fd: FormData) {
     .delete()
     .eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/requests');
+  redirect('/abdoussamad/requests');
 }
 
 // ---- Contributions ----
@@ -187,7 +189,7 @@ export async function setContributionStatus(fd: FormData) {
     .update({status: str(fd, 'status')})
     .eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/contributions');
+  redirect('/abdoussamad/contributions');
 }
 
 export async function deleteContribution(fd: FormData) {
@@ -197,7 +199,7 @@ export async function deleteContribution(fd: FormData) {
     .delete()
     .eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/contributions');
+  redirect('/abdoussamad/contributions');
 }
 
 // ---- Peoples (fact sheets) ----
@@ -264,14 +266,14 @@ export async function savePeople(fd: FormData) {
   if (id) await db.from('peoples').update(row).eq('id', id);
   else await db.from('peoples').insert(row);
   refresh();
-  redirect('/admin/peoples');
+  redirect('/abdoussamad/peoples');
 }
 
 export async function deletePeople(fd: FormData) {
   guard();
   await getSupabaseAdmin().from('peoples').delete().eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/peoples');
+  redirect('/abdoussamad/peoples');
 }
 
 /** One-time import of the bundled starter fact sheets (only if the table is empty). */
@@ -306,7 +308,55 @@ export async function seedInitialPeoples() {
     await db.from('peoples').insert(rows);
   }
   refresh();
-  redirect('/admin/peoples');
+  redirect('/abdoussamad/peoples');
+}
+
+// ---- Partners ----
+export async function savePartner(fd: FormData) {
+  guard();
+  const id = str(fd, 'id');
+  const row = {
+    name: str(fd, 'name'),
+    url: str(fd, 'url') || null,
+    logo: str(fd, 'logo') || null,
+    published: str(fd, 'published') === 'on',
+    sort: num(fd, 'sort')
+  };
+  const db = getSupabaseAdmin();
+  if (id) await db.from('partners').update(row).eq('id', id);
+  else await db.from('partners').insert(row);
+  refresh();
+  redirect('/abdoussamad/partners');
+}
+
+export async function deletePartner(fd: FormData) {
+  guard();
+  await getSupabaseAdmin().from('partners').delete().eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/abdoussamad/partners');
+}
+
+/** One-time import of the bundled starter partners (only if the table is empty). */
+export async function seedInitialPartners() {
+  guard();
+  const db = getSupabaseAdmin();
+  const {count} = await db
+    .from('partners')
+    .select('id', {count: 'exact', head: true});
+  if (!count) {
+    const seed = (homeData as {partners: {name: string; url?: string; logo?: string}[]})
+      .partners;
+    const rows = seed.map((p, i) => ({
+      name: p.name,
+      url: p.url ?? null,
+      logo: p.logo ?? null,
+      published: true,
+      sort: i
+    }));
+    await db.from('partners').insert(rows);
+  }
+  refresh();
+  redirect('/abdoussamad/partners');
 }
 
 // ---- Subscribers ----
@@ -317,5 +367,5 @@ export async function deleteSubscriber(fd: FormData) {
     .delete()
     .eq('id', str(fd, 'id'));
   refresh();
-  redirect('/admin/subscribers');
+  redirect('/abdoussamad/subscribers');
 }

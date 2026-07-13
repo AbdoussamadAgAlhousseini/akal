@@ -88,6 +88,8 @@ export type Opportunity = {
   title: Localized;
   body: Localized;
   deadline: Localized;
+  /** Link to the official announcement (optional). */
+  link?: string;
 };
 
 export type Instrument = {

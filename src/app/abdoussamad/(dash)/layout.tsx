@@ -5,7 +5,7 @@ import {logout} from '../actions';
 import AdminNav from './AdminNav';
 
 export default function DashLayout({children}: {children: React.ReactNode}) {
-  if (!isAuthed()) redirect('/admin/login');
+  if (!isAuthed()) redirect('/abdoussamad/login');
 
   return (
     <div className="min-h-screen">

@@ -15,6 +15,15 @@ export type AdminOrg = {
   sort: number;
 };
 
+export type AdminPartner = {
+  id: string;
+  name: string;
+  url: string | null;
+  logo: string | null;
+  published: boolean;
+  sort: number;
+};
+
 export type AdminNews = {
   id: string;
   day: string;
@@ -31,6 +40,7 @@ export type AdminOpp = {
   title: Localized;
   body: Localized;
   deadline: Localized;
+  link: string | null;
   published: boolean;
   sort: number;
 };
@@ -113,3 +123,4 @@ export const getAdminSubscribers = () =>
 export const getAdminContributions = () =>
   all<AdminContribution>('contributions', 'created_at', false);
 export const getAdminPeoples = () => all<AdminPeople>('peoples', 'sort');
+export const getAdminPartners = () => all<AdminPartner>('partners', 'sort');

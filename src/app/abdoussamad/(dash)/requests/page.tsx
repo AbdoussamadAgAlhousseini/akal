@@ -21,7 +21,7 @@ export default async function RequestsAdmin() {
       <PageTitle>Demandes d'adhésion</PageTitle>
       <p className="text-[13px] text-gris">
         Après approbation, ajoutez l'organisation dans l'onglet{' '}
-        <Link href="/admin/organizations" className="font-semibold text-laterite">
+        <Link href="/abdoussamad/organizations" className="font-semibold text-laterite">
           Organisations
         </Link>{' '}
         pour la publier sur le site.

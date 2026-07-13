@@ -12,6 +12,7 @@ import type {
   NewsItem,
   Opportunity,
   Organization,
+  Partner,
   People,
   Slide,
   Taxonomies
@@ -164,6 +165,23 @@ export const getOrganizations = unstable_cache(
   {revalidate: 300, tags: ['content']}
 );
 
+export const getPartners = unstable_cache(
+  async (): Promise<Partner[]> => {
+    try {
+      const {data, error} = await getSupabaseAdmin()
+        .from('partners')
+        .select('name,url,logo')
+        .eq('published', true)
+        .order('sort', {ascending: true});
+      return error || !data ? [] : (data as Partner[]);
+    } catch {
+      return [];
+    }
+  },
+  ['partners'],
+  {revalidate: 300, tags: ['content']}
+);
+
 export const getNews = unstable_cache(
   async (): Promise<NewsItem[]> => {
     try {
@@ -186,7 +204,7 @@ export const getOpportunities = unstable_cache(
     try {
       const {data, error} = await getSupabaseAdmin()
         .from('opportunities')
-        .select('title,body,deadline')
+        .select('title,body,deadline,link')
         .eq('published', true)
         .order('sort', {ascending: true});
       return error || !data ? [] : (data as Opportunity[]);

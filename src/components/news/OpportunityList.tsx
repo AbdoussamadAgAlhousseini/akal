@@ -21,9 +21,25 @@ export default function OpportunityList({
               {localize(opp.title, locale)}
             </h3>
             <p className="text-[14px] text-gris">{localize(opp.body, locale)}</p>
-            <span className="mt-2 inline-block rounded-full bg-[#F6E7DA] px-3 py-[3px] text-[12px] font-bold text-laterite">
-              {localize(opp.deadline, locale)}
-            </span>
+            <div className="mt-2 flex flex-wrap items-center gap-3">
+              <span className="inline-block rounded-full bg-[#F6E7DA] px-3 py-[3px] text-[12px] font-bold text-laterite">
+                {localize(opp.deadline, locale)}
+              </span>
+              {opp.link && (
+                <a
+                  href={opp.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[13px] font-semibold text-indigo underline decoration-or/60 underline-offset-2 hover:text-laterite"
+                >
+                  {locale === 'fr'
+                    ? "Voir l'annonce officielle ↗"
+                    : locale === 'es'
+                      ? 'Ver el anuncio oficial ↗'
+                      : 'View official announcement ↗'}
+                </a>
+              )}
+            </div>
           </div>
         </article>
       ))}

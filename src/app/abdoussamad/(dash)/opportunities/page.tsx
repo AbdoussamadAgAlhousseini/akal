@@ -28,6 +28,12 @@ export default async function OppAdmin({
             labelText="Échéance (ex. Au fil de l'eau)"
             value={editing?.deadline}
           />
+          <Field
+            name="link"
+            labelText="Lien de l'annonce officielle (facultatif)"
+            defaultValue={editing?.link ?? ''}
+            placeholder="https://…"
+          />
           <div className="grid gap-3 sm:grid-cols-2">
             <Field
               name="sort"
@@ -49,7 +55,7 @@ export default async function OppAdmin({
               {editing ? 'Enregistrer' : 'Ajouter'}
             </button>
             {editing && (
-              <Link href="/admin/opportunities" className={btnGhost}>
+              <Link href="/abdoussamad/opportunities" className={btnGhost}>
                 Annuler
               </Link>
             )}
@@ -66,7 +72,7 @@ export default async function OppAdmin({
               </span>
               {!o.published && <StatusBadge label="Brouillon" tone="warn" />}
               <div className="flex gap-1.5">
-                <Link href={`/admin/opportunities?edit=${o.id}`} className={btnGhost}>
+                <Link href={`/abdoussamad/opportunities?edit=${o.id}`} className={btnGhost}>
                   Modifier
                 </Link>
                 <form action={deleteOpp}>

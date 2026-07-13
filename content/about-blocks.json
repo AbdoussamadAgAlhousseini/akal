@@ -1,6 +1,30 @@
 [
   {
     "heading": {
+      "en": "About AKAL",
+      "fr": "À propos d'AKAL",
+      "es": "Acerca de AKAL"
+    },
+    "body": {
+      "en": "AKAL is a trilingual reference platform documenting Indigenous Peoples and pastoralism around the world, built with and for the communities it represents. It gathers reliable, source-based knowledge — people fact sheets, an interactive map and legal frameworks — in English, French and Spanish, so that this heritage is accessible and shared with respect.",
+      "fr": "AKAL est une plateforme de référence trilingue qui documente les peuples autochtones et le pastoralisme à travers le monde, construite avec et pour les communautés qu'elle représente. Elle rassemble un savoir fiable et sourcé — fiches de peuples, carte interactive et cadres juridiques — en français, anglais et espagnol, afin que ce patrimoine soit accessible et partagé avec respect.",
+      "es": "AKAL es una plataforma de referencia trilingüe que documenta los pueblos indígenas y el pastoralismo en el mundo, construida con y para las comunidades que representa. Reúne conocimiento fiable y con fuentes —fichas de pueblos, mapa interactivo y marcos jurídicos— en español, francés e inglés, para que este patrimonio sea accesible y compartido con respeto."
+    }
+  },
+  {
+    "heading": {
+      "en": "What the site offers today",
+      "fr": "Ce que contient le site aujourd'hui",
+      "es": "Qué ofrece el sitio hoy"
+    },
+    "body": {
+      "en": "Today AKAL brings together: fact sheets on Indigenous and pastoralist peoples (identity, way of life, rights, threats); an interactive world map of their territories, with deliberately approximate locations; a section on pastoralism; a rights section with international legal instruments and case law; a directory of organizations; and news and open opportunities. The platform grows as communities propose and validate new content.",
+      "fr": "Aujourd'hui, AKAL réunit : des fiches sur les peuples autochtones et pasteurs (identité, mode de vie, droits, menaces) ; une carte interactive du monde présentant leurs territoires, avec des localisations volontairement approximatives ; une section sur le pastoralisme ; une section droits avec les instruments juridiques internationaux et la jurisprudence ; un annuaire d'organisations ; ainsi que des actualités et des opportunités ouvertes. La plateforme s'enrichit à mesure que les communautés proposent et valident de nouveaux contenus.",
+      "es": "Hoy, AKAL reúne: fichas sobre los pueblos indígenas y pastores (identidad, modo de vida, derechos, amenazas); un mapa interactivo del mundo con sus territorios, en ubicaciones deliberadamente aproximadas; una sección sobre el pastoralismo; una sección de derechos con los instrumentos jurídicos internacionales y la jurisprudencia; un directorio de organizaciones; y noticias y oportunidades abiertas. La plataforma crece a medida que las comunidades proponen y validan nuevos contenidos."
+    }
+  },
+  {
+    "heading": {
       "en": "Ethics & data sovereignty",
       "fr": "Éthique & souveraineté des données",
       "es": "Ética y soberanía de datos"

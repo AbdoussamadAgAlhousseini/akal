@@ -47,7 +47,7 @@ export default async function NewsAdmin({
               {editing ? 'Enregistrer' : 'Ajouter'}
             </button>
             {editing && (
-              <Link href="/admin/news" className={btnGhost}>
+              <Link href="/abdoussamad/news" className={btnGhost}>
                 Annuler
               </Link>
             )}
@@ -64,7 +64,7 @@ export default async function NewsAdmin({
               </span>
               {!n.published && <StatusBadge label="Brouillon" tone="warn" />}
               <div className="flex gap-1.5">
-                <Link href={`/admin/news?edit=${n.id}`} className={btnGhost}>
+                <Link href={`/abdoussamad/news?edit=${n.id}`} className={btnGhost}>
                   Modifier
                 </Link>
                 <form action={deleteNews}>

@@ -4,20 +4,21 @@ import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 
 const NAV = [
-  {href: '/admin', label: 'Tableau de bord'},
-  {href: '/admin/requests', label: "Demandes d'adhésion"},
-  {href: '/admin/contributions', label: 'Contributions'},
-  {href: '/admin/peoples', label: 'Peuples'},
-  {href: '/admin/organizations', label: 'Organisations'},
-  {href: '/admin/news', label: 'Actualités'},
-  {href: '/admin/opportunities', label: 'Opportunités'},
-  {href: '/admin/subscribers', label: 'Inscrits newsletter'}
+  {href: '/abdoussamad', label: 'Tableau de bord'},
+  {href: '/abdoussamad/requests', label: "Demandes d'adhésion"},
+  {href: '/abdoussamad/contributions', label: 'Contributions'},
+  {href: '/abdoussamad/peoples', label: 'Peuples'},
+  {href: '/abdoussamad/organizations', label: 'Organisations'},
+  {href: '/abdoussamad/partners', label: 'Partenaires'},
+  {href: '/abdoussamad/news', label: 'Actualités'},
+  {href: '/abdoussamad/opportunities', label: 'Opportunités'},
+  {href: '/abdoussamad/subscribers', label: 'Inscrits newsletter'}
 ];
 
 export default function AdminNav() {
   const pathname = usePathname();
   const isActive = (href: string) =>
-    href === '/admin' ? pathname === '/admin' : pathname.startsWith(href);
+    href === '/abdoussamad' ? pathname === '/abdoussamad' : pathname.startsWith(href);
 
   return (
     <nav className="flex gap-1 overflow-x-auto md:flex-col md:overflow-visible">
