@@ -1,8 +1,9 @@
 import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
-import {setRequestLocale} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
 import Container from '@/components/common/Container';
 import PeopleFiche from '@/components/peoples/PeopleFiche';
+import PeopleJsonLd from '@/components/seo/PeopleJsonLd';
 import {routing} from '@/i18n/routing';
 import {getPeople, getPeopleSlugs, getTaxonomies} from '@/lib/content';
 import {localize} from '@/lib/localize';
@@ -42,9 +43,15 @@ export default async function PeopleFichePage({params}: Props) {
   if (!person) notFound();
 
   const taxonomies = getTaxonomies();
+  const tn = await getTranslations('Nav');
 
   return (
     <section>
+      <PeopleJsonLd
+        person={person}
+        locale={locale}
+        peoplesLabel={tn('peoples')}
+      />
       <Container>
         <PeopleFiche person={person} taxonomies={taxonomies} locale={locale} />
       </Container>

@@ -56,7 +56,12 @@ export async function generateMetadata({
       locale,
       type: 'website'
     },
-    twitter: {card: 'summary_large_image', title, description}
+    twitter: {card: 'summary_large_image', title, description},
+    // Set NEXT_PUBLIC_GOOGLE_VERIFICATION to the code Google Search Console
+    // gives you (URL-prefix property → HTML tag method) to verify ownership.
+    verification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION
+      ? {google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION}
+      : undefined
   };
 }
 
