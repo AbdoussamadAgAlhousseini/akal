@@ -4,6 +4,7 @@ import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {SITE_NAME, SITE_URL} from '@/lib/seo';
+import {Analytics} from '@vercel/analytics/next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import AskAkalWidget from '@/components/peoples/AskAkalWidget';
@@ -87,6 +88,7 @@ export default async function LocaleLayout({children, params}: Props) {
           <Footer />
           {process.env.ANTHROPIC_API_KEY && <AskAkalWidget locale={locale} />}
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
