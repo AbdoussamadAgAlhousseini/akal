@@ -3,8 +3,7 @@ import {SITE_NAME, SITE_URL} from '@/lib/seo';
 
 // Public social profiles used as the platform's `sameAs` presence.
 const SAME_AS = [
-  'https://www.linkedin.com/in/abdoussamad-ag-alhousseini-4b263a214',
-  'https://www.facebook.com/share/18yr5Dhtm4/?mibextid=wwXIfr'
+  'https://www.linkedin.com/in/abdoussamad-ag-alhousseini-4b263a214'
 ];
 
 /**
