@@ -6,6 +6,7 @@ import {routing} from '@/i18n/routing';
 import {SITE_NAME, SITE_URL} from '@/lib/seo';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import AskAkalWidget from '@/components/peoples/AskAkalWidget';
 import StructuredData from '@/components/seo/StructuredData';
 import '../globals.css';
 
@@ -84,6 +85,7 @@ export default async function LocaleLayout({children, params}: Props) {
           <Header />
           {children}
           <Footer />
+          {process.env.ANTHROPIC_API_KEY && <AskAkalWidget locale={locale} />}
         </NextIntlClientProvider>
       </body>
     </html>
