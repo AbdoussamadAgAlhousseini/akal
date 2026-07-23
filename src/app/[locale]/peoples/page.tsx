@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import Container from '@/components/common/Container';
 import PageHead from '@/components/common/PageHead';
+import AskAkal from '@/components/peoples/AskAkal';
 import PeoplesExplorer from '@/components/peoples/PeoplesExplorer';
 import {getPeoples, getTaxonomies} from '@/lib/content';
 import {localize} from '@/lib/localize';
@@ -53,6 +54,7 @@ export default async function PeoplesPage({
           allRegionsLabel={t('allRegions')}
           readSheet={t('readSheet')}
         />
+        {process.env.ANTHROPIC_API_KEY && <AskAkal locale={locale} />}
       </Container>
     </section>
   );
