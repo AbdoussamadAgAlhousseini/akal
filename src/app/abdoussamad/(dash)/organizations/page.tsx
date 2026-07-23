@@ -50,7 +50,7 @@ export default async function OrgAdmin({
       </PageTitle>
 
       <Card title={editing ? `Modifier — ${editing.name}` : 'Ajouter une organisation'}>
-        <form action={saveOrg} className="flex flex-col gap-3">
+        <form key={editing?.id ?? 'new'} action={saveOrg} className="flex flex-col gap-3">
           {editing && <input type="hidden" name="id" defaultValue={editing.id} />}
           <Field name="name" labelText="Nom" defaultValue={editing?.name} />
           <div className="grid gap-3 sm:grid-cols-2">

@@ -69,7 +69,9 @@ export default async function PeoplesAdmin({
       )}
 
       <Card title={e ? `Modifier — ${e.name}` : 'Ajouter un peuple'}>
-        <form action={savePeople} className="flex flex-col gap-4">
+        {/* `key` forces a remount when switching records — without it React
+            reuses the uncontrolled inputs and keeps the previous fiche's text. */}
+        <form key={e?.id ?? 'new'} action={savePeople} className="flex flex-col gap-4">
           {e && <input type="hidden" name="id" defaultValue={e.id} />}
 
           <div className="grid gap-3 sm:grid-cols-3">

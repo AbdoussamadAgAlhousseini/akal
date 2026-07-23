@@ -19,7 +19,7 @@ export default async function NewsAdmin({
       </PageTitle>
 
       <Card title={editing ? 'Modifier une actualité' : 'Ajouter une actualité'}>
-        <form action={saveNews} className="flex flex-col gap-3">
+        <form key={editing?.id ?? 'new'} action={saveNews} className="flex flex-col gap-3">
           {editing && <input type="hidden" name="id" defaultValue={editing.id} />}
           <div className="grid gap-3 sm:grid-cols-2">
             <Field name="day" labelText="Jour (ex. 02)" defaultValue={editing?.day} />

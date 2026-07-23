@@ -19,7 +19,7 @@ export default async function OppAdmin({
       </PageTitle>
 
       <Card title={editing ? 'Modifier une opportunité' : 'Ajouter une opportunité'}>
-        <form action={saveOpp} className="flex flex-col gap-3">
+        <form key={editing?.id ?? 'new'} action={saveOpp} className="flex flex-col gap-3">
           {editing && <input type="hidden" name="id" defaultValue={editing.id} />}
           <TriField base="title" labelText="Titre" value={editing?.title} textarea />
           <TriField base="body" labelText="Description" value={editing?.body} textarea />

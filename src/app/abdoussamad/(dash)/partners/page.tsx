@@ -33,7 +33,7 @@ export default async function PartnersAdmin({
       )}
 
       <Card title={e ? `Modifier — ${e.name}` : 'Ajouter un partenaire'}>
-        <form action={savePartner} className="flex flex-col gap-3">
+        <form key={e?.id ?? 'new'} action={savePartner} className="flex flex-col gap-3">
           {e && <input type="hidden" name="id" defaultValue={e.id} />}
           <Field name="name" labelText="Nom du partenaire" defaultValue={e?.name} />
           <Field
