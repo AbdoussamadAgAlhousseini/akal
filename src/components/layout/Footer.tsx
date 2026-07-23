@@ -17,6 +17,11 @@ const SOCIALS = [
     label: 'Facebook',
     href: 'https://www.facebook.com/share/18yr5Dhtm4/?mibextid=wwXIfr',
     path: 'M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z'
+  },
+  {
+    label: 'E-mail',
+    href: 'mailto:contact@akal-indigenous.org',
+    path: 'M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'
   }
 ];
 
