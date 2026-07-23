@@ -20,7 +20,7 @@ const T: Record<L, {
     title: 'Demandez à AKAL',
     hint: 'Posez une question sur un peuple. Les réponses s’appuient uniquement sur les fiches validées du site.',
     placeholder: 'Ex. Pourquoi les Touaregs portent-ils le voile ?',
-    examples: ['Où vivent les Sámi ?', 'Que élèvent les Maasai ?', 'Qui sont les Quechua ?'],
+    examples: ['Où vivent les Sámi ?', 'Qu’élèvent les Maasai ?', 'Qui sont les Quechua ?'],
     ask: 'Demander',
     asking: 'Recherche…',
     disclaimer: 'Réponse générée à partir des fiches du site. Vérifiez les sources sur la fiche concernée.',
