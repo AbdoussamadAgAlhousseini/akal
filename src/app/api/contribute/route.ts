@@ -61,7 +61,7 @@ export async function POST(req: Request) {
     const to = process.env.NOTIFICATION_EMAIL;
     if (resendKey && to) {
       await new Resend(resendKey).emails.send({
-        from: 'AKAL <onboarding@resend.dev>',
+        from: 'AKAL <notifications@akal-indigenous.org>',
         to,
         replyTo: data.email,
         subject: `Nouvelle contribution (${data.type}) — ${data.name}`,
