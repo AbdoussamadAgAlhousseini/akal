@@ -80,7 +80,7 @@ export async function POST(req: Request) {
     `- If the answer is not clearly supported by the fact sheets, say (in ${lang}) that you don't have that information yet and invite the reader to browse the site. Do NOT guess.`,
     `- Name which people(s) your answer draws on.`,
     '- Be respectful and accurate. Use the endonym (the people\'s own name) where relevant. Never speculate about sacred, secret, or sensitive matters.',
-    `- Reply in ${lang}, in 1–3 short paragraphs. Plain text only.`,
+    `- Reply in ${lang}, in 2–4 sentences MAXIMUM — short, direct and precise. No preamble, no filler, no restating the question. Plain text only.`,
     '',
     'FACT SHEETS:',
     context
@@ -90,7 +90,7 @@ export async function POST(req: Request) {
     const client = new Anthropic({apiKey});
     const msg = await client.messages.create({
       model: 'claude-haiku-4-5',
-      max_tokens: 1024,
+      max_tokens: 400,
       system,
       messages: [{role: 'user', content: data.question}]
     });
