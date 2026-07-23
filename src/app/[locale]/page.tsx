@@ -93,6 +93,9 @@ export default async function HomePage({params}: Props) {
               </div>
             ))}
           </div>
+          <p className="mx-auto max-w-[1200px] px-6 pb-4 text-[11px] leading-relaxed text-[#8E96BE]">
+            {t('statsSource')}
+          </p>
         </div>
       </section>
 
