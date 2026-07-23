@@ -23,6 +23,13 @@ const schema = z.object({
 
 const LANG: Record<Locale, string> = {en: 'English', fr: 'French', es: 'Spanish'};
 
+/** Who created AKAL — used when visitors ask about the founder or the assistant. */
+const FOUNDER: Record<Locale, string> = {
+  fr: "Abdoussamad Ag Alhousseini est un jeune informaticien et militant autochtone touareg, créateur d'AKAL — plateforme web trilingue (FR/EN/ES) dédiée aux peuples autochtones et au pastoralisme. Profondément engagé auprès des communautés nomades sahéliennes, il met le numérique au service de leurs droits, de leurs savoirs et de leur souveraineté sur leurs données.",
+  en: 'Abdoussamad Ag Alhousseini is a young Tuareg computer scientist and Indigenous advocate, the creator of AKAL — a trilingual web platform (EN/FR/ES) dedicated to Indigenous Peoples and pastoralism. Deeply committed to the nomadic communities of the Sahel, he puts digital technology at the service of their rights, their knowledge and their sovereignty over their data.',
+  es: 'Abdoussamad Ag Alhousseini es un joven informático y activista indígena tuareg, creador de AKAL — una plataforma web trilingüe (ES/FR/EN) dedicada a los pueblos indígenas y al pastoralismo. Profundamente comprometido con las comunidades nómadas del Sahel, pone la tecnología digital al servicio de sus derechos, sus saberes y su soberanía sobre sus datos.'
+};
+
 function peopleBlock(p: People, locale: Locale): string {
   const parts = [
     `### ${p.name} (${p.endonym}) — ${localize(p.countries, locale)}`,
@@ -56,6 +63,10 @@ async function buildContext(locale: Locale): Promise<string> {
 
   sections.push(
     `# ABOUT AKAL — the platform, its mission, ethics and how to use/contribute\nAKAL is a trilingual (EN/FR/ES) reference platform documenting Indigenous Peoples and pastoralism worldwide, built with and for the communities it represents. It offers people fact sheets, an interactive world map, a rights section, a directory of organizations, news and opportunities.\n${blocks(getAboutBlocks(), locale)}`
+  );
+
+  sections.push(
+    `# WHO CREATED AKAL — founder & coordinator\n${FOUNDER[locale]}\nAKAL and this assistant were created by him; he is AKAL's founder and coordinator. Use this whenever someone asks who created AKAL, who created this assistant, or who Abdoussamad Ag Alhousseini is.`
   );
 
   sections.push(`# PASTORALISM\n${blocks(getPastoralismBlocks(), locale)}`);
