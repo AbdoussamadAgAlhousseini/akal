@@ -18,9 +18,9 @@ const T: Record<L, {
 }> = {
   fr: {
     title: 'Demandez à AKAL',
-    hint: 'Posez une question sur un peuple. Les réponses s’appuient uniquement sur les fiches validées du site.',
-    placeholder: 'Ex. Pourquoi les Touaregs portent-ils le voile ?',
-    examples: ['Où vivent les Sámi ?', 'Qu’élèvent les Maasai ?', 'Qui sont les Quechua ?'],
+    hint: 'Posez une question sur AKAL, un peuple, une organisation, l’actualité ou une opportunité. Les réponses s’appuient uniquement sur le contenu du site.',
+    placeholder: 'Ex. À quoi sert AKAL ?',
+    examples: ['Qu’est-ce qu’AKAL ?', 'Quelles opportunités sont ouvertes ?', 'Où vivent les Sámi ?'],
     ask: 'Demander',
     asking: 'Recherche…',
     disclaimer: 'Réponse générée à partir des fiches du site. Vérifiez les sources sur la fiche concernée.',
@@ -30,9 +30,9 @@ const T: Record<L, {
   },
   en: {
     title: 'Ask AKAL',
-    hint: 'Ask a question about a people. Answers draw only on the site’s validated fact sheets.',
-    placeholder: 'e.g. Why do the Tuareg wear the veil?',
-    examples: ['Where do the Sámi live?', 'What do the Maasai raise?', 'Who are the Quechua?'],
+    hint: 'Ask about AKAL, a people, an organization, the news or an opportunity. Answers draw only on the site’s content.',
+    placeholder: 'e.g. What is AKAL for?',
+    examples: ['What is AKAL?', 'What opportunities are open?', 'Where do the Sámi live?'],
     ask: 'Ask',
     asking: 'Searching…',
     disclaimer: 'Answer generated from the site’s fact sheets. Check the sources on the relevant page.',
@@ -42,9 +42,9 @@ const T: Record<L, {
   },
   es: {
     title: 'Pregunte a AKAL',
-    hint: 'Haga una pregunta sobre un pueblo. Las respuestas se basan solo en las fichas validadas del sitio.',
-    placeholder: 'Ej. ¿Por qué los tuareg llevan velo?',
-    examples: ['¿Dónde viven los Sámi?', '¿Qué crían los Maasai?', '¿Quiénes son los Quechua?'],
+    hint: 'Pregunte sobre AKAL, un pueblo, una organización, las noticias o una oportunidad. Las respuestas se basan solo en el contenido del sitio.',
+    placeholder: 'Ej. ¿Para qué sirve AKAL?',
+    examples: ['¿Qué es AKAL?', '¿Qué oportunidades hay abiertas?', '¿Dónde viven los Sámi?'],
     ask: 'Preguntar',
     asking: 'Buscando…',
     disclaimer: 'Respuesta generada a partir de las fichas del sitio. Verifique las fuentes en la ficha correspondiente.',
