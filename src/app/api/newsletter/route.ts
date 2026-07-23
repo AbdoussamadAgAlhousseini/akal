@@ -86,6 +86,8 @@ export async function POST(req: Request) {
       await resend.emails.send({
         from: FROM,
         to: data.email,
+        // Replies land in the project inbox (a subscriber can just hit "reply").
+        replyTo: process.env.NOTIFICATION_EMAIL,
         subject,
         text: body
       });
