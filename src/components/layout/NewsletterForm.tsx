@@ -4,9 +4,9 @@ import {useRef, useState} from 'react';
 import {useLocale, useTranslations} from 'next-intl';
 
 /**
- * Footer newsletter sign-up. Posts to /api/newsletter, which stores the
- * subscriber in Supabase. No email is sent to subscribers yet (needs a
- * verified sending domain — later phase).
+ * Footer newsletter sign-up. Posts to /api/newsletter with the current locale,
+ * which stores the subscriber, adds them to the Resend audience and sends a
+ * localized welcome email.
  */
 export default function NewsletterForm() {
   const t = useTranslations('Footer');
