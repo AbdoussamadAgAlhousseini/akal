@@ -1,5 +1,6 @@
 import type {Opportunity} from '@/lib/types';
 import {localize} from '@/lib/localize';
+import ShareOpportunity from './ShareOpportunity';
 
 /** Agenda / open calls (prototype `.newsitem.opp` with a deadline pill). */
 export default function OpportunityList({
@@ -39,6 +40,11 @@ export default function OpportunityList({
                       : 'View official announcement ↗'}
                 </a>
               )}
+              <ShareOpportunity
+                title={localize(opp.title, locale)}
+                url={opp.link || `https://akal-indigenous.org/${locale}`}
+                locale={locale}
+              />
             </div>
           </div>
         </article>
