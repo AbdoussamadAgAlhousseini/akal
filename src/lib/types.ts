@@ -134,7 +134,11 @@ export type HomeContent = {
 export type SearchHref =
   | {pathname: '/peoples/[slug]'; params: {slug: string}}
   | '/organizations'
-  | '/news';
+  | '/news'
+  | '/pastoralism'
+  | '/rights'
+  | '/resources'
+  | '/about';
 
 export type SearchEntry = {
   /** Localized kind label (People / Organization / News / Call). */
