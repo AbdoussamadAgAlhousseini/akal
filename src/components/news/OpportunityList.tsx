@@ -2,6 +2,13 @@ import type {Opportunity} from '@/lib/types';
 import {localize} from '@/lib/localize';
 import ShareOpportunity from './ShareOpportunity';
 
+// Localized path of the opportunities/news page, so sharing always points to AKAL.
+const NEWS_PATH: Record<string, string> = {
+  fr: 'actualites',
+  en: 'news',
+  es: 'noticias'
+};
+
 /** Agenda / open calls (prototype `.newsitem.opp` with a deadline pill). */
 export default function OpportunityList({
   items,
@@ -10,6 +17,7 @@ export default function OpportunityList({
   items: Opportunity[];
   locale: string;
 }) {
+  const shareUrl = `https://akal-indigenous.org/${locale}/${NEWS_PATH[locale] ?? 'news'}`;
   return (
     <div>
       {items.map((opp, i) => (
@@ -42,7 +50,7 @@ export default function OpportunityList({
               )}
               <ShareOpportunity
                 title={localize(opp.title, locale)}
-                url={opp.link || `https://akal-indigenous.org/${locale}`}
+                url={shareUrl}
                 locale={locale}
               />
             </div>
