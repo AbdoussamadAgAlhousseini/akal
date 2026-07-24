@@ -13,6 +13,7 @@ import {
   getResourcesBlocks
 } from '@/lib/content';
 import {localize} from '@/lib/localize';
+import {getSupabaseAdmin} from '@/lib/supabase';
 import type {ContentBlock, Locale, People} from '@/lib/types';
 import {clientIp, rateLimit} from '@/lib/rate-limit';
 
@@ -175,6 +176,17 @@ export async function POST(req: Request) {
       .map((b) => b.text)
       .join('\n')
       .trim();
+
+    // Best-effort log for the admin — question, answer, language, time only.
+    // No IP, no personal data. Never blocks the response.
+    try {
+      await getSupabaseAdmin()
+        .from('assistant_logs')
+        .insert({question: data.question, answer, locale});
+    } catch {
+      // ignore logging failures
+    }
+
     return NextResponse.json({answer});
   } catch {
     return NextResponse.json({error: 'ai'}, {status: 502});

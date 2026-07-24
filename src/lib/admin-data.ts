@@ -15,6 +15,14 @@ export type AdminOrg = {
   sort: number;
 };
 
+export type AdminAssistantLog = {
+  id: string;
+  question: string;
+  answer: string;
+  locale: string | null;
+  created_at: string;
+};
+
 export type AdminPartner = {
   id: string;
   name: string;
@@ -124,3 +132,5 @@ export const getAdminContributions = () =>
   all<AdminContribution>('contributions', 'created_at', false);
 export const getAdminPeoples = () => all<AdminPeople>('peoples', 'sort');
 export const getAdminPartners = () => all<AdminPartner>('partners', 'sort');
+export const getAdminAssistantLogs = () =>
+  all<AdminAssistantLog>('assistant_logs', 'created_at', false);

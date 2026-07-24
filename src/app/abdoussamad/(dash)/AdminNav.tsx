@@ -12,7 +12,8 @@ const NAV = [
   {href: '/abdoussamad/partners', label: 'Partenaires'},
   {href: '/abdoussamad/news', label: 'Actualités'},
   {href: '/abdoussamad/opportunities', label: 'Opportunités'},
-  {href: '/abdoussamad/subscribers', label: 'Inscrits newsletter'}
+  {href: '/abdoussamad/subscribers', label: 'Inscrits newsletter'},
+  {href: '/abdoussamad/assistant', label: 'Assistant IA'}
 ];
 
 export default function AdminNav() {

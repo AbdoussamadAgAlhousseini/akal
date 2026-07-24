@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {
+  getAdminAssistantLogs,
   getAdminContributions,
   getAdminNews,
   getAdminOpps,
@@ -12,7 +13,7 @@ import {
 import {PageTitle} from '../ui';
 
 export default async function Dashboard() {
-  const [orgs, news, opps, requests, subs, contribs, peoples, partners] =
+  const [orgs, news, opps, requests, subs, contribs, peoples, partners, aiLogs] =
     await Promise.all([
       getAdminOrgs(),
       getAdminNews(),
@@ -21,7 +22,8 @@ export default async function Dashboard() {
       getAdminSubscribers(),
       getAdminContributions(),
       getAdminPeoples(),
-      getAdminPartners()
+      getAdminPartners(),
+      getAdminAssistantLogs()
     ]);
 
   const pending = requests.filter((r) => r.status === 'pending').length;
@@ -35,7 +37,8 @@ export default async function Dashboard() {
     {label: 'Partenaires', value: partners.length, href: '/abdoussamad/partners', accent: false},
     {label: 'Actualités', value: news.length, href: '/abdoussamad/news', accent: false},
     {label: 'Opportunités', value: opps.length, href: '/abdoussamad/opportunities', accent: false},
-    {label: 'Inscrits newsletter', value: subs.length, href: '/abdoussamad/subscribers', accent: false}
+    {label: 'Inscrits newsletter', value: subs.length, href: '/abdoussamad/subscribers', accent: false},
+    {label: 'Questions IA', value: aiLogs.length, href: '/abdoussamad/assistant', accent: false}
   ];
 
   return (

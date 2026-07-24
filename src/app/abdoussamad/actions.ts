@@ -359,6 +359,25 @@ export async function seedInitialPartners() {
   redirect('/abdoussamad/partners');
 }
 
+// ---- AI assistant logs ----
+export async function deleteAssistantLog(fd: FormData) {
+  guard();
+  await getSupabaseAdmin().from('assistant_logs').delete().eq('id', str(fd, 'id'));
+  refresh();
+  redirect('/abdoussamad/assistant');
+}
+
+export async function clearAssistantLogs() {
+  guard();
+  // Delete all rows (guarded by a match-everything filter).
+  await getSupabaseAdmin()
+    .from('assistant_logs')
+    .delete()
+    .neq('id', '00000000-0000-0000-0000-000000000000');
+  refresh();
+  redirect('/abdoussamad/assistant');
+}
+
 // ---- Subscribers ----
 export async function deleteSubscriber(fd: FormData) {
   guard();
