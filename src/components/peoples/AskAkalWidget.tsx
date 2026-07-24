@@ -80,6 +80,7 @@ export default function AskAkalWidget({locale}: {locale: string}) {
       else {
         const data = await res.json();
         setAnswer(data.answer || t.error);
+        setQuestion(''); // clear the field, ready for the next question
       }
     } catch {
       setError(t.error);
