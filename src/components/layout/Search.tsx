@@ -22,10 +22,9 @@ export default function Search({entries}: {entries: SearchEntry[]}) {
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const matches = q
-      ? entries.filter((e) => e.haystack.includes(q))
-      : entries;
-    return matches.slice(0, MAX_RESULTS);
+    // No query → no list (don't show a default dump of entries).
+    if (!q) return [];
+    return entries.filter((e) => e.haystack.includes(q)).slice(0, MAX_RESULTS);
   }, [query, entries]);
 
   // Global `/` opens search (unless already typing); Esc closes.
@@ -85,10 +84,10 @@ export default function Search({entries}: {entries: SearchEntry[]}) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('searchPlaceholder')}
-              className="w-full border-b border-ligne px-[22px] py-[17px] text-[17px] outline-none"
+              className="w-full border-b border-ligne bg-white px-[22px] py-[17px] text-[17px] text-encre outline-none placeholder:text-gris"
             />
             <div className="max-h-[50vh] overflow-y-auto">
-              {results.length ? (
+              {!query.trim() ? null : results.length ? (
                 results.map((r, i) => (
                   <Link
                     key={`${r.kind}-${i}`}
